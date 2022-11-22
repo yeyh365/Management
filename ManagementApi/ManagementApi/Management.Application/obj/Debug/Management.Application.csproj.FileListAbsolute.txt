@@ -1,0 +1,13 @@
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Application.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Application.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Core.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Domain.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.EntityFramework.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Core.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.Domain.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.EntityFramework.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.csproj.AssemblyReference.cache
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.csproj.CoreCompileInputs.cache
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.csproj.CopyComplete
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.pdb
