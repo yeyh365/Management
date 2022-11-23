@@ -9,3 +9,8 @@ D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\obj\Debug\M
 D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.csproj.CopyComplete
 D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.dll
 D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\Management.EntityFramework.dll.config
+D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\EntityFramework.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\EntityFramework.xml
+D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml

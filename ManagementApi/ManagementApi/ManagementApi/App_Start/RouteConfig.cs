@@ -12,11 +12,11 @@ namespace ManagementApi
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-             name: "Default",
-             url: "/swagger",
-             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-         );
+            //routes.MapRoute(
+            // name: "Default",
+            // url: "/swagger",
+            // defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+         //);
             routes.MapRoute(
                 name: "Default1",
                 url: "{controller}/{action}/{id}",
