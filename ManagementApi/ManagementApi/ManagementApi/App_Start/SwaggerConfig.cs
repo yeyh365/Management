@@ -2,6 +2,11 @@ using System.Web.Http;
 using WebActivatorEx;
 using ManagementApi;
 using Swashbuckle.Application;
+using Swashbuckle.Swagger;
+using System.Collections.Generic;
+using System.Web.Http.Description;
+using System.Linq;
+using System.Web.Http.Filters;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -33,7 +38,7 @@ namespace ManagementApi
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "ManagementApi");
-
+                        c.OperationFilter<HttpHeaderFilter>();
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
                         //c.PrettyPrint();
@@ -61,7 +66,7 @@ namespace ManagementApi
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -250,6 +255,40 @@ namespace ManagementApi
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
                     });
+        }
+        public class HttpHeaderFilter : IOperationFilter
+        {
+
+            public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
+            {
+                if (operation.parameters == null)
+                    operation.parameters = new List<Parameter>();
+                // 判断是否添加权限过滤器
+                var filterPipeline = apiDescription.ActionDescriptor.GetFilterPipeline();
+                // 判断是否允许匿名方法 
+                var isAuthorized = filterPipeline.Select(filterInfo => filterInfo.Instance).Any(filter => filter is IAuthorizationFilter);
+                var allowAnonymous = apiDescription.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
+                var authorize = apiDescription.ActionDescriptor.GetCustomAttributes<AuthorizeAttribute>().Any();
+                if (!authorize)
+                {
+                    //operation.parameters.Add(new Parameter
+                    //{
+                    //    name = "Authorization",
+                    //    @in = "header",
+                    //    description = "格式：{Bearer token}",
+                    //    required = false,
+                    //    type = "string"
+                    //});
+                    operation.parameters.Add(new Parameter
+                    {
+                        name = "auth",
+                        @in = "header",
+                        description = "格式：token",
+                        required = false,
+                        type = "string"
+                    });
+                }
+            }
         }
     }
 }
