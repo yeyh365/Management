@@ -481,5 +481,93 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:ManagementApi.Controllers.TokenController.Login(ManagementApi.Models.LoginRequest)">
+            <summary>
+            登录
+            </summary>
+            <param name="loginRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserInfoController.GetUserInfo">
+            <summary>
+            获取用户信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ManagementApi.Filters.ApiAuthorizeAttribute">
+            <summary>
+            身份认证拦截器
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Filters.ApiAuthorizeAttribute.IsAuthorized(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            指示指定的控件是否已获得授权
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Filters.ApiAuthorizeAttribute.HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            处理授权失败的请求
+            </summary>
+            <param name="actionContext"></param>
+        </member>
+        <member name="M:ManagementApi.Helper.JWTHelper.EncodeAccessToken(System.Object)">
+            <summary>
+            传入一个AuthInfo 对象包含UserId Expires时间 生成token
+            </summary>
+            <param name="payload">封装号的一个获取</param>
+            <returns></returns>
+        </member>
+        <member name="T:ManagementApi.Models.AuthInfo">
+            <summary>
+            身份验证信息 模拟JWT的payload
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.AuthInfo.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.AuthInfo.Roles">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.AuthInfo.IsAdmin">
+            <summary>
+            是否管理员
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.AuthInfo.ExpiryDateTime">
+            <summary>
+            口令过期时间
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.LoginRequest.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.LoginRequest.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.TokenInfo.Success">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.TokenInfo.Token">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Models.TokenInfo.Message">
+            <summary>
+            错误信息
+            </summary>
+        </member>
     </members>
 </doc>

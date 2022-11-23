@@ -89,3 +89,6 @@ D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\System.Web.Cors.dll
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\System.Web.Http.Cors.dll
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\System.Web.Http.Cors.xml
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\Management.EntityFramework.dll.config
+D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.dll
+D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.pdb
+D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.xml
