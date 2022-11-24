@@ -92,3 +92,5 @@ D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\Management.EntityFra
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.dll
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.pdb
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.xml

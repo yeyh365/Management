@@ -1,9 +1,11 @@
 ﻿using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
+using ManagementApi.Helper;
 using ManagementApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -31,7 +33,7 @@ namespace ManagementApi.Filters
                 var authHeader = from t in actionContext.Request.Headers where t.Key == "auth" select t.Value.FirstOrDefault();
                 if (authHeader != null)
                 {
-                    const string secretKey = "Hello World";//加密秘钥
+                     string secretKey = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();//加密秘钥
                     string token = authHeader.FirstOrDefault();//获取token
                     if (!string.IsNullOrEmpty(token))
                     {

@@ -187,6 +187,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AppSettingKeys.cs" />
     <Compile Include="Helper\JWTHelper.cs" />
     <Compile Include="Models\AuthInfo.cs" />
     <Compile Include="Models\LoginRequest.cs" />

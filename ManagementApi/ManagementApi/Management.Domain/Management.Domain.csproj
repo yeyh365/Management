@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,13 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBFilter\IDeleteFilter.cs" />
+    <Compile Include="DBFilter\IEntityCreate.cs" />
+    <Compile Include="DBFilter\IEntityUpdate.cs" />
+    <Compile Include="Entityes\Departemnt.cs" />
+    <Compile Include="Entityes\Employee.cs" />
+    <Compile Include="Entityes\EmployeeProjectMap.cs" />
+    <Compile Include="Repositories\IDBContext.cs" />
+    <Compile Include="Entityes\LogicDeletableEntity.cs" />
+    <Compile Include="Entityes\Menu.cs" />
+    <Compile Include="Entityes\Permission.cs" />
+    <Compile Include="Entityes\Project.cs" />
+    <Compile Include="Entityes\Role.cs" />
+    <Compile Include="Entityes\RolePermissionMap.cs" />
+    <Compile Include="Entityes\User.cs" />
+    <Compile Include="Entityes\UserRoleMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDBTransaction.cs" />
+    <Compile Include="Repositories\IEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DBFilter\" />
-    <Folder Include="Entityes\" />
     <Folder Include="Enums\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Management.Core\Management.Core.csproj">

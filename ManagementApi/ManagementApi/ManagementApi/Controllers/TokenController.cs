@@ -9,6 +9,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using ManagementApi.Helper;
+using System.Configuration;
 
 namespace ManagementApi.Controllers
 {
@@ -22,7 +24,7 @@ namespace ManagementApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Login")]
-        public TokenInfo Login([FromBody] LoginRequest loginRequest)
+        public TokenInfo Login( LoginRequest loginRequest)
         {
             TokenInfo tokenInfo = new TokenInfo();//需要返回的口令信息
             if (loginRequest != null)
@@ -33,7 +35,8 @@ namespace ManagementApi.Controllers
                 //模拟数据库数据，真正的数据应该从数据库读取
                 //身份验证信息
                 AuthInfo authInfo = new AuthInfo { UserName = userName, Roles = new List<string> { "admin", "commonrole" }, IsAdmin = isAdmin, ExpiryDateTime = DateTime.Now.AddHours(2) };
-                const string secretKey = "Hello World";//口令加密秘钥
+               string a = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();
+                 string secretKey = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();//口令加密秘钥
                 try
                 {
                     byte[] key = Encoding.UTF8.GetBytes(secretKey);

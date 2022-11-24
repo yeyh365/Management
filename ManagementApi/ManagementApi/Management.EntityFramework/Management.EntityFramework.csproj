@@ -51,10 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\EFDBContext.cs" />
+    <Compile Include="Migrations\202211240747031_ADDUSER.cs" />
+    <Compile Include="Migrations\202211240747031_ADDUSER.designer.cs">
+      <DependentUpon>202211240747031_ADDUSER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +75,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202211240747031_ADDUSER.resx">
+      <DependentUpon>202211240747031_ADDUSER.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,3 +12,5 @@ D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Manag
 D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.dll
 D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Management.Application.pdb
 D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.EntityFramework.dll.config
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\EntityFramework.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\EntityFramework.xml
