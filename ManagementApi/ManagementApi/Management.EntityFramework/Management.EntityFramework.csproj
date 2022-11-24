@@ -56,6 +56,26 @@
     <Compile Include="Migrations\202211240747031_ADDUSER.designer.cs">
       <DependentUpon>202211240747031_ADDUSER.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211240827326_AddEntity.cs" />
+    <Compile Include="Migrations\202211240827326_AddEntity.designer.cs">
+      <DependentUpon>202211240827326_AddEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211240839317_updateuser.cs" />
+    <Compile Include="Migrations\202211240839317_updateuser.designer.cs">
+      <DependentUpon>202211240839317_updateuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211240842046_updateuser1.cs" />
+    <Compile Include="Migrations\202211240842046_updateuser1.designer.cs">
+      <DependentUpon>202211240842046_updateuser1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211240848587_updateusermobile.cs" />
+    <Compile Include="Migrations\202211240848587_updateusermobile.designer.cs">
+      <DependentUpon>202211240848587_updateusermobile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202211240856490_UpdateEmployeeMobile.cs" />
+    <Compile Include="Migrations\202211240856490_UpdateEmployeeMobile.designer.cs">
+      <DependentUpon>202211240856490_UpdateEmployeeMobile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +99,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202211240747031_ADDUSER.resx">
       <DependentUpon>202211240747031_ADDUSER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240827326_AddEntity.resx">
+      <DependentUpon>202211240827326_AddEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240839317_updateuser.resx">
+      <DependentUpon>202211240839317_updateuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240842046_updateuser1.resx">
+      <DependentUpon>202211240842046_updateuser1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240848587_updateusermobile.resx">
+      <DependentUpon>202211240848587_updateusermobile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211240856490_UpdateEmployeeMobile.resx">
+      <DependentUpon>202211240856490_UpdateEmployeeMobile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

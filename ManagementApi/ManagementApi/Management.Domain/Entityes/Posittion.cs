@@ -9,24 +9,16 @@ using System.Threading.Tasks;
 
 namespace Management.Domain.Entityes
 {
-    [Table("EMPLOYEE")]
-    public class Employee : LogicDeletableEntity, IEntity<int>
+    [Table("POSITTION")]
+    public class Posittion : IEntity<int>
     {
         [Key]
         [Column("ID", TypeName = "int")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get ; set ; }
-        public int EmployeeId { get; set; }
-        public string EmployeeName { get; set; }
+        public int Id { get; set; }
+        public string PosititonNumber { get; set; }
         public string DepartmentNumber { get; set; }
-        public string PositionNumber { get; set; }
-
-        public string CredId { get; set; }
-        public string Sex { get; set; }
-        public string Mobile { get; set; }
-        public string Email { get; set; }
-
-
+        public string PosititonName { get; set; }
 
     }
 }

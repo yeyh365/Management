@@ -16,3 +16,8 @@ D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\E
 D:\VUE\manage\ManagementApi\ManagementApi\Management.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.ADDUSER.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.csproj.GenerateResource.cache
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.AddEntity.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateuser.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateuser1.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateusermobile.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.UpdateEmployeeMobile.resources

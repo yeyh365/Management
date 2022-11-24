@@ -20,6 +20,19 @@ namespace Management.EntityFramework.Entities
         }
         #region Entities
         public DbSet<User> User { get; set; }
+        public DbSet<Role> Role{ get; set; }
+        public DbSet<UserRoleMap> UserRoleMap { get; set; }
+        public DbSet<Menu> Menu { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<RolePermissionMap> RolePermissionMap { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<EmployeeProjectMap> EmployeeProjectMap { get; set; }
+        public DbSet<Departemnt> Departemnt { get; set; }
+        public DbSet<Project> Project { get; set; }
+        public DbSet<Posittion> Posittion { get; set; }
+
+
+
         #endregion
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

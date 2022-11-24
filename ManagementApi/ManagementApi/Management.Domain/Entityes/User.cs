@@ -23,12 +23,12 @@ namespace Management.Domain.Entityes
         public string Account { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public int Mobile { get; set; }
+        public string Mobile { get; set; }
         public string Email  { get; set; }
         public string Picture { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime Last_LoginTime { get; set; }
         public int Count { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
 
 
     }
