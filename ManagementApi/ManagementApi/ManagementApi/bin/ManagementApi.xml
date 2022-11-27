@@ -488,6 +488,12 @@
             <param name="loginRequest"></param>
             <returns></returns>
         </member>
+        <member name="M:ManagementApi.Controllers.UserInfo1Controller.GetUserInfo1">
+            <summary>
+            获取用户信息
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ManagementApi.Controllers.UserInfoController.GetUserInfo">
             <summary>
             获取用户信息
@@ -512,7 +518,7 @@
             </summary>
             <param name="actionContext"></param>
         </member>
-        <member name="M:ManagementApi.Helper.JWTHelper.EncodeAccessToken(System.Object)">
+        <member name="M:ManagementApi.Helper.JWTHelper.EncodeAccessToken(System.String,System.Boolean)">
             <summary>
             传入一个AuthInfo 对象包含UserId Expires时间 生成token
             </summary>
@@ -552,21 +558,6 @@
         <member name="P:ManagementApi.Models.LoginRequest.Password">
             <summary>
             密码
-            </summary>
-        </member>
-        <member name="P:ManagementApi.Models.TokenInfo.Success">
-            <summary>
-            是否成功
-            </summary>
-        </member>
-        <member name="P:ManagementApi.Models.TokenInfo.Token">
-            <summary>
-            令牌
-            </summary>
-        </member>
-        <member name="P:ManagementApi.Models.TokenInfo.Message">
-            <summary>
-            错误信息
             </summary>
         </member>
     </members>

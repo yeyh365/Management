@@ -94,3 +94,5 @@ D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.pdb
 D:\VUE\manage\ManagementApi\ManagementApi\ManagementApi\bin\JWT.xml
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.SqlServer.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.SqlServer.xml

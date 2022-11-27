@@ -15,7 +15,7 @@
             <el-form-item prop="name">
               <i class="el-icon-user"></i>
               <el-input
-                v-model="loginForm.name"
+                v-model="loginForm.UserName"
                 placeholder="账号"
                 autocomplete="off"
               ></el-input>
@@ -31,7 +31,7 @@
               <div style="float: left">
                 <el-input
                   type="password"
-                  v-model="loginForm.password"
+                  v-model="loginForm.Password"
                   placeholder="密码"
                   autocomplete="off"
                   v-show="!showPass"
@@ -39,7 +39,7 @@
                 ></el-input>
                 <el-input
                   type="text"
-                  v-model="loginForm.password"
+                  v-model="loginForm.Password"
                   placeholder="密码"
                   autocomplete="off"
                   v-show="showPass"
@@ -59,21 +59,22 @@
 
 <script>
 import axios from 'axios'
+import axiosInstance from '../api/services/LogonUser'
 export default {
   name: 'Login',
   data () {
     return {
       showPass: false,
       loginForm: {
-        name: '',
-        password: ''
+        UserName: '',
+        Password: ''
       },
       rules: {
-        name: [
+        UserName: [
           { required: true, message: '账号不能为空', trigger: 'blur' },
           { min: 4, max: 10, message: '账号为4-10位', trigger: 'blur' }
         ],
-        password: [
+        Password: [
           { required: true, message: '密码不能为空', trigger: 'blur' },
           { min: 4, max: 12, message: '密码长度为4-12位', trigger: 'blur' }
         ]
@@ -82,26 +83,22 @@ export default {
   },
   methods: {
     login () {
-      axios.post('https://localhost:44327/api/System/Login', {
-        // params: {
-        //   loginData: this.loginForm
-        // }
-      }).then(res => {
-        console.log(res)
-        console.log(res.status)
-        const token = res.data.Data
-        if (res.status === 200) {
+      axiosInstance.Login(this.loginForm.UserName, this.loginForm.Password)
+        .then(res => {
+          console.log(res)
+          const token = res.Data.A
+          if (res.Success) {
 
-          window.sessionStorage.setItem('token', JSON.stringify(token))
-          this.$router.push('home')
-          // this.$message({
-          //   message: res.data.message,
-          //   type: 'success'
-          // })
-        } else {
-          alert(res.data.Message)
-        }
-      })
+            window.sessionStorage.setItem('token', res.Data.AccessToken)
+            this.$router.push('home')
+            // this.$message({
+            //   message: res.data.message,
+            //   type: 'success'
+            // })
+          } else {
+            alert(res.Message)
+          }
+        })
     },
     submitForm (formName) {
       // this.$refs[formName].validate(valid => {

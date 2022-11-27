@@ -24,9 +24,9 @@ namespace ManagementApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Login")]
-        public TokenInfo Login( LoginRequest loginRequest)
+        public ResultModel Login( LoginRequest loginRequest)
         {
-            TokenInfo tokenInfo = new TokenInfo();//需要返回的口令信息
+            ResultModel tokenInfo = new ResultModel();//需要返回的口令信息
             if (loginRequest != null)
             {
                 string userName = loginRequest.UserName;
@@ -47,7 +47,7 @@ namespace ManagementApi.Controllers
                     var token = encoder.Encode(authInfo, key);//生成令牌
                                                               //口令信息
                     tokenInfo.Success = true;
-                    tokenInfo.Token = token;
+                    tokenInfo.Data = token;
                     tokenInfo.Message = "OK";
                 }
                 catch (Exception ex)

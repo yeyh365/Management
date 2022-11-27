@@ -41,7 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\EmployeeDto.cs" />
+    <Compile Include="Dto\LoginUserDto.cs" />
+    <Compile Include="Dto\LogonUser.cs" />
+    <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Impl\UserService.cs" />
+    <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Management.Core\Management.Core.csproj">
@@ -58,12 +64,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\" />
     <Folder Include="Dto\Config\" />
     <Folder Include="Dto\Public\" />
     <Folder Include="Dto\Search\" />
     <Folder Include="Dto\User\" />
-    <Folder Include="Model\" />
-    <Folder Include="Services\" />
+    <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

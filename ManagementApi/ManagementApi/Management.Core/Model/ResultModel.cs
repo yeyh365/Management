@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ManagementApi.Models
 {
-    public class TokenInfo
+    public class ResultModel
     {
 
             /// <summary>
@@ -15,7 +15,7 @@ namespace ManagementApi.Models
             /// <summary>
             /// 令牌
             /// </summary>
-            public string Token { get; set; }
+            public object Data { get; set; }
             /// <summary>
             /// 错误信息
             /// </summary>

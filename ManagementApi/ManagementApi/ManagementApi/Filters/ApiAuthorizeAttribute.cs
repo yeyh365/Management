@@ -29,12 +29,14 @@ namespace ManagementApi.Filters
             /// <returns></returns>
             protected override bool IsAuthorized(HttpActionContext actionContext)
             {
-                //前端请求api时会将token存放在名为"auth"的请求头中
-                var authHeader = from t in actionContext.Request.Headers where t.Key == "auth" select t.Value.FirstOrDefault();
-                if (authHeader != null)
+            //前端请求api时会将token存放在名为"auth"的请求头中
+            //var authHeader = from t in actionContext.Request.Headers.Authorization where t.Key == "auth" select t.Value.FirstOrDefault();
+            var authHeader = actionContext.Request.Headers.Authorization;
+
+            if (authHeader != null)
                 {
                      string secretKey = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();//加密秘钥
-                    string token = authHeader.FirstOrDefault();//获取token
+                    string token = authHeader.Parameter/*.FirstOrDefault()*/;//获取token
                     if (!string.IsNullOrEmpty(token))
                     {
                         try

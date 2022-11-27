@@ -281,7 +281,8 @@ namespace ManagementApi
                     //});
                     operation.parameters.Add(new Parameter
                     {
-                        name = "auth",
+
+                        name = "Authorization",
                         @in = "header",
                         description = "∏Ò Ω£∫token",
                         required = false,

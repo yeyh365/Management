@@ -66,8 +66,8 @@ export default {
       this.$store.commit('tab/collapseMenu')
     },
     getImg () {
-      let loginData = JSON.parse(window.sessionStorage.getItem('token'))
-      this.adminImg = loginData[0].image
+      // let loginData = JSON.parse(window.sessionStorage.getItem('token'))
+      // this.adminImg = loginData[0].image
     },
     clickMenu (item) {
       console.log(item.label);

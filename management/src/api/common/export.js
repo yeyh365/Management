@@ -5,8 +5,8 @@ import NProgress from "nprogress";
 
 
 var axiosInstance = axios.create({
-  baseURL: 'https://localhost:44327/api',
-  timeout: 10000,
+  baseURL: 'https://localhost:44369/api/',
+  timeout: 100000,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -17,7 +17,8 @@ axiosInstance.interceptors.request.use(
     NProgress.start()
     const token = sessionStorage.getItem('token')
     if (token) {
-      config.headers.Authorization = token
+      // config.headers.Authorization = token
+      config.headers.Authorization = 'Bearer ' + token
     }
     return config;
   },

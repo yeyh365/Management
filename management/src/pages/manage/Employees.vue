@@ -14,17 +14,22 @@
         border
         style="width: 100%"
       >
-        <el-table-column fixed prop="id" label="员工号" width="180">
+        <el-table-column fixed prop="EmployeeId" label="员工编号" width="180">
         </el-table-column>
-        <el-table-column prop="name" label="姓名" width="180">
+        <el-table-column prop="EmployeeName" label="员工姓名" width="180">
         </el-table-column>
-        <el-table-column prop="sex" label="性别" width="180"> </el-table-column>
-        <el-table-column prop="age" label="年龄" width="180"> </el-table-column>
-        <el-table-column prop="department" label="部门" width="180">
+        <el-table-column prop="CredId" label="身份证号" width="180">
         </el-table-column>
-        <el-table-column prop="date" label="入职时间" width="180">
+        <el-table-column prop="Sex" label="性别" width="180"> </el-table-column>
+        <el-table-column prop="Mobile" label="手机号码" width="180">
         </el-table-column>
-        <el-table-column prop="address" label="地址" width="180">
+        <el-table-column prop="Email" label="邮箱" width="180">
+        </el-table-column>
+        <el-table-column prop="DepartmentName" label="部门名称" width="180">
+        </el-table-column>
+        <el-table-column prop="PosititonName" label="职位名称" width="180">
+        </el-table-column>
+        <el-table-column prop="ProjectName" label="项目名称" width="180">
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="180">
           <template slot-scope="scope">
@@ -145,6 +150,7 @@
 import Mock, { Random } from 'mockjs'
 import searchBar from '../../components/SearchBar.vue'
 import { Row } from 'element-ui'
+import Employee from '../../api/services/UserEmployee'
 export default {
   name: 'Employees',
   components: {
@@ -157,7 +163,7 @@ export default {
       dataTable: [],
       value: false,
       currentPage: 1,
-      PageSizes: [10, 20, 40, 60],
+      PageSizes: [5, 10, 20, 30],
       PageSize: 10,
       totalCount: 1,
       operateType: 'add',
@@ -165,12 +171,14 @@ export default {
       dialogAddEdit: false,
       employeesData: {
         id: "",
-        name: "",
-        sex: "",
-        age: "",
-        department: "",
-        date: "",
-        address: ""
+        employee_id: "",
+        employee_name: "",
+        card_id: "",
+        mobile: "",
+        email: "",
+        department_name: "",
+        posititon_name: "",
+        project_name: ""
       },
       rules: {
         name: [
@@ -231,22 +239,53 @@ export default {
       });
     },
     getList () {
-      let List = []
-      for (let i = 0; i < 45; i++) {
-        List.push(
-          Mock.mock({
-            "id": i + 2001,
-            "name": Random.cname(),
-            "sex|1": ["男", "女"],
-            "age": Random.natural(18, 60),
-            "department|1": ["行政部", "财务部", "人事部", "研发部", "营销部"],
-            "date": Random.date("yyyy-MM-dd"),
-            "address": `${Random.province()}-${Random.city()}-${Random.county()}`
-          })
-        )
-      }
-      this.dataTable = List
-      this.totalCount = this.dataTable.length
+
+      Employee.GetEmployee()
+        .then(res => {
+          console.log(res)
+          // const token = res.Data
+          if (res.Success) {
+            // let List = []
+            // for (let i = 0; i < 4; i++) {
+            //   List.push(
+            //     Mock.mock({
+            //       "id": i + 2001,
+            //       "employee_name": Random.cname(),
+            //       "sex|1": ["男", "女"],
+            //       "age": Random.natural(18, 60),
+            //       "department|1": ["行政部", "财务部", "人事部", "研发部", "营销部"],
+            //       "date": Random.date("yyyy-MM-dd"),
+            //       "address": `${Random.province()}-${Random.city()}-${Random.county()}`
+            //     })
+            //   )
+            // }
+            // this.dataTable = List
+            // console.log(this.dataTable)
+            // console.log('List', typeof (List))
+            // console.log(res.Data)
+            var a = res.Data //= eval('(' + res.Data + ')')
+            console.log(res.Data)
+
+            console.log('a', typeof (a))
+            this.dataTable = a
+            this.totalCount = this.dataTable.length
+            // this.totalCount = this.dataTable.length
+            // console.log(this.dataTable.length)
+            // this.dataTable.forEach(a => {
+            //   console.log(a)
+
+            // })
+            // this.$message({
+            //   message: res.data.message,
+            //   type: 'success'
+            // })
+          } else {
+            alert(res.Message)
+          }
+        })
+
+      // this.dataTable = List
+      // this.totalCount = this.dataTable.length
     },
     onAdd () {
       this.dialogAddEdit = true;

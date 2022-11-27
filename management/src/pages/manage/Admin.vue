@@ -14,16 +14,31 @@
         border
         style="width: 100%"
       >
-        <el-table-column fixed prop="id" label="id号" width="200">
+        <!-- <el-table-column fixed prop="Id" label="id号" width="200">
+        </el-table-column> -->
+
+        <el-table-column fixed prop="Account" label="账户(登录名)" width="250">
+        </el-table-column>
+        <el-table-column prop="UserName" label="用户名称" width="250">
+        </el-table-column>
+        <el-table-column prop="Password" label="密码" width="250">
+        </el-table-column>
+        <el-table-column prop="Mobile" label="电话" width="250">
+        </el-table-column>
+        <el-table-column prop="UserName" label="密码" width="250">
+        </el-table-column>
+        <el-table-column prop="Email" label="邮箱" width="250">
         </el-table-column>
         <el-table-column label="头像" prop="image">
           <template slot-scope="scope">
             <img :src="scope.row.image" min-width="70" height="70" />
           </template>
         </el-table-column>
-        <el-table-column prop="name" label="账号" width="250">
+        <el-table-column prop="Last_LoginTime" label="上次登录时间" width="250">
         </el-table-column>
-        <el-table-column prop="password" label="密码" width="250">
+        <el-table-column prop="Count" label="登录次数" width="250">
+        </el-table-column>
+        <el-table-column prop="IsDeleted" label="是否使用" width="250">
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="200">
           <template slot-scope="scope">
@@ -126,6 +141,7 @@
 
 <script>
 import SearchBar from '../../components/SearchBar'
+import User from '../../api/services/UserEmployee'
 import Mock, { Random } from 'mockjs'
 import { Row } from 'element-ui'
 export default {
@@ -281,6 +297,27 @@ export default {
       });
     },
     getList () {
+      User.GetUser()
+        .then(res => {
+          if (res.Success) {
+            // var a = res.Data //= eval('(' + res.Data + ')')
+            console.log(res.Data)
+            this.adminTabel = res.Data
+            this.totalCount = this.adminTabel.length
+            // this.totalCount = this.dataTable.length
+            // console.log(this.dataTable.length)
+            // this.dataTable.forEach(a => {
+            //   console.log(a)
+
+            // })
+            // this.$message({
+            //   message: res.data.message,
+            //   type: 'success'
+            // })
+          } else {
+            alert(res.Message)
+          }
+        })
       this.totalCount = this.tableData.length;
       this.adminTabel = this.tableData;
       console.log('getlist')
