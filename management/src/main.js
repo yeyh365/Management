@@ -7,6 +7,7 @@ import store from './store'
 import element from 'element-ui'
 import VueRouter from 'vue-router'
 import router from './router'
+import * as echarts from 'echarts'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(element)
 Vue.config.productionTip = false
@@ -18,5 +19,6 @@ new Vue({
   store,
   axios,
   element,
-  router
+  router,
+  echarts
 })

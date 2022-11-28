@@ -66,5 +66,31 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+        [HttpGet]
+        [Route("GetEmployeeLimit")]
+        public ResultModel GetEmployeeLimit([FromUri]SearchEmployeeDto searchEmployeeDto)
+        {
+            var page = searchEmployeeDto.Page;
+            var limit = searchEmployeeDto.Limit;
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+
+            try
+            {
+                List<EmployeeDto> list = EmployeeInfo.GetEmployeeLimitDto(searchEmployeeDto);
+
+                resultModel.Success = true;
+                //resultModel.Data =JsonConvert.SerializeObject(list);
+                resultModel.Data = list;
+
+                resultModel.Message = "OK";
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
     }
 }

@@ -7,13 +7,7 @@
       ref="searchBar"
     ></search-bar>
     <div class="table">
-      <el-table
-        :data="
-          dataTable.slice((currentPage - 1) * PageSize, currentPage * PageSize)
-        "
-        border
-        style="width: 100%"
-      >
+      <el-table :data="dataTable" border style="width: 100%">
         <el-table-column fixed prop="EmployeeId" label="员工编号" width="180">
         </el-table-column>
         <el-table-column prop="EmployeeName" label="员工姓名" width="180">
@@ -31,7 +25,7 @@
         </el-table-column>
         <el-table-column prop="ProjectName" label="项目名称" width="180">
         </el-table-column>
-        <el-table-column fixed="right" label="操作" width="180">
+        <el-table-column fixed="right" label="操作" width="380">
           <template slot-scope="scope">
             <el-button
               @click="editButton(scope.row)"
@@ -39,6 +33,13 @@
               icon="el-icon-edit"
               size="small"
               >编辑</el-button
+            >
+            <el-button
+              @click="editButton(scope.row)"
+              type="primary"
+              icon="el-icon-edit"
+              size="small"
+              >登录权限</el-button
             >
             <el-button
               @click="del(scope.row)"
@@ -80,10 +81,25 @@
             disabled
           ></el-input>
         </el-form-item>
-        <el-form-item label="姓名" prop="name" :label-width="formLabelWidth">
+        <el-form-item
+          label="员工ID"
+          prop="employee_id"
+          :label-width="formLabelWidth"
+        >
           <el-input
-            v-model="employeesData.name"
+            v-model="employeesData.employee_id"
             placeholder="请输入账号"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="员工姓名"
+          prop="employee_name"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="employeesData.employee_name"
+            placeholder="请输入姓名"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -93,25 +109,81 @@
             <el-option label="女" value="女"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="年龄" prop="age" :label-width="formLabelWidth">
+        <el-form-item
+          label="员工身份证号"
+          prop="card_id"
+          :label-width="formLabelWidth"
+        >
           <el-input
-            v-model="employeesData.age"
-            placeholder=" "
+            v-model="employeesData.card_id"
+            placeholder="请输入身份证号码"
             autocomplete="off"
           ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="员工电话号码"
+          prop="mobile"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="employeesData.mobile"
+            placeholder="请输入电话号码"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="员工邮箱"
+          prop="email"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="employeesData.email"
+            placeholder="请输入邮箱"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="职位"
+          prop="PositionNumber"
+          :label-width="formLabelWidth"
+        >
+          <el-select
+            v-model="employeesData.PositionNumber"
+            placeholder="请选择"
+          >
+            <el-option label="股东" value="1"></el-option>
+            <el-option label="总经理" value="2"></el-option>
+            <el-option label="项目经理" value="3"></el-option>
+            <el-option label="主管" value="4"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item
           label="部门"
           prop="department"
           :label-width="formLabelWidth"
         >
-          <el-select v-model="employeesData.department" placeholder="请选择">
-            <el-option label="行政部" value="行政部"></el-option>
-            <el-option label="财务部" value="财务部"></el-option>
-            <el-option label="人事部" value="人事部"></el-option>
-            <el-option label="研发部" value="研发部"></el-option>
-            <el-option label="营销部" value="营销部"></el-option>
+          <el-select
+            v-model="employeesData.DepartmentNumber"
+            placeholder="请选择"
+          >
+            <el-option label="行政部" value="1"></el-option>
+            <el-option label="财务部" value="2"></el-option>
+            <el-option label="人事部" value="3"></el-option>
+            <el-option label="研发部" value="4"></el-option>
+            <el-option label="营销部" value="5"></el-option>
           </el-select>
+        </el-form-item>
+        <el-form-item
+          label="项目"
+          prop="ProjecNumber"
+          :label-width="formLabelWidth"
+        >
+          <el-checkbox-group v-model="employeesData.ProjecNumber">
+            <el-checkbox label="项目 A" disabled></el-checkbox>
+            <el-checkbox label="项目 B" disabled></el-checkbox>
+            <el-checkbox label="项目 C" disabled></el-checkbox>
+            <el-checkbox label="项目 D" disabled></el-checkbox>
+          </el-checkbox-group>
         </el-form-item>
         <el-form-item
           label="入职时间"
@@ -119,18 +191,11 @@
           :label-width="formLabelWidth"
         >
           <el-date-picker
-            v-model="employeesData.date"
+            v-model="employeesData.CreatedDate"
             type="date"
             placeholder="选择日期"
           >
           </el-date-picker>
-        </el-form-item>
-        <el-form-item label="地址" prop="address" :label-width="formLabelWidth">
-          <el-input
-            v-model="employeesData.address"
-            placeholder="请输入地址"
-            autocomplete="off"
-          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -164,7 +229,7 @@ export default {
       value: false,
       currentPage: 1,
       PageSizes: [5, 10, 20, 30],
-      PageSize: 10,
+      PageSize: 5,
       totalCount: 1,
       operateType: 'add',
       formLabelWidth: '100px',
@@ -176,26 +241,40 @@ export default {
         card_id: "",
         mobile: "",
         email: "",
+        sex: "",
         department_name: "",
         posititon_name: "",
-        project_name: ""
+        project_name: "",
+        DepartmentNumber: "",
+        PositionNumber: "",
+        ProjecNumber: [],
+        CreatedDate: ''
+
+
       },
       rules: {
-        name: [
+        employee_id: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
-        age: [
+        employee_name: [
+          { required: true, message: "账号不能为空", trigger: "blur" },
+          { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
+        ],
+        card_id: [
           { required: true, message: "年龄不能为空", trigger: "blur" },
-          { min: 1, max: 2, message: "年龄不正确", trigger: "blur" },
+          { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
+        ],
+        email: [
+          { required: true, message: "邮箱不能为空", trigger: "blur" },
         ],
         sex: [
           { required: true, message: "性别不能为空", trigger: "blur" },
         ],
-        department: [
+        DepartmentNumber: [
           { required: true, message: "部门不能为空", trigger: "blur" },
         ],
-        date: [
+        CreatedDate: [
           { required: true, message: "日期不能为空", trigger: "blur" },
         ],
         address: [
@@ -206,10 +285,31 @@ export default {
     }
   },
   methods: {
+    addinit () {
+      this.employeesData = {
+        id: "",
+        employee_id: "",
+        employee_name: "",
+        card_id: "",
+        mobile: "",
+        email: "",
+        sex: "",
+        department_name: "",
+        posititon_name: "",
+        project_name: "",
+        DepartmentNumber: "",
+        PositionNumber: "",
+        ProjecNumber: [],
+        CreatedDate: ''
+
+
+      }
+    },
     handleSizeChange (val) {
       this.PageSize = val;
 
       console.log('handleSizeChange', val)
+      this.getList()
     },
     handleCurrentChange (val) {
       this.currentPage = val;
@@ -217,9 +317,12 @@ export default {
       console.log(`当前页: ${val}`);
     },
     editButton (row) {
+      this.employeesData = row
+
       this.dialogAddEdit = true;
       this.operateType = 'edit';
-      this.employeesData = row
+      console.log(this.employeesData)
+
     },
     del (row) {
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -240,7 +343,7 @@ export default {
     },
     getList () {
 
-      Employee.GetEmployee()
+      Employee.GetEmployee(this.currentPage, this.PageSize)
         .then(res => {
           console.log(res)
           // const token = res.Data
@@ -268,7 +371,7 @@ export default {
 
             console.log('a', typeof (a))
             this.dataTable = a
-            this.totalCount = this.dataTable.length
+            this.totalCount = res.Data[0].Count
             // this.totalCount = this.dataTable.length
             // console.log(this.dataTable.length)
             // this.dataTable.forEach(a => {
@@ -294,16 +397,16 @@ export default {
       }
     },
     onSubmit (employeesData) {
-      console.log(employeesData)
-      console.log('refs', this.$refs[employeesData])
-      this.$refs[employeesData].validate((valid => {
-        if (valid) {
-          console.log("success submit!!");
-          this.dialogAddEdit = false;
-        } else {
-          console.log("error submit!!");
-        }
-      }))
+      console.log(this.employeesData)
+      // console.log('refs', this.$refs[employeesData])
+      // this.$refs[employeesData].validate((valid => {
+      //   if (valid) {
+      //     console.log("success submit!!");
+      //     this.dialogAddEdit = false;
+      //   } else {
+      //     console.log("error submit!!");
+      //   }
+      // }))
     },
     cancel () {
       this.$message({

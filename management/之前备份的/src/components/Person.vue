@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>人员列表</h1>
-    <h3>Count组件求和为{{ $store.state.sum }}</h3>
+    <h3>Count组件求和为{{ sum }}</h3>
     <h3>列表中的第一个名字是{{ firstPersonName }}</h3>
     <input type="text" placeholder="请输入名字" v-model="name" />
     <button @click="add">添加会员</button>

@@ -23,6 +23,15 @@ namespace Management.Application.Services
         /// <param name="UserAD"></param>
         /// <returns></returns>
         LoginUserDto FindLoginUser(string Account);
+        /// <summary>
+        /// 获取所有员工接口
+        /// </summary>
+        /// <returns></returns>
         List<EmployeeDto> GetAllEmployeeDto();
+        /// <summary>
+        /// 获取员工分页接口
+        /// </summary>
+        /// <returns></returns>
+        List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto);
     }
 }

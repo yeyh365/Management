@@ -1,9 +1,14 @@
 import axiosInstance from '../common/export'
 
 export default {
-  GetEmployee() {
+  GetEmployee(currentPage, PageSizes) {
     return new Promise((resolve, reject) => {
-      axiosInstance.get(`/UserEmployee/GetEmployeeInfo`)
+      axiosInstance.get(`/UserEmployee/GetEmployeeLimit`, {
+          params: {
+            page: currentPage,
+            limit: PageSizes
+          }
+        })
         .then(response => {
           resolve(response.data)
         })

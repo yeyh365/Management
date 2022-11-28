@@ -48,7 +48,10 @@ namespace Management.Application.Services.Impl
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 获取所有的员工
+        /// </summary>
+        /// <returns></returns>
         public List<EmployeeDto> GetAllEmployeeDto()
         {
             List<EmployeeDto> list = new List<EmployeeDto>();
@@ -69,6 +72,10 @@ namespace Management.Application.Services.Impl
             }
             return list;
         }
+        /// <summary>
+        /// 获取所有的用户
+        /// </summary>
+        /// <returns></returns>
         public List<UserDto> GetAllUser()
         {
             List<UserDto> list = new List<UserDto>();
@@ -90,6 +97,32 @@ namespace Management.Application.Services.Impl
             }
             return list;
         }
+        public List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto)
+        {
+            List<EmployeeDto> list = new List<EmployeeDto>();
+            List<Employee> employeesTime = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            var count = employeesTime.Count();
+            var employees = employeesTime.Skip((searchEmployeeDto.Page - 1) * searchEmployeeDto.Limit).Take(searchEmployeeDto.Limit);
+            foreach (var employee in employees)
+            {
+                EmployeeDto employeeDto = new EmployeeDto();
+                employeeDto.Id = employee.Id;
+                employeeDto.EmployeeId = employee.EmployeeId;
+                employeeDto.EmployeeName = employee.EmployeeName;
+                employeeDto.DepartmentNumber = employee.DepartmentNumber;
+                employeeDto.PositionNumber = employee.PositionNumber;
+                employeeDto.CredId = employee.CredId;
+                employeeDto.Sex = employee.Sex;
+                employeeDto.Mobile = employee.Mobile;
+                employeeDto.Email = employee.Email;
+                employeeDto.Count = count;
+
+                list.Add(employeeDto);
+            }
+            return list;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
