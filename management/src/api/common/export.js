@@ -2,10 +2,12 @@ import axios from "axios";
 import store from "@/store";
 import router from "@/router";
 import NProgress from "nprogress";
-
+import {
+  baseUrl
+} from '../env'
 
 var axiosInstance = axios.create({
-  baseURL: 'https://localhost:44369/api/',
+  baseURL: baseUrl,
   timeout: 100000,
   headers: {
     'Content-Type': 'application/json'

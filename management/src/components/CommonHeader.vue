@@ -43,8 +43,8 @@ export default {
       adminImg: '',
       menu: [
         {
-          path: '/login123',
-          name: 'Login1',
+          path: '/Personal',
+          name: 'Personal',
           label: '个人中心'
         },
         {
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     asideMenu () {
-      this.$store.commit('tab/collapseMenu')
+      // this.$store.commit('tab/collapseMenu')
     },
     getImg () {
       // let loginData = JSON.parse(window.sessionStorage.getItem('token'))

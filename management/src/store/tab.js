@@ -23,6 +23,10 @@ export default {
   },
   state: {
     isCollapse: false,
+    users: {
+      UserName: '',
+      password: ''
+    },
     tabList: [{
       path: '/home',
       name: 'Home',

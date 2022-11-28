@@ -1,0 +1,6 @@
+D:\VUE\manage\managementApi\managementApi\Management.Core\bin\Release\Management.Core.dll
+D:\VUE\manage\managementApi\managementApi\Management.Core\bin\Release\Management.Core.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.csproj.AssemblyReference.cache
+D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.csproj.CoreCompileInputs.cache
+D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.dll
+D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.pdb

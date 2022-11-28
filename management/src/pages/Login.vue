@@ -90,6 +90,8 @@ export default {
           if (res.Success) {
 
             window.sessionStorage.setItem('token', res.Data.AccessToken)
+            this.$store.state.tab.users.UserName = res.Data.UserName;
+            this.$store.state.tab.users.Password = res.Data.Password;
             this.$router.push('home')
             // this.$message({
             //   message: res.data.message,

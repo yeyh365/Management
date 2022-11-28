@@ -72,6 +72,10 @@ namespace ManagementApi.Controllers
                         //    var token = encoder.Encode(authInfo, key);//生成令牌
                         //                                              //口令信息
                         LogonUserDto logonUserDto = new LogonUserDto();
+                        logonUserDto.UserName = UserName;
+                        logonUserDto.Password = Password;
+
+
                         logonUserDto.AccessToken = AccessToken;
                     resultModel.Success = true;
                     resultModel.Data = logonUserDto;

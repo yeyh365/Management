@@ -1,0 +1,16 @@
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Application.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Application.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Core.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Domain.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.EntityFramework.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\EntityFramework.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Core.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.Domain.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.EntityFramework.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\Management.EntityFramework.dll.config
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\EntityFramework.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\obj\Release\Management.Application.csproj.AssemblyReference.cache
+D:\VUE\manage\managementApi\managementApi\Management.Application\obj\Release\Management.Application.csproj.CoreCompileInputs.cache
+D:\VUE\manage\managementApi\managementApi\Management.Application\obj\Release\Management.Application.csproj.CopyComplete
+D:\VUE\manage\managementApi\managementApi\Management.Application\obj\Release\Management.Application.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\obj\Release\Management.Application.pdb

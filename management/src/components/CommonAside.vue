@@ -61,6 +61,12 @@ export default {
           icon: 'user',
         },
         {
+          path: '/Apply',
+          name: 'Apply',
+          label: '员工申请',
+          icon: 'position',
+        },
+        {
           label: '人员管理',
           icon: 's-custom',
           children: [

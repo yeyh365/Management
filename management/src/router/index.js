@@ -14,6 +14,12 @@ import Upload from '../pages/Upload'
 import Frame from '../components/Frame'
 import Admin from '../pages/manage/Admin'
 import Employees from '../pages/manage/Employees'
+import Personal from '../pages/Personal'
+import Notice from '../pages/Notice'
+import Apply from '../pages/Apply'
+import unRead from '../pages/notice/unRead'
+import Read from '../pages/notice/Read'
+
 
 const router = new VueRouter({
   routes: [{
@@ -32,18 +38,45 @@ const router = new VueRouter({
       component: Frame,
       redirect: '/home',
       children: [{
-        path: '/Home',
-        name: 'Home',
-        component: Home
-      }, {
-        path: '/manage/Admin',
-        name: 'Admin',
-        component: Admin
-      }, {
-        path: '/manage/Employees',
-        name: 'Employees',
-        component: Employees
-      }]
+          path: '/Home',
+          name: 'Home',
+          component: Home
+        }, {
+          path: '/manage/Admin',
+          name: 'Admin',
+          component: Admin
+        }, {
+          path: '/manage/Employees',
+          name: 'Employees',
+          component: Employees
+        }, {
+          path: '/Personal',
+          name: 'Personal',
+          component: Personal,
+        },
+        {
+          path: '/Notice',
+          name: 'Notice',
+          component: Notice,
+          redirect: '/notice/unRead',
+          children: [{
+              path: '/notice/unRead',
+              name: 'unRead',
+              component: unRead,
+            },
+            {
+              path: '/notice/Read',
+              name: 'Read',
+              component: Read,
+            }
+          ]
+        },
+        {
+          path: '/Apply',
+          name: 'Apply',
+          component: Apply,
+        },
+      ]
     },
     {
       path: '/char',

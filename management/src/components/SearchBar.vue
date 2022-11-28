@@ -13,12 +13,13 @@
         clearable
       >
       </el-input>
-      <el-button type="primary"  icon="el-icon-search" @click="search"
+      <el-button type="primary" icon="el-icon-search" @click="search"
         >查询
       </el-button>
     </div>
     <div class="all">
       <el-button type="primary" @click="showAll">显示列表 </el-button>
+      <el-button type="primary" @click="showAll">导出EXCEL </el-button>
     </div>
   </div>
 </template>

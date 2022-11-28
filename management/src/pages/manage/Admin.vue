@@ -25,8 +25,6 @@
         </el-table-column>
         <el-table-column prop="Mobile" label="电话" width="250">
         </el-table-column>
-        <el-table-column prop="UserName" label="密码" width="250">
-        </el-table-column>
         <el-table-column prop="Email" label="邮箱" width="250">
         </el-table-column>
         <el-table-column label="头像" prop="image">
