@@ -1,5 +1,6 @@
 ﻿using Management.Application.Dto;
 using Management.Application.Services.Impl;
+using Management.EntityFramework.Entities;
 using ManagementApi.Filters;
 using ManagementApi.Helper;
 using ManagementApi.Models;
@@ -84,6 +85,78 @@ namespace ManagementApi.Controllers
                 resultModel.Data = list;
 
                 resultModel.Message = "OK";
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+        [HttpGet]
+        [Route("DeleteEmployee")]
+        public ResultModel DeleteEmployee([FromUri] SearchEmployeeDto searchEmployeeDto)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+
+            try
+            {
+                EmployeeDto list = EmployeeInfo.DeleteEmployee(searchEmployeeDto);
+                if (list.Count == 1)
+                {
+                    resultModel.Success = true;
+                    //resultModel.Data =JsonConvert.SerializeObject(list);
+                    resultModel.Data = list;
+
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    //resultModel.Data =JsonConvert.SerializeObject(list);
+                    resultModel.Data = 0;
+
+                    resultModel.Message = "NOT OK";
+                }
+                //deltest deltest = new deltest();
+                //var a = deltest.DeleteEmployee(searchEmployeeDto.Id);
+                //resultModel.Success = true;
+                //resultModel.Data = JsonConvert.SerializeObject(list);
+                //resultModel.Data = a;
+
+                //resultModel.Message = "OK";
+
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+        [HttpPost]
+        [Route("AddEmployee")]
+        public ResultModel AddEmployee( SearchEmployeeDto EmployeeDto)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+
+            try
+            {
+                EmployeeDto list = EmployeeInfo.AddEmployee(EmployeeDto);
+                if (list.Count == 1)
+                {
+                    resultModel.Success = true;
+                    resultModel.Data = list;
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    resultModel.Data = 0;
+                    resultModel.Message = "NOT OK";
+                }
             }
             catch (Exception ex)
             {

@@ -110,7 +110,4 @@ export default {
 
 <style scoped>
 @import "../../assets/css/notice.css";
-.event .right {
-  margin-left: 30%;
-}
 </style>

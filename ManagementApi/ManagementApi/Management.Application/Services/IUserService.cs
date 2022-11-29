@@ -33,5 +33,11 @@ namespace Management.Application.Services
         /// </summary>
         /// <returns></returns>
         List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto);
+        /// <summary>
+        /// 删除一个员工
+        /// </summary>
+        /// <param name="DelEmployee"></param>
+        /// <returns></returns>
+        EmployeeDto DeleteEmployee(SearchEmployeeDto DelEmployee);
     }
 }

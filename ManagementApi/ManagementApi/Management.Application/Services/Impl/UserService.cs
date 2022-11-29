@@ -13,9 +13,12 @@ namespace Management.Application.Services.Impl
 {
     public class UserService : IUserService
     {
+
         private  EFRepository _eFRepository;
+
        public UserService()
         {
+
             this._eFRepository = new EFRepository();
         }
         /// <summary>
@@ -97,6 +100,11 @@ namespace Management.Application.Services.Impl
             }
             return list;
         }
+        /// <summary>
+        ///分页查询
+        /// </summary>
+        /// <param name="searchEmployeeDto"></param>
+        /// <returns></returns>
         public List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto)
         {
             List<EmployeeDto> list = new List<EmployeeDto>();
@@ -121,7 +129,67 @@ namespace Management.Application.Services.Impl
             }
             return list;
         }
+        /// <summary>
+        /// 删除一个员工的实体
+        /// </summary>
+        /// <param name="DelEmployee"></param>
+        /// <returns></returns>
+        public EmployeeDto DeleteEmployee(SearchEmployeeDto DelEmployee)
+        {
+            EmployeeDto employeeDto = new EmployeeDto();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            Employee delEmployee = this._eFRepository.GetAll<Employee>().FirstOrDefault(e=>e.Id == DelEmployee.Id);
+            if (delEmployee != null)
+            {
+                employeeDto.Id = delEmployee.Id;
+                employeeDto.EmployeeId = delEmployee.EmployeeId;
+                employeeDto.EmployeeName = delEmployee.EmployeeName;
+                employeeDto.DepartmentNumber = delEmployee.DepartmentNumber;
+                employeeDto.PositionNumber = delEmployee.PositionNumber;
+                employeeDto.CredId = delEmployee.CredId;
+                employeeDto.Sex = delEmployee.Sex;
+                employeeDto.Mobile = delEmployee.Mobile;
+                employeeDto.Email = delEmployee.Email;
+                bool result = this._eFRepository.Delete<Employee>(delEmployee);
+                employeeDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                employeeDto.Count = 0;
+            }
 
+            return employeeDto;
+        }
+        /// <summary>
+        /// 增加一个员工
+        /// </summary>
+        /// <param name="AddEmployee"></param>
+        /// <returns></returns>
+        public EmployeeDto AddEmployee(SearchEmployeeDto AddEmployee)
+        {
+            EmployeeDto employeeDto = new EmployeeDto();
+            Employee employee = new Employee();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            if (AddEmployee.EmployeeId>=2)
+            {
+                employee.EmployeeId = AddEmployee.EmployeeId;
+                employee.EmployeeName = AddEmployee.EmployeeName;
+                employee.DepartmentNumber = AddEmployee.DepartmentNumber;
+                employee.PositionNumber = AddEmployee.PositionNumber;
+                employee.CredId = AddEmployee.CardId;
+                employee.Sex = AddEmployee.Sex;
+                employee.Mobile = AddEmployee.Mobile;
+                employee.Email = AddEmployee.Email;
+                bool result = this._eFRepository.Add<Employee>(employee);
+                employeeDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                employeeDto.Count = 0;
+            }
+
+            return employeeDto;
+        }
 
         /// <summary>
         /// 

@@ -17,7 +17,7 @@
         <el-table-column prop="Sex" label="性别" width="180"> </el-table-column>
         <el-table-column prop="Mobile" label="手机号码" width="180">
         </el-table-column>
-        <el-table-column prop="Email" label="邮箱" width="180">
+        <el-table-column prop="Email" label="邮箱" width="240">
         </el-table-column>
         <el-table-column prop="DepartmentName" label="部门名称" width="180">
         </el-table-column>
@@ -87,7 +87,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.employee_id"
+            v-model="employeesData.employeeId"
             placeholder="请输入账号"
             autocomplete="off"
           ></el-input>
@@ -98,7 +98,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.employee_name"
+            v-model="employeesData.employeeName"
             placeholder="请输入姓名"
             autocomplete="off"
           ></el-input>
@@ -115,7 +115,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.card_id"
+            v-model="employeesData.cardId"
             placeholder="请输入身份证号码"
             autocomplete="off"
           ></el-input>
@@ -236,9 +236,9 @@ export default {
       dialogAddEdit: false,
       employeesData: {
         id: "",
-        employee_id: "",
-        employee_name: "",
-        card_id: "",
+        employeeId: "",
+        employeeName: "",
+        cardId: "",
         mobile: "",
         email: "",
         sex: "",
@@ -253,34 +253,34 @@ export default {
 
       },
       rules: {
-        employee_id: [
+        employeeId: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
-        employee_name: [
-          { required: true, message: "账号不能为空", trigger: "blur" },
-          { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
-        ],
-        card_id: [
-          { required: true, message: "年龄不能为空", trigger: "blur" },
-          { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
-        ],
-        email: [
-          { required: true, message: "邮箱不能为空", trigger: "blur" },
-        ],
-        sex: [
-          { required: true, message: "性别不能为空", trigger: "blur" },
-        ],
-        DepartmentNumber: [
-          { required: true, message: "部门不能为空", trigger: "blur" },
-        ],
-        CreatedDate: [
-          { required: true, message: "日期不能为空", trigger: "blur" },
-        ],
-        address: [
-          { required: true, message: "地址不能为空", trigger: "blur" },
-          { min: 6, max: 30, message: '地址长度为6-30位', trigger: 'blur' }
-        ],
+        // employee_name: [
+        //   { required: true, message: "账号不能为空", trigger: "blur" },
+        //   { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
+        // ],
+        // card_id: [
+        //   { required: true, message: "年龄不能为空", trigger: "blur" },
+        //   { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
+        // ],
+        // email: [
+        //   { required: true, message: "邮箱不能为空", trigger: "blur" },
+        // ],
+        // sex: [
+        //   { required: true, message: "性别不能为空", trigger: "blur" },
+        // ],
+        // DepartmentNumber: [
+        //   { required: true, message: "部门不能为空", trigger: "blur" },
+        // ],
+        // CreatedDate: [
+        //   { required: true, message: "日期不能为空", trigger: "blur" },
+        // ],
+        // address: [
+        //   { required: true, message: "地址不能为空", trigger: "blur" },
+        //   { min: 6, max: 30, message: '地址长度为6-30位', trigger: 'blur' }
+        // ],
       },
     }
   },
@@ -325,15 +325,29 @@ export default {
 
     },
     del (row) {
+      console.log('ID', row.Id);
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
-        });
+        Employee.delEmployee(row.Id)
+          .then(res => {
+            console.log(res)
+            if (res.Success) {
+              var a = res.Data
+
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              });
+              this.getList();
+            } else {
+              alert(res.Message)
+            }
+          })
+
+
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -398,15 +412,28 @@ export default {
     },
     onSubmit (employeesData) {
       console.log(this.employeesData)
-      // console.log('refs', this.$refs[employeesData])
-      // this.$refs[employeesData].validate((valid => {
-      //   if (valid) {
-      //     console.log("success submit!!");
-      //     this.dialogAddEdit = false;
-      //   } else {
-      //     console.log("error submit!!");
-      //   }
-      // }))
+      console.log('refs', this.$refs[employeesData])
+      this.$refs[employeesData].validate((valid => {
+        if (valid) {
+          Employee.AddEmployee(this.employeesData)
+            .then(res => {
+              console.log(res)
+              if (res.Success) {
+                var a = res.Data
+                this.$message({
+                  type: 'success',
+                  message: '新增成功!'
+                });
+              } else {
+                alert(res.Message)
+              }
+            })
+          this.dialogAddEdit = false;
+          this.getList();
+        } else {
+          console.log("error submit!!");
+        }
+      }))
     },
     cancel () {
       this.$message({

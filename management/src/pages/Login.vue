@@ -104,14 +104,14 @@ export default {
         })
     },
     submitForm (formName) {
-      // this.$refs[formName].validate(valid => {
-      //   if (valid) {
-      //     this.login()
-      //     console.log("success login!!");
-      //   } else {
-      //     console.log("error login!!");
-      //   }
-      // })
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.login()
+          console.log("success login!!");
+        } else {
+          console.log("error login!!");
+        }
+      })
     }
   }
 }

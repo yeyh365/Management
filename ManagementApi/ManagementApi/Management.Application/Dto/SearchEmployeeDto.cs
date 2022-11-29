@@ -8,13 +8,14 @@ namespace Management.Application.Dto
 {
     public class SearchEmployeeDto:SearchDto
     {
+        public int Id { get; set; }
         public string BA { get; set; }
-        public string EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public string DepartmentNumber { get; set; }
         public string PositionNumber { get; set; }
 
-        public string CredId { get; set; }
+        public string CardId { get; set; }
         public string Sex { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }

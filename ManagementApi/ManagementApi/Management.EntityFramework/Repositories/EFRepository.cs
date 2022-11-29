@@ -403,6 +403,5 @@ namespace Management.EntityFramework.Repositories
 
             Query.ForEach(p => p.State = EntityState.Unchanged);
         }
-
     }
 }
