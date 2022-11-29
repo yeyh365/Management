@@ -135,9 +135,10 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+
         [HttpPost]
         [Route("AddEmployee")]
-        public ResultModel AddEmployee( SearchEmployeeDto EmployeeDto)
+        public ResultModel AddEmployee(SearchEmployeeDto EmployeeDto)
         {
             UserService EmployeeInfo = new UserService();
             ResultModel resultModel = new ResultModel();//需要返回的口令信息
@@ -164,6 +165,15 @@ namespace ManagementApi.Controllers
                 resultModel.Message = ex.Message.ToString();
             }
             return resultModel;
+        }
+        [HttpGet]
+        [Route("ExportEmployee")]
+        public HttpResponseMessage ExportEmployee()
+        {
+            UserService EmployeeInfo = new UserService();
+            HttpResponseMessage list = EmployeeInfo.ExportEmployeeList();
+
+            return list;
         }
     }
 }

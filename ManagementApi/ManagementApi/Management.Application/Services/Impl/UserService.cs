@@ -1,22 +1,27 @@
-﻿using Management.Application.Dto;
+﻿using Management.Application.Common;
+using Management.Application.Dto;
 using Management.Domain.Entityes;
 using Management.EntityFramework.Repositories;
 using ManagementApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Management.Core.Helper;
 
 namespace Management.Application.Services.Impl
 {
     public class UserService : IUserService
     {
 
-        private  EFRepository _eFRepository;
+        private EFRepository _eFRepository;
 
-       public UserService()
+        public UserService()
         {
 
             this._eFRepository = new EFRepository();
@@ -29,7 +34,7 @@ namespace Management.Application.Services.Impl
         /// <exception cref="NotImplementedException"></exception>
         public LoginUserDto FindLoginUser(string Account)
         {
-            User user = this._eFRepository.GetAll<User>().Where(u=>u.Account == Account).ToList().FirstOrDefault();
+            User user = this._eFRepository.GetAll<User>().Where(u => u.Account == Account).ToList().FirstOrDefault();
             LoginUserDto loginUsers = new LoginUserDto();
             if (user != null)
             {
@@ -43,7 +48,7 @@ namespace Management.Application.Services.Impl
                 loginUsers.Last_LoginTime = user.Last_LoginTime;
                 loginUsers.Count = user.Count;
                 loginUsers.IsDeleted = user.IsDeleted;
-              }
+            }
             return loginUsers;
         }
 
@@ -138,7 +143,7 @@ namespace Management.Application.Services.Impl
         {
             EmployeeDto employeeDto = new EmployeeDto();
             //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
-            Employee delEmployee = this._eFRepository.GetAll<Employee>().FirstOrDefault(e=>e.Id == DelEmployee.Id);
+            Employee delEmployee = this._eFRepository.GetAll<Employee>().FirstOrDefault(e => e.Id == DelEmployee.Id);
             if (delEmployee != null)
             {
                 employeeDto.Id = delEmployee.Id;
@@ -170,7 +175,7 @@ namespace Management.Application.Services.Impl
             EmployeeDto employeeDto = new EmployeeDto();
             Employee employee = new Employee();
             //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
-            if (AddEmployee.EmployeeId>=2)
+            if (AddEmployee.EmployeeId >= 2)
             {
                 employee.EmployeeId = AddEmployee.EmployeeId;
                 employee.EmployeeName = AddEmployee.EmployeeName;
@@ -190,8 +195,27 @@ namespace Management.Application.Services.Impl
 
             return employeeDto;
         }
-
         /// <summary>
+        /// 导出用户和员工信息
+        /// </summary>
+        /// <returns></returns>
+        public HttpResponseMessage ExportEmployeeList()
+        {
+            var Query = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            var Qualificationcolumn = Initcolumn(1);
+
+            var stream = new StreamHelper();
+            var _excelHelper = new NPOIHelper();
+            var openStream = stream.BytesToStream(_excelHelper.Export(Query, Qualificationcolumn, "员工信息"));
+
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StreamContent(openStream);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+            response.Content.Headers.ContentDisposition.FileName = string.Format("{0}.xlsx", "test");
+            return response;
+        }
+        /// <summary> 
         /// 
         /// </summary>
         /// <param name="Id"></param>
@@ -200,6 +224,25 @@ namespace Management.Application.Services.Impl
         public Task<ResultModel> GetUserInfo(int Id)
         {
             throw new NotImplementedException();
+        }
+        private Dictionary<string, string> Initcolumn(int Type, bool IsAdmin = false)
+        {
+            Dictionary<string, string> adminApplyColumn = new Dictionary<string, string>();
+            if (Type == 1)//学员等级汇总
+            {
+                adminApplyColumn.Add("Id", "Id");
+                adminApplyColumn.Add("EmployeeId", "员工账号");
+                adminApplyColumn.Add("EmployeeName", "员工姓名");
+                adminApplyColumn.Add("DepartmentNumber", "部门");
+                adminApplyColumn.Add("PositionNumber", "职位");
+                adminApplyColumn.Add("CredId", "身份证号");
+                adminApplyColumn.Add("Sex", "性别");
+                adminApplyColumn.Add("Mobile", "部门");
+                adminApplyColumn.Add("Email", "邮箱");
+
+            }
+
+            return adminApplyColumn;
         }
     }
 }

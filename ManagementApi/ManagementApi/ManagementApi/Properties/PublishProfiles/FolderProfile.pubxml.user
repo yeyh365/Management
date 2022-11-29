@@ -5,6 +5,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\app.publish\</_PublishTargetUrl>
+    <History>True|2022-11-29T05:18:33.5010250Z;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -89,10 +91,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/05/2022 07:19:52</publishTime>
     </File>
     <File Include="bin/Management.Application.dll">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Management.Application.pdb">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Management.Core.dll">
       <publishTime>11/27/2022 12:07:23</publishTime>
@@ -101,25 +103,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/27/2022 12:07:23</publishTime>
     </File>
     <File Include="bin/Management.Domain.dll">
-      <publishTime>11/27/2022 12:07:23</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Management.Domain.pdb">
-      <publishTime>11/27/2022 12:07:23</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll.config">
       <publishTime>11/22/2022 17:17:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.pdb">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/ManagementApi.dll">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/ManagementApi.pdb">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/29/2022 13:18:32</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>

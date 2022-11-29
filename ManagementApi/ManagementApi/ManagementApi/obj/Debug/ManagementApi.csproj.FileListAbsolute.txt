@@ -96,3 +96,9 @@ D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.xml
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.SqlServer.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\EntityFramework.SqlServer.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OOXML.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\ICSharpCode.SharpZipLib.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXmlFormats.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXml4Net.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.xml

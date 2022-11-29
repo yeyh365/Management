@@ -19,6 +19,8 @@ import Notice from '../pages/Notice'
 import Apply from '../pages/Apply'
 import unRead from '../pages/notice/unRead'
 import Read from '../pages/notice/Read'
+import Employeestest from '../pages/manage/Employeestest'
+
 
 
 const router = new VueRouter({
@@ -97,6 +99,11 @@ const router = new VueRouter({
       path: '/Upload',
       name: 'Upload',
       component: Upload
+    },
+    {
+      path: '/Employeestest',
+      name: 'Employeestest',
+      component: Employeestest
     }
   ]
 })

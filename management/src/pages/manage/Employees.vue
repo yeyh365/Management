@@ -3,6 +3,7 @@
     <search-bar
       @onAdd="onAdd"
       @onSearch="search"
+      @onExport="exportEmpoyee"
       :placeholder="placeholder"
       ref="searchBar"
     ></search-bar>
@@ -75,7 +76,7 @@
       <el-form :model="employeesData" :rules="rules" ref="employeesData">
         <el-form-item label="id号" prop="id" :label-width="formLabelWidth">
           <el-input
-            v-model="employeesData.id"
+            v-model="employeesData.Id"
             placeholder="id号默认自增,无须添加"
             autocomplete="off"
             disabled
@@ -87,7 +88,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.employeeId"
+            v-model="employeesData.EmployeeId"
             placeholder="请输入账号"
             autocomplete="off"
           ></el-input>
@@ -98,13 +99,13 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.employeeName"
+            v-model="employeesData.EmployeeName"
             placeholder="请输入姓名"
             autocomplete="off"
           ></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex" :label-width="formLabelWidth">
-          <el-select v-model="employeesData.sex" placeholder="请选择">
+          <el-select v-model="employeesData.Sex" placeholder="请选择">
             <el-option label="男" value="男"></el-option>
             <el-option label="女" value="女"></el-option>
           </el-select>
@@ -115,7 +116,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.cardId"
+            v-model="employeesData.CardId"
             placeholder="请输入身份证号码"
             autocomplete="off"
           ></el-input>
@@ -126,7 +127,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.mobile"
+            v-model="employeesData.Mobile"
             placeholder="请输入电话号码"
             autocomplete="off"
           ></el-input>
@@ -137,7 +138,7 @@
           :label-width="formLabelWidth"
         >
           <el-input
-            v-model="employeesData.email"
+            v-model="employeesData.Email"
             placeholder="请输入邮箱"
             autocomplete="off"
           ></el-input>
@@ -212,7 +213,8 @@
 </template>
 
 <script>
-import Mock, { Random } from 'mockjs'
+
+import fileDownload from 'js-file-download'
 import searchBar from '../../components/SearchBar.vue'
 import { Row } from 'element-ui'
 import Employee from '../../api/services/UserEmployee'
@@ -235,20 +237,20 @@ export default {
       formLabelWidth: '100px',
       dialogAddEdit: false,
       employeesData: {
-        id: "",
-        employeeId: "",
-        employeeName: "",
-        cardId: "",
-        mobile: "",
-        email: "",
-        sex: "",
-        department_name: "",
-        posititon_name: "",
-        project_name: "",
-        DepartmentNumber: "",
-        PositionNumber: "",
-        ProjecNumber: [],
-        CreatedDate: ''
+        // id: "",
+        // employeeId: "",
+        // employeeName: "",
+        // cardId: "",
+        // mobile: "",
+        // email: "",
+        // sex: "",
+        // department_name: "",
+        // posititon_name: "",
+        // project_name: "",
+        // DepartmentNumber: "",
+        // PositionNumber: "",
+        // ProjecNumber: [],
+        // CreatedDate: ''
 
 
       },
@@ -257,30 +259,26 @@ export default {
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
-        // employee_name: [
-        //   { required: true, message: "账号不能为空", trigger: "blur" },
-        //   { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
-        // ],
-        // card_id: [
-        //   { required: true, message: "年龄不能为空", trigger: "blur" },
-        //   { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
-        // ],
-        // email: [
-        //   { required: true, message: "邮箱不能为空", trigger: "blur" },
-        // ],
-        // sex: [
-        //   { required: true, message: "性别不能为空", trigger: "blur" },
-        // ],
-        // DepartmentNumber: [
-        //   { required: true, message: "部门不能为空", trigger: "blur" },
-        // ],
-        // CreatedDate: [
-        //   { required: true, message: "日期不能为空", trigger: "blur" },
-        // ],
-        // address: [
-        //   { required: true, message: "地址不能为空", trigger: "blur" },
-        //   { min: 6, max: 30, message: '地址长度为6-30位', trigger: 'blur' }
-        // ],
+        employee_name: [
+          { required: true, message: "账号不能为空", trigger: "blur" },
+          { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
+        ],
+        card_id: [
+          { required: true, message: "年龄不能为空", trigger: "blur" },
+          { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
+        ],
+        email: [
+          { required: true, message: "邮箱不能为空", trigger: "blur" },
+        ],
+        sex: [
+          { required: true, message: "性别不能为空", trigger: "blur" },
+        ],
+        DepartmentNumber: [
+          { required: true, message: "部门不能为空", trigger: "blur" },
+        ],
+        CreatedDate: [
+          { required: true, message: "日期不能为空", trigger: "blur" },
+        ],
       },
     }
   },
@@ -317,6 +315,7 @@ export default {
       console.log(`当前页: ${val}`);
     },
     editButton (row) {
+      console.log(row)
       this.employeesData = row
 
       this.dialogAddEdit = true;
@@ -453,7 +452,16 @@ export default {
         });
       }
 
+    },
+    exportEmpoyee () {
+      console.log('export')
+      Employee.ExportEmployeeList()
+        .then(res => {
+          let fileName = '员工信息' + '.xlsx'
+          fileDownload(res, fileName)
+        })
     }
+
   },
   mounted () {
     console.log('getlist')

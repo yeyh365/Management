@@ -19,7 +19,7 @@
     </div>
     <div class="all">
       <el-button type="primary" @click="showAll">显示列表 </el-button>
-      <el-button type="primary" @click="showAll">导出EXCEL </el-button>
+      <el-button type="primary" @click="export1">导出EXCEL </el-button>
     </div>
   </div>
 </template>
@@ -48,6 +48,10 @@ export default {
     showAll () {
       this.$emit('onShowAll')
     },
+    export1 () {
+      this.$emit('onExport')
+      console.log('export1_bar')
+    }
   }
 }
 </script>

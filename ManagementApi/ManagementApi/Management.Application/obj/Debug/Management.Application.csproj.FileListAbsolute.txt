@@ -14,3 +14,9 @@ D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\obj\Debug\Manag
 D:\VUE\manage\ManagementApi\ManagementApi\Management.Application\bin\Debug\Management.EntityFramework.dll.config
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\EntityFramework.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\EntityFramework.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.OOXML.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.OpenXml4Net.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.xml
