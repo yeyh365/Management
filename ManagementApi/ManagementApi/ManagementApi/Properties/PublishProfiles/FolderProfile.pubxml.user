@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-11-29T05:18:33.5010250Z;</History>
+    <History>True|2022-11-30T08:08:55.5316373Z;True|2022-11-29T13:18:33.5010250+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -84,6 +84,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>04/17/2020 04:38:56</publishTime>
     </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>01/03/2011 22:16:38</publishTime>
+    </File>
     <File Include="bin/JWT.dll">
       <publishTime>06/05/2022 07:19:52</publishTime>
     </File>
@@ -91,37 +94,37 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/05/2022 07:19:52</publishTime>
     </File>
     <File Include="bin/Management.Application.dll">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Management.Application.pdb">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Management.Core.dll">
-      <publishTime>11/27/2022 12:07:23</publishTime>
+      <publishTime>11/30/2022 16:08:53</publishTime>
     </File>
     <File Include="bin/Management.Core.pdb">
-      <publishTime>11/27/2022 12:07:23</publishTime>
+      <publishTime>11/30/2022 16:08:53</publishTime>
     </File>
     <File Include="bin/Management.Domain.dll">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Management.Domain.pdb">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll.config">
       <publishTime>11/22/2022 17:17:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.pdb">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/ManagementApi.dll">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/ManagementApi.pdb">
-      <publishTime>11/29/2022 13:18:32</publishTime>
+      <publishTime>11/30/2022 16:08:54</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -131,6 +134,18 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/22/2019 01:06:16</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>03/21/2017 15:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OOXML.dll">
+      <publishTime>03/21/2017 15:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXml4Net.dll">
+      <publishTime>03/21/2017 15:53:26</publishTime>
+    </File>
+    <File Include="bin/NPOI.OpenXmlFormats.dll">
+      <publishTime>03/21/2017 15:53:26</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/27/2016 21:50:24</publishTime>
@@ -430,7 +445,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/22/2022 16:45:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/27/2022 12:07:24</publishTime>
+      <publishTime>11/30/2022 16:08:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

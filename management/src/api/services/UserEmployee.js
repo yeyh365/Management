@@ -56,6 +56,58 @@ export default {
         })
     })
   },
+  UpdateEmployee(Employee) {
+    console.log('USER', Employee)
+    return new Promise((resolve, reject) => {
+      axiosInstance.post(`/UserEmployee/UpdateEmployee`, Employee)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  AddUser(User) {
+    console.log('USER', User)
+    return new Promise((resolve, reject) => {
+      axiosInstance.post(`/UserEmployee/AddUser`, User)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  UpdateUser(User) {
+    console.log('USER', User)
+    return new Promise((resolve, reject) => {
+      axiosInstance.post(`/UserEmployee/UpdateUser`, User)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  DeleteUser(Id) {
+    console.log('USER', Id)
+    return new Promise((resolve, reject) => {
+      axiosInstance.get(`/UserEmployee/DeleteUser`, {
+          params: {
+            Id: Id
+          }
+        })
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
   ExportEmployeeList() {
     return new Promise((resolve, reject) => {
       axiosInstance

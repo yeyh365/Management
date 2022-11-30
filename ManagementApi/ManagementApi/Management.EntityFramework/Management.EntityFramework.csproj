@@ -77,6 +77,10 @@
     <Compile Include="Migrations\202211240856490_UpdateEmployeeMobile.designer.cs">
       <DependentUpon>202211240856490_UpdateEmployeeMobile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211300630334_upDateEmpoyeeCardId.cs" />
+    <Compile Include="Migrations\202211300630334_upDateEmpoyeeCardId.designer.cs">
+      <DependentUpon>202211300630334_upDateEmpoyeeCardId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EFRepository.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211240856490_UpdateEmployeeMobile.resx">
       <DependentUpon>202211240856490_UpdateEmployeeMobile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211300630334_upDateEmpoyeeCardId.resx">
+      <DependentUpon>202211300630334_upDateEmpoyeeCardId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -488,6 +488,34 @@
             <param name="loginRequest"></param>
             <returns></returns>
         </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.DeleteUser(Management.Application.Dto.UserDto)">
+            <summary>
+            删除一个用户 假删除
+            </summary>
+            <param name="searchEmployeeDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.AddUser(Management.Application.Dto.UserDto)">
+            <summary>
+            增加一个用户
+            </summary>
+            <param name="UserDto">用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.UpdateUser(Management.Application.Dto.UserDto)">
+            <summary>
+            修改用户数据
+            </summary>
+            <param name="userDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.UpdateEmployee(Management.Application.Dto.EmployeeDto)">
+            <summary>
+            修改员工数据
+            </summary>
+            <param name="employeeDto"></param>
+            <returns></returns>
+        </member>
         <member name="M:ManagementApi.Controllers.UserInfo1Controller.GetUserInfo1">
             <summary>
             获取用户信息

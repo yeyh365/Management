@@ -1,0 +1,7 @@
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\bin\Debug\TestConsole.exe.config
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\bin\Debug\TestConsole.exe
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\bin\Debug\TestConsole.pdb
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\obj\Debug\TestConsole.csproj.AssemblyReference.cache
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\obj\Debug\TestConsole.csproj.CoreCompileInputs.cache
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\obj\Debug\TestConsole.exe
+D:\VUE\manage\ManagementApi\TestConsole\TestConsole\obj\Debug\TestConsole.pdb

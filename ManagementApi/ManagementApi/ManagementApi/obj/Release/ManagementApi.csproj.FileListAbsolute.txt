@@ -95,3 +95,9 @@ D:\VUE\manage\managementApi\managementApi\ManagementApi\obj\Release\ManagementAp
 D:\VUE\manage\managementApi\managementApi\ManagementApi\obj\Release\ManagementApi.csproj.CopyComplete
 D:\VUE\manage\managementApi\managementApi\ManagementApi\obj\Release\ManagementApi.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\obj\Release\ManagementApi.pdb
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OOXML.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\ICSharpCode.SharpZipLib.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXmlFormats.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXml4Net.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.xml

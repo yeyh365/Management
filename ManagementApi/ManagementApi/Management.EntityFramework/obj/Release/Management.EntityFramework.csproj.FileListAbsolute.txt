@@ -21,3 +21,4 @@ D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.csproj.CopyComplete
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.dll
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.pdb
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.upDateEmpoyeeCardId.resources

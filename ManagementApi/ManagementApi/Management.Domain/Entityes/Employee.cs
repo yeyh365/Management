@@ -21,7 +21,7 @@ namespace Management.Domain.Entityes
         public string DepartmentNumber { get; set; }
         public string PositionNumber { get; set; }
 
-        public string CredId { get; set; }
+        public string CardId { get; set; }
         public string Sex { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }

@@ -135,7 +135,53 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+        /// <summary>
+        /// 删除一个用户 假删除
+        /// </summary>
+        /// <param name="searchEmployeeDto"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("DeleteUser")]
+        public ResultModel DeleteUser([FromUri] UserDto user)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
 
+            try
+            {
+                UserDto list = EmployeeInfo.DeleteUser(user);
+                if (list.Count >= 1)
+                {
+                    resultModel.Success = true;
+                    //resultModel.Data =JsonConvert.SerializeObject(list);
+                    resultModel.Data = list;
+
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    //resultModel.Data =JsonConvert.SerializeObject(list);
+                    resultModel.Data = 0;
+
+                    resultModel.Message = "NOT OK";
+                }
+                //deltest deltest = new deltest();
+                //var a = deltest.DeleteEmployee(searchEmployeeDto.Id);
+                //resultModel.Success = true;
+                //resultModel.Data = JsonConvert.SerializeObject(list);
+                //resultModel.Data = a;
+
+                //resultModel.Message = "OK";
+
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
         [HttpPost]
         [Route("AddEmployee")]
         public ResultModel AddEmployee(SearchEmployeeDto EmployeeDto)
@@ -184,5 +230,110 @@ namespace ManagementApi.Controllers
 
             return list;
         }
+        /// <summary>
+        /// 增加一个用户
+        /// </summary>
+        /// <param name="UserDto">用户信息</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("AddUser")]
+        public ResultModel AddUser(UserDto userDto)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+            userDto.Last_LoginTime = DateTime.Now;
+            try
+            {
+                EmployeeDto list = EmployeeInfo.AddUser(userDto);
+                if (list.Count >= 1)
+                {
+                    resultModel.Success = true;
+                    resultModel.Data = list;
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    resultModel.Data = 0;
+                    resultModel.Message = "NOT OK";
+                }
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+        /// <summary>
+        /// 修改用户数据
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("UpdateUser")]
+        public ResultModel UpdateUser(UserDto userDto)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+            userDto.Last_LoginTime = DateTime.Now;
+            try
+            {
+                UserDto list = EmployeeInfo.UpdateUser(userDto);
+                if (list.Count >= 1)
+                {
+                    resultModel.Success = true;
+                    resultModel.Data = list;
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    resultModel.Data = 0;
+                    resultModel.Message = "NOT OK";
+                }
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+        /// <summary>
+        /// 修改员工数据
+        /// </summary>
+        /// <param name="employeeDto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("UpdateEmployee")]
+        public ResultModel UpdateEmployee(EmployeeDto employeeDto)
+        {
+            UserService EmployeeInfo = new UserService();
+            ResultModel resultModel = new ResultModel();//需要返回的口令信息
+            try
+            {
+                EmployeeDto list = EmployeeInfo.UpdateEmployee(employeeDto);
+                if (list.Count >= 1)
+                {
+                    resultModel.Success = true;
+                    resultModel.Data = list;
+                    resultModel.Message = "OK";
+                }
+                else
+                {
+                    resultModel.Success = false;
+                    resultModel.Data = 0;
+                    resultModel.Message = "NOT OK";
+                }
+            }
+            catch (Exception ex)
+            {
+                resultModel.Success = false;
+                resultModel.Message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
     }
 }

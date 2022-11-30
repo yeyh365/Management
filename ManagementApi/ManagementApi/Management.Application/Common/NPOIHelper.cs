@@ -2,6 +2,8 @@
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,7 +31,13 @@ namespace Management.Application.Common
             workbook.Write(ms);
             return ms.ToArray();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sheet">每一个sheet的名字</param>
+        /// <param name="data">查询出来的集合</param>
+        /// <param name="columns">需要输出的字段</param>
         private void ExportToSheet<T>(ISheet sheet, List<T> data, Dictionary<string, string> columns)
         {
             IRow headerRow = sheet.CreateRow(0);
@@ -54,7 +62,6 @@ namespace Management.Application.Common
                     i++;
                 }
             }
-
             //填充数据
             for (i = 0; i < data.Count; i++)
             {
@@ -77,6 +84,36 @@ namespace Management.Application.Common
                     }
                 }
             }
+        }
+       /// <summary>
+       ///  集合转datatable
+       /// </summary>
+       /// <typeparam name="T"></typeparam>
+       /// <param name="data"></param>
+       /// <returns></returns>
+        public DataTable ToDataTable<T>(List<T> data)
+        {
+            DataTable table = new DataTable();
+            if (data != null && data.Count > 0)
+            {
+                PropertyDescriptorCollection props = TypeDescriptor.GetProperties(typeof(T));
+
+                for (int i = 0; i < props.Count; i++)
+                {
+                    PropertyDescriptor prop = props[i];
+                    table.Columns.Add(prop.Name, prop.PropertyType);
+                }
+                object[] values = new object[props.Count];
+                foreach (T item in data)
+                {
+                    for (int i = 0; i < values.Length; i++)
+                    {
+                        values[i] = props[i].GetValue(item);
+                    }
+                    table.Rows.Add(values);
+                }
+            }
+            return table;
         }
 
     }

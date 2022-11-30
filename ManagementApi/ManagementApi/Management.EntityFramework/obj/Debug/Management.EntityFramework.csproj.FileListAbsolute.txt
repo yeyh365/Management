@@ -21,3 +21,4 @@ D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\M
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateuser1.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateusermobile.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.UpdateEmployeeMobile.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.upDateEmpoyeeCardId.resources

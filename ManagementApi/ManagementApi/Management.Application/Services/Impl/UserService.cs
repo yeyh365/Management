@@ -13,6 +13,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Management.Core.Helper;
+using static Management.Application.Common.testfanshehuoqu;
 
 namespace Management.Application.Services.Impl
 {
@@ -72,7 +73,7 @@ namespace Management.Application.Services.Impl
                 employeeDto.EmployeeName = employee.EmployeeName;
                 employeeDto.DepartmentNumber = employee.DepartmentNumber;
                 employeeDto.PositionNumber = employee.PositionNumber;
-                employeeDto.CredId = employee.CredId;
+                employeeDto.CardId = employee.CardId;
                 employeeDto.Sex = employee.Sex;
                 employeeDto.Mobile = employee.Mobile;
                 employeeDto.Email = employee.Email;
@@ -87,7 +88,7 @@ namespace Management.Application.Services.Impl
         public List<UserDto> GetAllUser()
         {
             List<UserDto> list = new List<UserDto>();
-            List<User> users = this._eFRepository.GetAll<User>().ToList();
+            List<User> users = this._eFRepository.GetAll<User>().Where(e=>e.IsDeleted != true).ToList();
             foreach (var user in users)
             {
                 UserDto userDto = new UserDto();
@@ -124,7 +125,7 @@ namespace Management.Application.Services.Impl
                 employeeDto.EmployeeName = employee.EmployeeName;
                 employeeDto.DepartmentNumber = employee.DepartmentNumber;
                 employeeDto.PositionNumber = employee.PositionNumber;
-                employeeDto.CredId = employee.CredId;
+                employeeDto.CardId = employee.CardId;
                 employeeDto.Sex = employee.Sex;
                 employeeDto.Mobile = employee.Mobile;
                 employeeDto.Email = employee.Email;
@@ -151,7 +152,7 @@ namespace Management.Application.Services.Impl
                 employeeDto.EmployeeName = delEmployee.EmployeeName;
                 employeeDto.DepartmentNumber = delEmployee.DepartmentNumber;
                 employeeDto.PositionNumber = delEmployee.PositionNumber;
-                employeeDto.CredId = delEmployee.CredId;
+                employeeDto.CardId = delEmployee.CardId;
                 employeeDto.Sex = delEmployee.Sex;
                 employeeDto.Mobile = delEmployee.Mobile;
                 employeeDto.Email = delEmployee.Email;
@@ -164,6 +165,29 @@ namespace Management.Application.Services.Impl
             }
 
             return employeeDto;
+        }
+        /// <summary>
+        /// 删除一个用户的实体 假删除
+        /// </summary>
+        /// <param name="DelUser"></param>
+        /// <returns></returns>
+        public UserDto DeleteUser(UserDto DelUser)
+        {
+            UserDto userDto = new UserDto();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            User delEmployee = this._eFRepository.GetAll<User>().FirstOrDefault(e => e.Id == DelUser.Id);
+            if (delEmployee != null)
+            {
+                delEmployee.IsDeleted=true;
+                bool result = this._eFRepository.Update<User>(delEmployee);
+                userDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                userDto.Count = 0;
+            }
+
+            return userDto;
         }
         /// <summary>
         /// 增加一个员工
@@ -181,7 +205,7 @@ namespace Management.Application.Services.Impl
                 employee.EmployeeName = AddEmployee.EmployeeName;
                 employee.DepartmentNumber = AddEmployee.DepartmentNumber;
                 employee.PositionNumber = AddEmployee.PositionNumber;
-                employee.CredId = AddEmployee.CardId;
+                employee.CardId = AddEmployee.CardId;
                 employee.Sex = AddEmployee.Sex;
                 employee.Mobile = AddEmployee.Mobile;
                 employee.Email = AddEmployee.Email;
@@ -194,6 +218,106 @@ namespace Management.Application.Services.Impl
             }
 
             return employeeDto;
+        }
+        /// <summary>
+        /// 修改一个用户信息
+        /// </summary>
+        /// <param name="DelUser"></param>
+        /// <returns></returns>
+        public UserDto UpdateUser(UserDto UpdateUser)
+        {
+            UserDto userDto = new UserDto();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            User user = this._eFRepository.GetAll<User>().FirstOrDefault(e => e.Id == UpdateUser.Id);
+            if (user != null)
+            {
+                if (!string.IsNullOrEmpty(UpdateUser.Account))
+                {
+                    user.Account = UpdateUser.Account;
+                }
+                if (!string.IsNullOrEmpty(UpdateUser.UserName))
+                {
+                    user.UserName = UpdateUser.UserName;
+                }
+                if (!string.IsNullOrEmpty(UpdateUser.Password))
+                {
+                    user.Password = UpdateUser.Password;
+                }
+                if (!string.IsNullOrEmpty(UpdateUser.Mobile))
+                {
+                    user.Mobile = UpdateUser.Mobile;
+                }
+                if (!string.IsNullOrEmpty(UpdateUser.Email))
+                {
+                    user.Email = UpdateUser.Email;
+                }
+                if (!string.IsNullOrEmpty(UpdateUser.Picture))
+                {
+                    user.Picture = UpdateUser.Picture;
+                }
+                bool result = this._eFRepository.Update<User>(user);
+                userDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                userDto.Count = 0;
+            }
+
+            return userDto;
+        }
+        /// <summary>
+        /// 修改一个员工信息
+        /// </summary>
+        /// <param name="DelUser"></param>
+        /// <returns></returns>
+        public EmployeeDto UpdateEmployee(EmployeeDto UpdateEmployee)
+        {
+            EmployeeDto userDto = new EmployeeDto();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            Employee employee = this._eFRepository.GetAll<Employee>().FirstOrDefault(e => e.Id == UpdateEmployee.Id);
+            if (employee != null)
+            {
+                if (UpdateEmployee.EmployeeId>1)
+                {
+                    employee.EmployeeId = UpdateEmployee.EmployeeId;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.EmployeeName))
+                {
+                    employee.EmployeeName = UpdateEmployee.EmployeeName;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.DepartmentNumber))
+                {
+                    employee.DepartmentNumber = UpdateEmployee.DepartmentNumber;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.PositionNumber))
+                {
+                    employee.PositionNumber = UpdateEmployee.PositionNumber;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.CardId))
+                {
+                    employee.CardId = UpdateEmployee.CardId;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.Sex))
+                {
+                    employee.Sex = UpdateEmployee.Sex;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.Mobile))
+                {
+                    employee.Mobile = UpdateEmployee.Mobile;
+                }
+                if (!string.IsNullOrEmpty(UpdateEmployee.Email))
+                {
+                    employee.Email = UpdateEmployee.Email;
+                }
+                bool result = this._eFRepository.Update<Employee>(employee);
+                userDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                userDto.Count = 0;
+            }
+
+            return userDto;
         }
         /// <summary>
         /// 导出员工信息
@@ -234,6 +358,38 @@ namespace Management.Application.Services.Impl
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentDisposition.FileName = string.Format("{0}.xlsx", "test");
             return response;
+        }
+        /// <summary>
+        /// 增加一个用户
+        /// </summary>
+        /// <param name="AddUser"></param>
+        /// <returns></returns>
+        public EmployeeDto AddUser(UserDto addUser)
+        {
+            EmployeeDto employeeDto = new EmployeeDto();
+            User user = new User();
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            if (!string.IsNullOrEmpty(addUser.Account)&& !string.IsNullOrEmpty(addUser.Password)&& !string.IsNullOrEmpty(addUser.UserName))
+            {
+                user.Account = addUser.Account;
+                user.UserName = addUser.UserName;
+                user.Password = addUser.Password;
+                user.Mobile = addUser.Mobile;
+                user.Email = addUser.Email;
+                user.Picture = addUser.Picture;
+                user.Last_LoginTime = addUser.Last_LoginTime;
+                user.Count = addUser.Count;
+                user.IsDeleted = addUser.IsDeleted;
+
+                bool result = this._eFRepository.Add<User>(user);
+                employeeDto.Count = Convert.ToInt32(result);
+            }
+            else
+            {
+                employeeDto.Count = 0;
+            }
+
+            return employeeDto;
         }
         /// <summary> 
         /// 

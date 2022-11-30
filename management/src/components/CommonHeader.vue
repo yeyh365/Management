@@ -79,6 +79,10 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
+          this.$router.push({
+            name: item.name
+          })
+          this.$store.commit('tab/selectMenu', item)
           this.$message({
             type: 'success',
             message: '成功退出登录!'
@@ -90,10 +94,7 @@ export default {
           });
         });
       }
-      this.$router.push({
-        name: item.name
-      })
-      this.$store.commit('tab/selectMenu', item)
+
     },
 
   },

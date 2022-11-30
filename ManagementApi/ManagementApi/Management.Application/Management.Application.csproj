@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\testfanshehuoqu.cs" />
     <Compile Include="Common\IExcelHelper.cs" />
     <Compile Include="Common\NPOIHelper.cs" />
     <Compile Include="Dto\SearchDto.cs" />

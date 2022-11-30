@@ -112,7 +112,7 @@
         </el-form-item>
         <el-form-item
           label="员工身份证号"
-          prop="card_id"
+          prop="CardId"
           :label-width="formLabelWidth"
         >
           <el-input
@@ -255,22 +255,22 @@ export default {
 
       },
       rules: {
-        employeeId: [
+        EmployeeId: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
-        employee_name: [
+        EmployeeName: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 1, max: 10, message: "账号为1-10位", trigger: "blur" },
         ],
-        card_id: [
-          { required: true, message: "年龄不能为空", trigger: "blur" },
+        CardId: [
+          { required: true, message: "身份证不能为空", trigger: "blur" },
           { min: 8, max: 16, message: "年龄不正确", trigger: "blur" },
         ],
-        email: [
+        Email: [
           { required: true, message: "邮箱不能为空", trigger: "blur" },
         ],
-        sex: [
+        Sex: [
           { required: true, message: "性别不能为空", trigger: "blur" },
         ],
         DepartmentNumber: [
@@ -325,7 +325,7 @@ export default {
     },
     del (row) {
       console.log('ID', row.Id);
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除该员工信息, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -355,10 +355,9 @@ export default {
       });
     },
     getList () {
-
+      console.log('getList')
       Employee.GetEmployee(this.currentPage, this.PageSize)
         .then(res => {
-          console.log(res)
           // const token = res.Data
           if (res.Success) {
             // let List = []
@@ -380,9 +379,6 @@ export default {
             // console.log('List', typeof (List))
             // console.log(res.Data)
             var a = res.Data //= eval('(' + res.Data + ')')
-            console.log(res.Data)
-
-            console.log('a', typeof (a))
             this.dataTable = a
             this.totalCount = res.Data[0].Count
             // this.totalCount = this.dataTable.length
@@ -414,21 +410,42 @@ export default {
       console.log('refs', this.$refs[employeesData])
       this.$refs[employeesData].validate((valid => {
         if (valid) {
-          Employee.AddEmployee(this.employeesData)
-            .then(res => {
-              console.log(res)
-              if (res.Success) {
-                var a = res.Data
-                this.$message({
-                  type: 'success',
-                  message: '新增成功!'
-                });
-              } else {
-                alert(res.Message)
-              }
-            })
-          this.dialogAddEdit = false;
+          console.log('@operateType', this.operateType)
+          if (this.operateType === 'add') {
+            console.log('TypeoperateType', this.operateType)
+            Employee.AddEmployee(this.employeesData)
+              .then(res => {
+                console.log(res)
+                if (res.Success) {
+                  var a = res.Data
+                  this.$message({
+                    type: 'success',
+                    message: '新增成功!'
+                  });
+                  this.getList();
+                } else {
+                  alert(res.Message)
+                }
+              })
+          } else {
+            Employee.UpdateEmployee(this.employeesData)
+              .then(res => {
+                console.log(res)
+                if (res.Success) {
+                  var a = res.Data
+                  this.$message({
+                    type: 'success',
+                    message: '修改成功!'
+                  });
+                  this.getList();
+                } else {
+                  alert(res.Message)
+                }
+              })
+          }
           this.getList();
+          this.dialogAddEdit = false;
+
         } else {
           console.log("error submit!!");
         }

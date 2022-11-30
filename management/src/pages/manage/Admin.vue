@@ -82,10 +82,40 @@
       <el-form :model="adminData" :rules="rules" ref="adminData">
         <el-form-item label="id号" prop="id" :label-width="formLabelWidth">
           <el-input
-            v-model="adminData.id"
+            v-model="adminData.Id"
             placeholder="id号默认自增,无须添加"
             autocomplete="off"
             disabled
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="账号" prop="Account" :label-width="formLabelWidth">
+          <el-input
+            v-model="adminData.Account"
+            placeholder="请输入账号"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="用户名字"
+          prop="UserName"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="adminData.UserName"
+            placeholder="请输入姓名"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="密码"
+          prop="Password"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="adminData.Password"
+            placeholder="请输入密码"
+            autocomplete="off"
           ></el-input>
         </el-form-item>
         <el-form-item
@@ -93,7 +123,7 @@
           prop="image"
           :label-width="formLabelWidth"
         >
-          <el-input v-model="adminData.image" v-if="false"></el-input>
+          <el-input v-model="adminData.Picture" v-if="false"></el-input>
           <el-upload
             class="avatar-uploader"
             :show-file-list="false"
@@ -107,21 +137,17 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
-        <el-form-item label="账号" prop="name" :label-width="formLabelWidth">
+        <el-form-item label="电话" prop="Mobile" :label-width="formLabelWidth">
           <el-input
-            v-model="adminData.name"
+            v-model="adminData.Mobile"
             placeholder="请输入账号"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item
-          label="密码"
-          prop="password"
-          :label-width="formLabelWidth"
-        >
+        <el-form-item label="邮箱" prop="Email" :label-width="formLabelWidth">
           <el-input
-            v-model="adminData.password"
-            placeholder="请输入密码"
+            v-model="adminData.Email"
+            placeholder="请输入账号"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -161,17 +187,26 @@ export default {
       adminTabel: [],
       adminData: {
         id: "",
-        image: "",
-        name: "",
-        password: ""
+        Account: "",
+        UserName: "",
+        Password: "",
+        Mobile: "",
+        Email: "",
+        Picture: "",
+        Last_LoginTime: "",
+        Count: "",
       },
       rules: {
-        image: [{ required: true, message: "头像不能为空", trigger: "blur" }],
-        name: [
+        // image: [{ required: true, message: "头像不能为空", trigger: "blur" }],
+        Account: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
-        password: [
+        UserName: [
+          { required: true, message: "账号不能为空", trigger: "blur" },
+          { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
+        ],
+        Password: [
           { required: true, message: "密码不能为空", trigger: "blur" },
           { min: 4, max: 12, message: "密码长度为4-12位", trigger: "blur" },
         ],
@@ -246,6 +281,7 @@ export default {
       console.log("row", row);
       this.dialogAddEdit = true;
       this.operateType = "edit";
+      console.log(row)
       this.adminData = row;
       // this.adminData.image = Row.image;
       // this.adminData.name = Row.name;
@@ -280,21 +316,33 @@ export default {
       this.dialogAddEdit = false;
     },
     del (row) {
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除改用户信息, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        User.DeleteUser(row.Id)
+          .then(res => {
+            console.log(res)
+            if (res.Success) {
+              var a = res.Data
+
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              });
+              this.getList();
+            } else {
+              alert(res.Message)
+            }
+          })
+      })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除管理员'
+          });
         });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除管理员'
-        });
-      });
     },
     getList () {
       User.GetUser()
@@ -318,8 +366,8 @@ export default {
             alert(res.Message)
           }
         })
-      this.totalCount = this.tableData.length;
-      this.adminTabel = this.tableData;
+      // this.totalCount = this.tableData.length;
+      // this.adminTabel = this.tableData;
       console.log('getlist')
     },
     addInit () {
@@ -343,13 +391,46 @@ export default {
         message: '查询成功',
       });
     },
-    onSubmit (fromName) {
-      console.log(fromName)
-      console.log('refs', this.$refs[fromName])
-      this.$refs[fromName].validate((valid => {
+    onSubmit (adminData) {
+      console.log(adminData)
+      console.log('refs', this.$refs[adminData])
+      this.$refs[adminData].validate((valid => {
         if (valid) {
-          console.log("success submit!!");
+          if (this.operateType == 'add') {
+            User.AddUser(this.adminData)
+              .then(res => {
+                console.log(res.Data)
+                if (res.Success) {
+                  var a = res.Data.Id
+                  this.$message({
+                    type: 'success',
+                    message: '新增成功!'
+                  });
+                  this.getList();
+                } else {
+                  alert(res.Message)
+                }
+              })
+          } else {
+            User.UpdateUser(this.adminData)
+              .then(res => {
+                console.log(res.Data)
+                if (res.Success) {
+                  var a = res.Data.Id
+                  this.$message({
+                    type: 'success',
+                    message: '修改成功!'
+                  });
+                  this.getList();
+                } else {
+                  alert(res.Message)
+                }
+              })
+          }
+
           this.dialogAddEdit = false;
+          this.getList();
+          console.log("success submit!!");
         } else {
           console.log("error submit!!");
         }
