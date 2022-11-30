@@ -9,7 +9,7 @@
     ></search-bar>
     <div class="table">
       <el-table :data="dataTable" border style="width: 100%">
-        <el-table-column fixed prop="EmployeeId" label="员工编号" width="180">
+        <el-table-column fixed prop="EmployeeId" label="员工编号" width="100">
         </el-table-column>
         <el-table-column prop="EmployeeName" label="员工姓名" width="180">
         </el-table-column>
@@ -26,7 +26,7 @@
         </el-table-column>
         <el-table-column prop="ProjectName" label="项目名称" width="180">
         </el-table-column>
-        <el-table-column fixed="right" label="操作" width="380">
+        <el-table-column fixed="right" label="操作" width="300">
           <template slot-scope="scope">
             <el-button
               @click="editButton(scope.row)"
@@ -36,7 +36,7 @@
               >编辑</el-button
             >
             <el-button
-              @click="editButton(scope.row)"
+              @click="addUserButton(scope.row)"
               type="primary"
               icon="el-icon-edit"
               size="small"
@@ -73,7 +73,7 @@
       :title="operateType === 'add' ? '新增员工' : '更新员工信息'"
       :visible.sync="dialogAddEdit"
     >
-      <el-form :model="employeesData" :rules="rules" ref="employeesData">
+      <el-form :model="employeesData" :rules="rules1" ref="employeesData">
         <el-form-item label="id号" prop="id" :label-width="formLabelWidth">
           <el-input
             v-model="employeesData.Id"
@@ -209,6 +209,95 @@
         >
       </div>
     </el-dialog>
+    <!-- 将员工添加为用户对话框 -->
+    <el-dialog :title="operateTypeUser" :visible.sync="dialogAddEditUser">
+      <el-form :model="adminUserData" :rules="rules2" ref="adminUserData">
+        <el-form-item label="id号" prop="id" :label-width="formLabelWidth">
+          <el-input
+            v-model="adminUserData.Id"
+            placeholder="id号默认自增,无须添加"
+            autocomplete="off"
+            disabled
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="账号" prop="Account" :label-width="formLabelWidth">
+          <el-input
+            v-model="adminUserData.Account"
+            placeholder="请输入账号"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="用户名字"
+          prop="UserName"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="adminUserData.UserName"
+            placeholder="请输入姓名"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="密码"
+          prop="Password"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="adminUserData.Password"
+            placeholder="请输入密码"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="上传头像"
+          prop="image"
+          :label-width="formLabelWidth"
+        >
+          <el-input v-model="adminUserData.Picture" v-if="false"></el-input>
+          <el-upload
+            class="avatar-uploader"
+            :show-file-list="false"
+            action="/admin/upload"
+            :before-upload="beforeUpload"
+            :on-change="handleChange"
+            :auto-upload="false"
+            :data="adminUserData"
+          >
+            <img
+              v-if="adminUserData.image"
+              :src="adminUserData.image"
+              class="avatar"
+            />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="电话" prop="Mobile" :label-width="formLabelWidth">
+          <el-input
+            v-model="adminUserData.Mobile"
+            placeholder="请输入账号"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="Email" :label-width="formLabelWidth">
+          <el-input
+            v-model="adminUserData.Email"
+            placeholder="请输入账号"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="cancelAddUser">取消</el-button>
+        <el-button
+          type="primary"
+          @click="addUserSubmit('adminUserData')"
+          :plain="true"
+          >确定</el-button
+        >
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -234,8 +323,20 @@ export default {
       PageSize: 5,
       totalCount: 1,
       operateType: 'add',
+      operateTypeUser: '把该员工添加到用户角色内',
       formLabelWidth: '100px',
       dialogAddEdit: false,
+      dialogAddEditUser: false,
+      adminUserData: {
+        Account: "",
+        UserName: "",
+        Password: "",
+        Mobile: "",
+        Email: "",
+        Picture: "",
+        Last_LoginTime: "",
+        Count: "",
+      },
       employeesData: {
         // id: "",
         // employeeId: "",
@@ -254,7 +355,7 @@ export default {
 
 
       },
-      rules: {
+      rules1: {
         EmployeeId: [
           { required: true, message: "账号不能为空", trigger: "blur" },
           { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
@@ -278,6 +379,20 @@ export default {
         ],
         CreatedDate: [
           { required: true, message: "日期不能为空", trigger: "blur" },
+        ],
+      },
+      rules2: {
+        Account: [
+          { required: true, message: "账号不能为空", trigger: "blur" },
+          // { min: 0, max: 1000, message: "账号为1-10位", trigger: "blur" },
+        ],
+        UserName: [
+          { required: true, message: "昵称不能为空", trigger: "blur" },
+          { min: 1, max: 10, message: "昵称为4-10位", trigger: "blur" },
+        ],
+        Password: [
+          { required: true, message: "密码不能为空", trigger: "blur" },
+          { min: 3, max: 12, message: "密码长度为4-12位", trigger: "blur" },
         ],
       },
     }
@@ -320,7 +435,15 @@ export default {
 
       this.dialogAddEdit = true;
       this.operateType = 'edit';
-      console.log(this.employeesData)
+    },
+    addUserButton (row) {
+      this.dialogAddEditUser = true;
+      this.adminUserData.Account = row.EmployeeId
+      this.adminUserData.UserName = row.EmployeeName
+      this.adminUserData.Password = '12345'
+      this.adminUserData.Mobile = row.Mobile
+      this.adminUserData.Email = row.Email
+      this.adminUserData.Picture = row.Picture
 
     },
     del (row) {
@@ -451,6 +574,34 @@ export default {
         }
       }))
     },
+    addUserSubmit (adminUserData) {
+      console.log('refs', this.$refs[adminUserData])
+      this.$refs[adminUserData].validate((valid => {
+        if (valid) {
+          Employee.AddUser(this.adminUserData)
+            .then(res => {
+              console.log(res.Data)
+              if (res.Success) {
+                var a = res.Data.Id
+                this.$message({
+                  type: 'success',
+                  message: '新增成功!'
+                });
+
+
+              } else {
+                alert(res.Message)
+              }
+            })
+          this.dialogAddEditUser = false;
+          this.getList();
+
+          console.log("success submit!!");
+        } else {
+          console.log("error submit!!");
+        }
+      }))
+    },
     cancel () {
       this.$message({
         message: '操作取消',
@@ -458,6 +609,14 @@ export default {
       });
       this.getList()
       this.dialogAddEdit = false;
+    },
+    cancelAddUser () {
+      this.$message({
+        message: '操作取消',
+        type: 'info'
+      });
+      this.getList()
+      this.dialogAddEditUser = false;
     },
     search () {
       console.log("aaa");
@@ -477,7 +636,15 @@ export default {
           let fileName = '员工信息' + '.xlsx'
           fileDownload(res, fileName)
         })
-    }
+    },
+    beforeUpload (file) {
+      console.log(file);
+      return true;
+    },
+    // 上传头像
+    handleChange (file) {
+      this.adminUserData.image = URL.createObjectURL(file.raw);
+    },
 
   },
   mounted () {
