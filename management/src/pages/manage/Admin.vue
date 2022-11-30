@@ -4,6 +4,7 @@
       @onAdd="addButton"
       @onSearch="search"
       @onShowAll="getList"
+      @onExport="exportUser"
       ref="searchBar"
     />
     <div class="table">
@@ -138,6 +139,7 @@
 </template>
 
 <script>
+import fileDownload from 'js-file-download'
 import SearchBar from '../../components/SearchBar'
 import User from '../../api/services/UserEmployee'
 import Mock, { Random } from 'mockjs'
@@ -352,6 +354,15 @@ export default {
           console.log("error submit!!");
         }
       }))
+    },
+    exportUser () {
+      console.log('exportUser')
+      User.ExportUserList()
+        .then(res => {
+          let fileName = '用户信息信息' + '.xlsx'
+          fileDownload(res, fileName)
+        })
+      console.log('getlist')
     }
   },
   mounted () {

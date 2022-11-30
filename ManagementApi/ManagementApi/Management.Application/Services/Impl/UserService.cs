@@ -196,13 +196,33 @@ namespace Management.Application.Services.Impl
             return employeeDto;
         }
         /// <summary>
-        /// 导出用户和员工信息
+        /// 导出员工信息
         /// </summary>
         /// <returns></returns>
         public HttpResponseMessage ExportEmployeeList()
         {
             var Query = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
             var Qualificationcolumn = Initcolumn(1);
+
+            var stream = new StreamHelper();
+            var _excelHelper = new NPOIHelper();
+            var openStream = stream.BytesToStream(_excelHelper.Export(Query, Qualificationcolumn, "员工信息"));
+
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StreamContent(openStream);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+            response.Content.Headers.ContentDisposition.FileName = string.Format("{0}.xlsx", "test");
+            return response;
+        }
+        /// <summary>
+        /// 导出用户信息
+        /// </summary>
+        /// <returns></returns>
+        public HttpResponseMessage ExportUserList()
+        {
+            var Query = this._eFRepository.GetAll<User>().OrderBy(a => a.Id).ToList();
+            var Qualificationcolumn = Initcolumn(2);
 
             var stream = new StreamHelper();
             var _excelHelper = new NPOIHelper();
@@ -239,6 +259,19 @@ namespace Management.Application.Services.Impl
                 adminApplyColumn.Add("Sex", "性别");
                 adminApplyColumn.Add("Mobile", "部门");
                 adminApplyColumn.Add("Email", "邮箱");
+
+            }else if (Type == 2)
+            {
+                adminApplyColumn.Add("Id", "Id");
+                adminApplyColumn.Add("Account", "用户账号");
+                adminApplyColumn.Add("UserName", "用户姓名");
+                adminApplyColumn.Add("Password", "用户密码");
+                adminApplyColumn.Add("Mobile", "电话");
+                adminApplyColumn.Add("Email", "邮箱");
+                adminApplyColumn.Add("Picture", "头像地址");
+                adminApplyColumn.Add("Last_LoginTime", "最后登录时间");
+                adminApplyColumn.Add("Count", "登录次数");
+                adminApplyColumn.Add("IsDeleted", "是否删除");
 
             }
 

@@ -175,5 +175,14 @@ namespace ManagementApi.Controllers
 
             return list;
         }
+        [HttpGet]
+        [Route("ExportUser")]
+        public HttpResponseMessage ExportUser()
+        {
+            UserService UserInfo = new UserService();
+            HttpResponseMessage list = UserInfo.ExportUserList();
+
+            return list;
+        }
     }
 }

@@ -75,5 +75,24 @@ export default {
         })
     })
   },
+  ExportUserList() {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`UserEmployee/ExportUser`, {
+          headers: {
+            Accept: 'application/vnd.openxmlformats-officedocument' +
+              '.spreadsheetml.sheet'
+          },
+          responseType: 'blob',
+
+        })
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
 
 }
