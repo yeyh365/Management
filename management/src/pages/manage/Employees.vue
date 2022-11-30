@@ -327,6 +327,9 @@ export default {
       formLabelWidth: '100px',
       dialogAddEdit: false,
       dialogAddEditUser: false,
+      EmployeeName: '',
+      EmployeeId: '',
+      DepartmentNumber: '',
       adminUserData: {
         Account: "",
         UserName: "",
@@ -479,7 +482,7 @@ export default {
     },
     getList () {
       console.log('getList')
-      Employee.GetEmployee(this.currentPage, this.PageSize)
+      Employee.GetEmployee(this.EmployeeId, this.EmployeeName, this.DepartmentNumber, this.currentPage, this.PageSize)
         .then(res => {
           // const token = res.Data
           if (res.Success) {
@@ -619,14 +622,18 @@ export default {
       this.dialogAddEditUser = false;
     },
     search () {
-      console.log("aaa");
-      var keywordss = this.$refs.searchBar.keywords;
-      if (keywordss) {
-        this.$message({
-          type: "success",
-          message: '查询成功',
-        });
-      }
+
+      this.EmployeeId = this.$refs.searchBar.EmployeeId;
+      this.EmployeeName = this.$refs.searchBar.EmployeeName;
+      this.DepartmentNumber = this.$refs.searchBar.DepartmentNumber;
+      this.getList();
+
+      // if (keywordss) {
+      //   this.$message({
+      //     type: "success",
+      //     message: '查询成功',
+      //   });
+      // }
 
     },
     exportEmpoyee () {

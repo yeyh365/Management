@@ -281,7 +281,6 @@ export default {
       console.log("row", row);
       this.dialogAddEdit = true;
       this.operateType = "edit";
-      console.log(row)
       this.adminData = row;
       // this.adminData.image = Row.image;
       // this.adminData.name = Row.name;

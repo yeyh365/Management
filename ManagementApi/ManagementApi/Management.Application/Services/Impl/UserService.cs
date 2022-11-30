@@ -107,14 +107,26 @@ namespace Management.Application.Services.Impl
             return list;
         }
         /// <summary>
-        ///分页查询
+        ///分页查询员工
         /// </summary>
         /// <param name="searchEmployeeDto"></param>
         /// <returns></returns>
         public List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto)
         {
             List<EmployeeDto> list = new List<EmployeeDto>();
-            List<Employee> employeesTime = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            IEnumerable<Employee> employeesTime = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id);
+            if (!string.IsNullOrEmpty(searchEmployeeDto.EmployeeName))
+            {
+                employeesTime = employeesTime.Where(e => e.EmployeeName== searchEmployeeDto.EmployeeName);
+            }
+            if (searchEmployeeDto.EmployeeId>1)
+            {
+                employeesTime = employeesTime.Where(e => e.EmployeeId == searchEmployeeDto.EmployeeId);
+            }
+            if (!string.IsNullOrEmpty(searchEmployeeDto.DepartmentNumber))
+            {
+                employeesTime = employeesTime.Where(e => e.DepartmentNumber == searchEmployeeDto.DepartmentNumber);
+            }
             var count = employeesTime.Count();
             var employees = employeesTime.Skip((searchEmployeeDto.Page - 1) * searchEmployeeDto.Limit).Take(searchEmployeeDto.Limit);
             foreach (var employee in employees)

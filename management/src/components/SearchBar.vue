@@ -7,12 +7,27 @@
     </div>
     <div class="serach">
       <el-input
-        :placeholder="placeholder"
-        v-model="keywords"
-        @keyup.enter.native="search"
-        clearable
-      >
+        v-model="EmployeeId"
+        placeholder="员工编号"
+        style="width: 140px"
+      ></el-input>
+      <el-input
+        v-model="EmployeeName"
+        placeholder="员工姓名"
+        style="width: 140px"
+      ></el-input>
+      <!-- <el-input :placeholder="员工编号" v-model="EmployeeId" width="180">
       </el-input>
+      <el-input :placeholder="员工姓名" v-model="EmployeeName" width="180">
+      </el-input> -->
+      <el-select v-model="DepartmentNumber" placeholder="请选择">
+        <el-option label="行政部" value="1"></el-option>
+        <el-option label="财务部" value="2"></el-option>
+        <el-option label="人事部" value="3"></el-option>
+        <el-option label="研发部" value="4"></el-option>
+        <el-option label="营销部" value="5"></el-option>
+      </el-select>
+
       <el-button type="primary" icon="el-icon-search" @click="search"
         >查询
       </el-button>
@@ -29,11 +44,16 @@ export default {
   name: 'SearchBar',
   data () {
     return {
-      keywords: ''
+      EmployeeId: '',
+      EmployeeName: '',
+      DepartmentNumber: ''
     }
   },
   props: {
-    placeholder: String
+    placeholder: String,
+    placeholder: String,
+    placeholder: String,
+
   },
   methods: {
     //新增

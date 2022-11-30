@@ -71,8 +71,6 @@ namespace ManagementApi.Controllers
         [Route("GetEmployeeLimit")]
         public ResultModel GetEmployeeLimit([FromUri]SearchEmployeeDto searchEmployeeDto)
         {
-            var page = searchEmployeeDto.Page;
-            var limit = searchEmployeeDto.Limit;
             UserService EmployeeInfo = new UserService();
             ResultModel resultModel = new ResultModel();//需要返回的口令信息
 
