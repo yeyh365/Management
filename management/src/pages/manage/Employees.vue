@@ -4,16 +4,25 @@
       @onAdd="onAdd"
       @onSearch="search"
       @onExport="exportEmpoyee"
+      v-bind:searchShowVal="CanShow"
       :placeholder="placeholder"
       ref="searchBar"
     ></search-bar>
     <div class="table">
-      <el-table :data="dataTable" border style="width: 100%">
+      <el-table
+        v-loading="loading"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+        :data="dataTable"
+        border
+        style="width: 100%"
+      >
         <el-table-column fixed prop="EmployeeId" label="员工编号" width="100">
         </el-table-column>
         <el-table-column prop="EmployeeName" label="员工姓名" width="180">
         </el-table-column>
-        <el-table-column prop="CredId" label="身份证号" width="180">
+        <el-table-column prop="CardId" label="身份证号" width="180">
         </el-table-column>
         <el-table-column prop="Sex" label="性别" width="180"> </el-table-column>
         <el-table-column prop="Mobile" label="手机号码" width="180">
@@ -22,7 +31,7 @@
         </el-table-column>
         <el-table-column prop="DepartmentName" label="部门名称" width="180">
         </el-table-column>
-        <el-table-column prop="PosititonName" label="职位名称" width="180">
+        <el-table-column prop="PositionName" label="职位名称" width="180">
         </el-table-column>
         <el-table-column prop="ProjectName" label="项目名称" width="180">
         </el-table-column>
@@ -330,6 +339,8 @@ export default {
       EmployeeName: '',
       EmployeeId: '',
       DepartmentNumber: '',
+      CanShow: true,
+      loading: true,
       adminUserData: {
         Account: "",
         UserName: "",
@@ -504,9 +515,11 @@ export default {
             // console.log(this.dataTable)
             // console.log('List', typeof (List))
             // console.log(res.Data)
+            console.log(res.Data)
             var a = res.Data //= eval('(' + res.Data + ')')
             this.dataTable = a
             this.totalCount = res.Data[0].Count
+            this.loading = false;
             // this.totalCount = this.dataTable.length
             // console.log(this.dataTable.length)
             // this.dataTable.forEach(a => {

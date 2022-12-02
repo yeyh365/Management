@@ -22,3 +22,12 @@ D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\M
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateusermobile.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.UpdateEmployeeMobile.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.upDateEmpoyeeCardId.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.addApplyProcess.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.addApplyProcessTwo.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.addApplyProcess3.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.addApplyProcess4.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.ADDApplyIsDelete.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.ADDApplyIsDeleteBool.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.ADDApplyIsDeleteBoolIsNOTNULL.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateEmployee.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateEmployeeId.resources

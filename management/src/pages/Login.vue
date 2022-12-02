@@ -90,6 +90,7 @@ export default {
           if (res.Success) {
 
             window.sessionStorage.setItem('token', res.Data.AccessToken)
+            window.sessionStorage.setItem('user', res.Data.UserName)
             this.$store.state.tab.UserName = res.Data.UserName;
             this.$store.state.tab.Password = res.Data.Password;
             console.log(this.$store.state.tab.users)

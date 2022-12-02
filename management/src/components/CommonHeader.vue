@@ -18,9 +18,21 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
+      <el-badge :value="megVal" :max="10" class="itemMeg" size="mini">
+        <el-button
+          type="info"
+          icon="el-icon-message"
+          size="mini"
+          circle
+          @click="meessage"
+        ></el-button>
+      </el-badge>
       <el-dropdown @command="clickMenu" trigger="click" size="mini">
         <span>
-          <img :src="adminImg" class="user_picture" />
+          <el-avatar
+            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+            size="small"
+          ></el-avatar>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
@@ -36,11 +48,13 @@
 </template>
 
 <script>
+import router from '@/router'
 export default {
   name: 'CommonHeader',
   data () {
     return {
       adminImg: '',
+      megVal: '2',
       menu: [
         {
           path: '/Personal',
@@ -62,6 +76,9 @@ export default {
     }
   },
   methods: {
+    meessage () {
+      this.$router.push({ path: '/Apply' })
+    },
     asideMenu () {
       // this.$store.commit('tab/collapseMenu')
     },
@@ -128,5 +145,9 @@ export default {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.itemMeg {
+  margin-top: -20px;
+  margin-right: 20px;
 }
 </style>

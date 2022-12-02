@@ -73,7 +73,7 @@ export default {
             {
               path: '/manage/admin',
               name: 'Admin',
-              label: '管理员管理'
+              label: '用户管理'
             },
             {
               path: '/manage/employees',

@@ -81,6 +81,42 @@
     <Compile Include="Migrations\202211300630334_upDateEmpoyeeCardId.designer.cs">
       <DependentUpon>202211300630334_upDateEmpoyeeCardId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212010917124_addApplyProcess.cs" />
+    <Compile Include="Migrations\202212010917124_addApplyProcess.designer.cs">
+      <DependentUpon>202212010917124_addApplyProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212010919478_addApplyProcessTwo.cs" />
+    <Compile Include="Migrations\202212010919478_addApplyProcessTwo.designer.cs">
+      <DependentUpon>202212010919478_addApplyProcessTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212010928158_addApplyProcess3.cs" />
+    <Compile Include="Migrations\202212010928158_addApplyProcess3.designer.cs">
+      <DependentUpon>202212010928158_addApplyProcess3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212010929350_addApplyProcess4.cs" />
+    <Compile Include="Migrations\202212010929350_addApplyProcess4.designer.cs">
+      <DependentUpon>202212010929350_addApplyProcess4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212020152270_ADDApplyIsDelete.cs" />
+    <Compile Include="Migrations\202212020152270_ADDApplyIsDelete.designer.cs">
+      <DependentUpon>202212020152270_ADDApplyIsDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212020153177_ADDApplyIsDeleteBool.cs" />
+    <Compile Include="Migrations\202212020153177_ADDApplyIsDeleteBool.designer.cs">
+      <DependentUpon>202212020153177_ADDApplyIsDeleteBool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212020157391_ADDApplyIsDeleteBoolIsNOTNULL.cs" />
+    <Compile Include="Migrations\202212020157391_ADDApplyIsDeleteBoolIsNOTNULL.designer.cs">
+      <DependentUpon>202212020157391_ADDApplyIsDeleteBoolIsNOTNULL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212020311593_updateEmployee.cs" />
+    <Compile Include="Migrations\202212020311593_updateEmployee.designer.cs">
+      <DependentUpon>202212020311593_updateEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212020555424_updateEmployeeId.cs" />
+    <Compile Include="Migrations\202212020555424_updateEmployeeId.designer.cs">
+      <DependentUpon>202212020555424_updateEmployeeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EFRepository.cs" />
@@ -122,6 +158,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202211300630334_upDateEmpoyeeCardId.resx">
       <DependentUpon>202211300630334_upDateEmpoyeeCardId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010917124_addApplyProcess.resx">
+      <DependentUpon>202212010917124_addApplyProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010919478_addApplyProcessTwo.resx">
+      <DependentUpon>202212010919478_addApplyProcessTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010928158_addApplyProcess3.resx">
+      <DependentUpon>202212010928158_addApplyProcess3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212010929350_addApplyProcess4.resx">
+      <DependentUpon>202212010929350_addApplyProcess4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020152270_ADDApplyIsDelete.resx">
+      <DependentUpon>202212020152270_ADDApplyIsDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020153177_ADDApplyIsDeleteBool.resx">
+      <DependentUpon>202212020153177_ADDApplyIsDeleteBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020157391_ADDApplyIsDeleteBoolIsNOTNULL.resx">
+      <DependentUpon>202212020157391_ADDApplyIsDeleteBoolIsNOTNULL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020311593_updateEmployee.resx">
+      <DependentUpon>202212020311593_updateEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212020555424_updateEmployeeId.resx">
+      <DependentUpon>202212020555424_updateEmployeeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

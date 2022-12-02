@@ -30,6 +30,8 @@ namespace Management.EntityFramework.Entities
         public DbSet<Departemnt> Departemnt { get; set; }
         public DbSet<Project> Project { get; set; }
         public DbSet<Posittion> Posittion { get; set; }
+        public DbSet<ApplyProcess> ApplyProcess { get; set; }
+
 
 
 

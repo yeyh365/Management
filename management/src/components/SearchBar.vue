@@ -5,7 +5,7 @@
         >新增
       </el-button>
     </div>
-    <div class="serach">
+    <div class="serach" v-show="searchShowVal">
       <el-input
         v-model="EmployeeId"
         placeholder="员工编号"
@@ -46,15 +46,10 @@ export default {
     return {
       EmployeeId: '',
       EmployeeName: '',
-      DepartmentNumber: ''
+      DepartmentNumber: '',
     }
   },
-  props: {
-    placeholder: String,
-    placeholder: String,
-    placeholder: String,
-
-  },
+  props: ['searchShowVal'],
   methods: {
     //新增
     add () {

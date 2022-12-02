@@ -5,6 +5,7 @@
       @onSearch="search"
       @onShowAll="getList"
       @onExport="exportUser"
+      v-bind:searchShowVal="CanShow"
       ref="searchBar"
     />
     <div class="table">
@@ -185,6 +186,7 @@ export default {
       PageSizes: [5, 10, 25, 50],
       totalCount: 1,
       adminTabel: [],
+      CanShow: false,
       adminData: {
         id: "",
         Account: "",

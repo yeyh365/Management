@@ -20,6 +20,7 @@ import Apply from '../pages/Apply'
 import unRead from '../pages/notice/unRead'
 import Read from '../pages/notice/Read'
 import Employeestest from '../pages/manage/Employeestest'
+import QrCode from '../pages/QrCode'
 
 
 
@@ -104,6 +105,11 @@ const router = new VueRouter({
       path: '/Employeestest',
       name: 'Employeestest',
       component: Employeestest
+    },
+    {
+      path: '/QrCode',
+      name: 'QrCode',
+      component: QrCode
     }
   ]
 })

@@ -481,6 +481,27 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:ManagementApi.Controllers.ApplyController.GetUserApply(Management.Application.Dto.ApplyProcessDto)">
+            <summary>
+            获取当前登录的的分页的申请流程
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.ApplyController.AddApply(Management.Application.Dto.ApplyProcessDto)">
+            <summary>
+            增加一条流程
+            </summary>
+            <param name="EmployeeDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.ApplyController.DeletApply(Management.Application.Dto.ApplyProcessDto)">
+            <summary>
+            删除一个流程 假删除
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
         <member name="M:ManagementApi.Controllers.TokenController.Login(ManagementApi.Models.LoginRequest)">
             <summary>
             登录

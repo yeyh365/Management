@@ -8,7 +8,7 @@
           <div class="admin">
             <!-- <img class="admin_picture" :src="adminImg" /> -->
             <div class="admin_info">
-              <p class="name">账号:{{ UserName }}</p>
+              <p class="name">账号:{{ UserNameA }}</p>
               <p class="pwd"><i>密码:</i>{{ Password }}</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default {
   name: 'Personal',
   data () {
     return {
-      // UserName: '',
+      // UserNameA: '',
       // Password: ''
     }
   },
@@ -47,7 +47,10 @@ export default {
 
   },
   computed: {
-    ...mapState('tab', ['UserName', 'Password'])
+    ...mapState('tab', ['Password']),
+    UserNameA () {
+      return sessionStorage.getItem('user');
+    }
     // UserName () {
     //   console.log(this.$store.state.tab.users.UserName)
     //   return this.$store.state.tab.users.UserName

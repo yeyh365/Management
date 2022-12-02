@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Management.Core.Helper;
 using static Management.Application.Common.testfanshehuoqu;
+using NPOI.SS.Formula.Functions;
+using static NPOI.HSSF.Util.HSSFColor;
 
 namespace Management.Application.Services.Impl
 {
@@ -114,22 +116,43 @@ namespace Management.Application.Services.Impl
         public List<EmployeeDto> GetEmployeeLimitDto(SearchEmployeeDto searchEmployeeDto)
         {
             List<EmployeeDto> list = new List<EmployeeDto>();
-            IEnumerable<Employee> employeesTime = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id);
+            var employeesTime = from emp in this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id)
+                                                  join dep in this._eFRepository.GetAll<Departemnt>().OrderBy(d => d.Id)
+                                                  on emp.DepartmentNumber equals dep.Id
+                                join pos in this._eFRepository.GetAll<Posittion>().OrderBy(p => p.Id)
+                                                  on emp.PositionNumber equals pos.Id
+                                select new EmployeeDto
+                                                  {
+                                                      Id = emp.Id,
+                                                      EmployeeId = emp.EmployeeId,
+                                                      EmployeeName = emp.EmployeeName,
+                                                      DepartmentName = dep.DepartmentName,
+                                    PositionName = pos.PosititonName,
+                                    CardId = emp.CardId,
+                                                      Sex = emp.Sex,
+                                                      Mobile = emp.Mobile,
+                                                      Email = emp.Email,
+                                                  };
             if (!string.IsNullOrEmpty(searchEmployeeDto.EmployeeName))
             {
                 employeesTime = employeesTime.Where(e => e.EmployeeName== searchEmployeeDto.EmployeeName);
             }
-            if (searchEmployeeDto.EmployeeId>1)
+            if (!string.IsNullOrEmpty(searchEmployeeDto.EmployeeId))
             {
                 employeesTime = employeesTime.Where(e => e.EmployeeId == searchEmployeeDto.EmployeeId);
             }
-            if (!string.IsNullOrEmpty(searchEmployeeDto.DepartmentNumber))
+            if (searchEmployeeDto.DepartmentNumber>1)
             {
                 employeesTime = employeesTime.Where(e => e.DepartmentNumber == searchEmployeeDto.DepartmentNumber);
             }
             var count = employeesTime.Count();
-            var employees = employeesTime.Skip((searchEmployeeDto.Page - 1) * searchEmployeeDto.Limit).Take(searchEmployeeDto.Limit);
-            foreach (var employee in employees)
+            if (count> searchEmployeeDto.Limit)
+            {
+
+                employeesTime = employeesTime.Skip((searchEmployeeDto.Page - 1) * searchEmployeeDto.Limit).Take(searchEmployeeDto.Limit);
+
+            }
+            foreach (var employee in employeesTime)
             {
                 EmployeeDto employeeDto = new EmployeeDto();
                 employeeDto.Id = employee.Id;
@@ -137,6 +160,8 @@ namespace Management.Application.Services.Impl
                 employeeDto.EmployeeName = employee.EmployeeName;
                 employeeDto.DepartmentNumber = employee.DepartmentNumber;
                 employeeDto.PositionNumber = employee.PositionNumber;
+                employeeDto.DepartmentName = employee.DepartmentName;
+                employeeDto.PositionName = employee.PositionName;
                 employeeDto.CardId = employee.CardId;
                 employeeDto.Sex = employee.Sex;
                 employeeDto.Mobile = employee.Mobile;
@@ -187,11 +212,11 @@ namespace Management.Application.Services.Impl
         {
             UserDto userDto = new UserDto();
             //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
-            User delEmployee = this._eFRepository.GetAll<User>().FirstOrDefault(e => e.Id == DelUser.Id);
-            if (delEmployee != null)
+            User delUser = this._eFRepository.GetAll<User>().FirstOrDefault(e => e.Id == DelUser.Id);
+            if (delUser != null)
             {
-                delEmployee.IsDeleted=true;
-                bool result = this._eFRepository.Update<User>(delEmployee);
+                delUser.IsDeleted=true;
+                bool result = this._eFRepository.Update<User>(delUser);
                 userDto.Count = Convert.ToInt32(result);
             }
             else
@@ -211,7 +236,7 @@ namespace Management.Application.Services.Impl
             EmployeeDto employeeDto = new EmployeeDto();
             Employee employee = new Employee();
             //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
-            if (AddEmployee.EmployeeId >= 2)
+            if (!string.IsNullOrEmpty(AddEmployee.EmployeeId))
             {
                 employee.EmployeeId = AddEmployee.EmployeeId;
                 employee.EmployeeName = AddEmployee.EmployeeName;
@@ -289,7 +314,7 @@ namespace Management.Application.Services.Impl
             Employee employee = this._eFRepository.GetAll<Employee>().FirstOrDefault(e => e.Id == UpdateEmployee.Id);
             if (employee != null)
             {
-                if (UpdateEmployee.EmployeeId>1)
+                if (!string.IsNullOrEmpty(UpdateEmployee.EmployeeId))
                 {
                     employee.EmployeeId = UpdateEmployee.EmployeeId;
                 }
@@ -297,11 +322,11 @@ namespace Management.Application.Services.Impl
                 {
                     employee.EmployeeName = UpdateEmployee.EmployeeName;
                 }
-                if (!string.IsNullOrEmpty(UpdateEmployee.DepartmentNumber))
+                if (UpdateEmployee.DepartmentNumber>1)
                 {
                     employee.DepartmentNumber = UpdateEmployee.DepartmentNumber;
                 }
-                if (!string.IsNullOrEmpty(UpdateEmployee.PositionNumber))
+                if (UpdateEmployee.PositionNumber>1)
                 {
                     employee.PositionNumber = UpdateEmployee.PositionNumber;
                 }
