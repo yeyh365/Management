@@ -1,37 +1,7 @@
 <template>
   <div class="apply">
-    <h2>员工事由申请</h2>
+    <h2>员工事由申请和审批</h2>
     <div class="applyForm">
-      <!-- <el-form
-        :inline="true"
-        :model="numberValidateForm"
-        class="demo-form-inline"
-        ref="numberValidateForm"
-      >
-        <el-form-item label="申请分类">
-          <el-select v-model="applyProcess.type" placeholder="请选择">
-            <el-option label="请假申请" value="请假申请"></el-option>
-            <el-option label="休假申请" value="休假申请"></el-option>
-            <el-option label="项目资金申请" value="项目资金申请"></el-option>
-            <el-option label="其他" value="其他"></el-option>
-          </el-select>
-        </el-form-item>
-
-        <el-form-item
-          label="申请原因"
-          prop="age"
-          ref="numberValidateForm"
-          style="width: 300px"
-          :rules="[{ required: true, message: '年龄不能为空', blur: false }]"
-        >
-          <el-input
-            v-model="numberValidateForm.age"
-            placeholder="请输入理由"
-            autocomplete="off"
-            :validate-event="false"
-          ></el-input>
-        </el-form-item>
-      </el-form> -->
       <el-form
         :model="numberValidateForm"
         ref="numberValidateForm"
@@ -68,71 +38,24 @@
         </el-form-item>
       </el-form>
     </div>
-
-    <div class="applyBody">
-      <el-table :data="applyData" style="width: 100%">
-        <el-table-column prop="ApplyDate" label="日期" width="200">
-        </el-table-column>
-        <el-table-column prop="Account" label="姓名" width="100">
-        </el-table-column>
-        <el-table-column prop="ApplyTitle" label="申请分类" width="100">
-        </el-table-column>
-        <el-table-column prop="ApplyBoby" label="申请内容" width="300">
-        </el-table-column>
-        <el-table-column prop="ApproverDepartmentId" label="部门经理">
-        </el-table-column>
-        <el-table-column
-          prop="ApproverrDepartmenResult"
-          label="审批结果"
-          width="100"
+    <div class="notice">
+      <div class="nav">
+        <el-menu
+          :default-active="$route.path"
+          class="el-menu-demo"
+          mode="horizontal"
         >
-        </el-table-column>
-        <el-table-column prop="GeneralManagerId" label="总经理" width="100">
-        </el-table-column>
-        <el-table-column
-          prop="GeneralManagerResult"
-          label="审批结果"
-          width="100"
-        >
-        </el-table-column>
-        <el-table-column prop="ApplyState" label="流程状态" width="100">
-        </el-table-column>
-        <el-table-column prop="ApplyResult" label="流程结果" width="100">
-        </el-table-column>
-        <el-table-column fixed="right" label="操作" width="120">
-          <template slot-scope="scope">
-            <el-button
-              @click="del(scope.row)"
-              type="danger"
-              icon="el-icon-delete"
-              size="small"
-              >取消申请</el-button
-            >
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-    <div class="page">
-      <div class="block">
-        <el-pagination
-          :hide-on-single-page="value"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="PageSizes"
-          :page-size="PageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="totalCount"
-        >
-        </el-pagination>
+          <el-menu-item
+            @click="clickMenu(item)"
+            v-for="item in menu"
+            :index="item.path"
+            :key="item.path"
+          >
+            <span slot="title">{{ item.label }}</span>
+          </el-menu-item>
+        </el-menu>
       </div>
-    </div>
-    <div class="applyHeard">
-      <el-steps :active="3">
-        <el-step title="员工申请" description="申请原因"></el-step>
-        <el-step title="项目经理审批" description="备注："></el-step>
-        <el-step title="总经理审批审批" description="备注"></el-step>
-      </el-steps>
+      <router-view ref="Childmain" />
     </div>
   </div>
 </template>
@@ -151,29 +74,31 @@ export default {
         ApplyTitle: '',
         ApplyBoby: ''
       },
-      value: false,
-      currentPage: 1,
-      PageSizes: ['5', '10', '20'],
-      PageSize: 5,
-      applyData: [],
-      totalCount: 30
+      menu: [
+        {
+          path: '/Apply/ApplyFor',
+          name: 'ApplyFor',
+          label: '申请',
+        },
+        {
+          path: '/Apply/Approval',
+          name: 'Approval',
+          label: '审批',
+        }
+      ],
+
 
     }
   },
-  mounted () {
-    this.getApplyList();
-  },
   methods: {
-    handleSizeChange (val) {
-      this.PageSize = val;
-      this.getApplyList();
-      console.log('handleSizeChange')
+
+    clickMenu (item) {
+      console.log(item.label);
+      this.$router.push({
+        name: item.name
+      })
     },
-    handleCurrentChange (val) {
-      this.currentPage = val
-      this.getApplyList();
-      console.log('handleCurrentChange')
-    },
+
     submitForm (formName) {
       console.log(formName)
       this.$refs[formName].validate((valid) => {
@@ -188,7 +113,10 @@ export default {
                   type: 'success',
                   message: '添加成功!'
                 });
-                this.getApplyList();
+                // this.getApplyList();
+                this.$nextTick(() => {
+                  this.$refs['Childmain'].getApplyList()
+                })
 
               } else {
                 alert(res.Message)
@@ -202,35 +130,9 @@ export default {
           return false;
         }
       });
-
       console.log(this.numberValidateForm.reason)
     },
-    del (row) {
-      Apply.DelApply(row)
-        .then(res => {
-          console.log(res)
-          if (res.Success) {
-            console.log(res.Data)
-            this.getApplyList()
-          } else {
-            alert(res.Message)
-          }
-        })
 
-    },
-    getApplyList () {
-      Apply.GetApplyList(this.currentPage, this.PageSize)
-        .then(res => {
-          if (res.Success) {
-            this.applyData = res.Data
-            this.totalCount = res.Data[0].Count
-            console.log(res.Data)
-
-          } else {
-            alert(res.Message)
-          }
-        })
-    }
   },
 
 }

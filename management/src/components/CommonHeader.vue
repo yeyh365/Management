@@ -29,10 +29,8 @@
       </el-badge>
       <el-dropdown @command="clickMenu" trigger="click" size="mini">
         <span>
-          <el-avatar
-            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-            size="small"
-          ></el-avatar>
+          <el-avatar :src="face" size="small"></el-avatar>
+          <!-- <img :src="this.face" /> -->
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item
@@ -48,13 +46,17 @@
 </template>
 
 <script>
-import router from '@/router'
+import UserEmployee from '../api/services/UserEmployee'
+import axios from 'axios'
 export default {
   name: 'CommonHeader',
   data () {
     return {
       adminImg: '',
       megVal: '2',
+      noface: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
+      face2: 'https://localhost:44369/Files/Pictures/abcd.png',
+      face: '',
       menu: [
         {
           path: '/Personal',
@@ -83,6 +85,21 @@ export default {
       // this.$store.commit('tab/collapseMenu')
     },
     getImg () {
+      // axios.get('https://localhost:44369/api/Pictures/UserFace', { responseType: 'blob' })
+      //   .then((response) => {
+      //     console.log(response.data)
+      //     this.face = window.URL.createObjectURL(response.data)
+      //     // console.log(this.verificationImg)
+      //   })
+      UserEmployee.GetUserFace()
+        .then(data => {
+          console.log("GETUSERFACE", data)
+
+          // this.face = window.URL.createObjectURL(data)
+          this.face = data
+
+
+        })
       // let loginData = JSON.parse(window.sessionStorage.getItem('token'))
       // this.adminImg = loginData[0].image
     },

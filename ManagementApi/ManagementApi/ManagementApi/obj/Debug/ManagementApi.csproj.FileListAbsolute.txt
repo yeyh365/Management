@@ -102,3 +102,5 @@ D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\ICSharpCode.SharpZip
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXmlFormats.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.OpenXml4Net.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\NPOI.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\log4net.dll
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\log4net.xml

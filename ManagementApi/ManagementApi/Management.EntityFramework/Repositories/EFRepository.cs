@@ -262,7 +262,21 @@ namespace Management.EntityFramework.Repositories
             //var c = b.AsNoTracking()
             return _DbContextHandle.Set<T>().AsNoTracking().ToList();
         }
+        /// <summary>
+        /// 获取全部数据的列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Order">排序</param>
+        /// <returns></returns>
+        public async Task<List<T>>  GetAllAsync<T>(string Order = null) where T : class
+        {
 
+            //var a =  Order != null ? _DbContextHandle.Set<T>().ToList() ?? null : _DbContextHandle.Set<T>().ToList() ?? null;
+            //var a = _DbContextHandle.Set<T>();
+            //var b = a.ToList();
+            //var c = b.AsNoTracking()
+            return _DbContextHandle.Set<T>().AsNoTracking().ToList();
+        }
         /// <summary>
         ///根据查询条件进行查询列表
         /// </summary>

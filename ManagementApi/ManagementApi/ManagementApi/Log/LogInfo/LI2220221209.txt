@@ -1,0 +1,16 @@
+时间:2022-12-09 09:51:33,744 
+线程ID[6]                            日志级别:INFO  记录类:loginfo 扩展信息:{log4net:HostName=DESKTOP-KAODPNB}                            -异常: 
+错误描述:12344567
+
+时间:2022-12-09 09:51:55,813 
+线程ID[8]                            日志级别:INFO  记录类:loginfo 扩展信息:{log4net:HostName=DESKTOP-KAODPNB}                            -异常: 
+错误描述:12344567
+
+时间:2022-12-09 09:54:55,920 
+线程ID[9]                            日志级别:INFO  记录类:loginfo 扩展信息:{log4net:HostName=DESKTOP-KAODPNB}                            -异常: 
+错误描述:12344567
+
+时间:2022-12-09 09:55:18,629 
+线程ID[6]                            日志级别:INFO  记录类:loginfo 扩展信息:{log4net:HostName=DESKTOP-KAODPNB}                            -异常: 
+错误描述:12344567
+

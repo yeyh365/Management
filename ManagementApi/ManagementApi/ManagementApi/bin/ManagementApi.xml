@@ -485,21 +485,65 @@
             <summary>
             获取当前登录的的分页的申请流程
             </summary>
-            <param name="name"></param>
+            <param name="applyProcessDto"></param>
             <returns></returns>
         </member>
         <member name="M:ManagementApi.Controllers.ApplyController.AddApply(Management.Application.Dto.ApplyProcessDto)">
             <summary>
             增加一条流程
             </summary>
-            <param name="EmployeeDto"></param>
+            <param name="applyProcessDto"></param>
             <returns></returns>
         </member>
         <member name="M:ManagementApi.Controllers.ApplyController.DeletApply(Management.Application.Dto.ApplyProcessDto)">
             <summary>
-            删除一个流程 假删除
+            取消一个流程
             </summary>
-            <param name="user"></param>
+            <param name="applyProcessDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.ApplyController.ApprovalApply(Management.Application.Dto.ApplyProcessDto)">
+            <summary>
+            获取需要当前用户审批的信息
+            </summary>
+            <param name="applyProcessDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.ApplyController.ProcessApply(Management.Application.Dto.ApplyProcessDto)">
+            <summary>
+            更新申请流程
+            </summary>
+            <param name="applyProcessDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.FilesController.ImgUpload">
+            <summary>
+            上传图片
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ManagementApi.Controllers.PicturesController">
+            <summary>
+            图片上传
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Controllers.PicturesController.GetPicturesSteam">
+            <summary>
+            获取图片向前端返回一个字节流
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.PicturesController.GetPictures">
+            <summary>
+            获取图片向前端返回一个地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.AATestStartController.MD5Encrypt16(System.String)">
+            <summary>
+            16位MD5加密
+            </summary>
+            <param name="password"></param>
             <returns></returns>
         </member>
         <member name="M:ManagementApi.Controllers.TokenController.Login(ManagementApi.Models.LoginRequest)">
@@ -507,6 +551,34 @@
             登录
             </summary>
             <param name="loginRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.GetEmployeeInfo(System.String)">
+            <summary>
+            获取员工信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.GetUserInfo(System.String)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.GetEmployeeLimit(Management.Application.Dto.SearchEmployeeDto)">
+            <summary>
+            获取员工分页信息
+            </summary>
+            <param name="searchEmployeeDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.UserEmployeeController.DeleteEmployee(Management.Application.Dto.SearchEmployeeDto)">
+            <summary>
+            删除员工信息
+            </summary>
+            <param name="searchEmployeeDto"></param>
             <returns></returns>
         </member>
         <member name="M:ManagementApi.Controllers.UserEmployeeController.DeleteUser(Management.Application.Dto.UserDto)">
@@ -607,6 +679,69 @@
         <member name="P:ManagementApi.Models.LoginRequest.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="T:ABC.ImagePosition">
+            <summary>
+            图片位置
+            </summary>
+        </member>
+        <member name="T:ABC.WaterImageManage">
+            <summary>
+            水印图片的操作管理 Design by Gary Gong From Demetersoft.com
+            </summary>
+        </member>
+        <member name="M:ABC.WaterImageManage.#ctor">
+            <summary>
+            生成一个新的水印图片制作实例
+            </summary>
+        </member>
+        <member name="M:ABC.WaterImageManage.DrawImage(System.String,System.String,System.Single,ABC.ImagePosition,System.String)">
+            <summary>
+            添加图片水印
+            </summary>
+            <param name="sourcePicture">源图片文件名</param>
+            <param name="waterImage">水印图片文件名</param>
+            <param name="alpha">透明度(0.1-1.0数值越小透明度越高)</param>
+            <param name="position">位置</param>
+            <param name="PicturePath" >图片的路径</param>
+            <returns>返回生成于指定文件夹下的水印文件名</returns>
+        </member>
+        <member name="M:ABC.WaterImageManage.DrawWords(System.String,System.String,System.Single,ABC.ImagePosition,System.String)">
+            <summary>
+            在图片上添加水印文字
+            </summary>
+            <param name="sourcePicture">源图片文件(文件名，不包括路径)</param>
+            <param name="waterWords">需要添加到图片上的文字</param>
+            <param name="alpha">透明度</param>
+            <param name="position">位置</param>
+            <param name="PicturePath">文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABC.WaterImage">
+            <summary>
+            装载水印图片的相关信息
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:ABC.WaterImage.SourcePicture" -->
+        <member name="P:ABC.WaterImage.WaterPicture">
+            <summary>
+            水印图片名字(带后缀)
+            </summary>
+        </member>
+        <member name="P:ABC.WaterImage.Alpha">
+            <summary>
+            水印图片文字的透明度
+            </summary>
+        </member>
+        <member name="P:ABC.WaterImage.Position">
+            <summary>
+            水印图片或文字在图片中的位置
+            </summary>
+        </member>
+        <member name="P:ABC.WaterImage.Words">
+            <summary>
+            水印文字的内容
             </summary>
         </member>
     </members>

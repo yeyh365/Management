@@ -57,7 +57,7 @@ namespace Management.EntityFramework.Entities
         }
     }
     /// <summary>
-    /// 原生EF没有封装的直接删除员工
+    /// 原生EF没有封装的直接删除员工测试用
     /// </summary>
     public class deltest
     {

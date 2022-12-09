@@ -16,6 +16,8 @@ using Management.Core.Helper;
 using static Management.Application.Common.testfanshehuoqu;
 using NPOI.SS.Formula.Functions;
 using static NPOI.HSSF.Util.HSSFColor;
+using System.Threading;
+using System.Configuration;
 
 namespace Management.Application.Services.Impl
 {
@@ -23,7 +25,7 @@ namespace Management.Application.Services.Impl
     {
 
         private EFRepository _eFRepository;
-
+        string pUrl = ConfigurationManager.AppSettings["ReleaseUrl"].ToString();
         public UserService()
         {
 
@@ -41,13 +43,14 @@ namespace Management.Application.Services.Impl
             LoginUserDto loginUsers = new LoginUserDto();
             if (user != null)
             {
+
                 loginUsers.Id = user.Id;
                 loginUsers.Account = user.Account;
                 loginUsers.UserName = user.UserName;
                 loginUsers.Password = user.Password;
                 loginUsers.Mobile = user.Mobile;
                 loginUsers.Email = user.Email;
-                loginUsers.Picture = user.Picture;
+                loginUsers.Picture = pUrl+user.Picture;
                 loginUsers.Last_LoginTime = user.Last_LoginTime;
                 loginUsers.Count = user.Count;
                 loginUsers.IsDeleted = user.IsDeleted;
@@ -87,7 +90,7 @@ namespace Management.Application.Services.Impl
         /// 获取所有的用户
         /// </summary>
         /// <returns></returns>
-        public List<UserDto> GetAllUser()
+        public async Task<List<UserDto>>  GetAllUser()
         {
             List<UserDto> list = new List<UserDto>();
             List<User> users = this._eFRepository.GetAll<User>().Where(e=>e.IsDeleted != true).ToList();
@@ -100,7 +103,7 @@ namespace Management.Application.Services.Impl
                 userDto.Password = user.Password;
                 userDto.Mobile = user.Mobile;
                 userDto.Email = user.Email;
-                userDto.Picture = user.Picture;
+                userDto.Picture = pUrl+user.Picture;
                 userDto.Last_LoginTime = user.Last_LoginTime;
                 userDto.Count = user.Count;
                 userDto.IsDeleted = user.IsDeleted;
@@ -290,6 +293,8 @@ namespace Management.Application.Services.Impl
                 }
                 if (!string.IsNullOrEmpty(UpdateUser.Picture))
                 {
+
+
                     user.Picture = UpdateUser.Picture;
                 }
                 bool result = this._eFRepository.Update<User>(user);
@@ -360,9 +365,10 @@ namespace Management.Application.Services.Impl
         /// 导出员工信息
         /// </summary>
         /// <returns></returns>
-        public HttpResponseMessage ExportEmployeeList()
+        public async  Task<HttpResponseMessage>   ExportEmployeeList()
         {
-            var Query = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            var Query = await this._eFRepository.GetAllAsync<Employee>();
+            Thread.Sleep(10000);
             var Qualificationcolumn = Initcolumn(1);
 
             var stream = new StreamHelper();

@@ -22,3 +22,14 @@ D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.dll
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.pdb
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.upDateEmpoyeeCardId.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.addApplyProcess.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.addApplyProcessTwo.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.addApplyProcess3.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.addApplyProcess4.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.ADDApplyIsDelete.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.ADDApplyIsDeleteBool.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.ADDApplyIsDeleteBoolIsNOTNULL.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.updateEmployee.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Release\Management.EntityFramework.Migrations.updateEmployeeId.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\bin\Release\log4net.dll
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\bin\Release\log4net.xml

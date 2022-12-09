@@ -20,3 +20,5 @@ D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPO
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPOI.OpenXml4Net.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPOI.OpenXmlFormats.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPOI.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\log4net.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\log4net.xml

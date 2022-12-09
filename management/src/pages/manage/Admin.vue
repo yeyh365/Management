@@ -29,9 +29,9 @@
         </el-table-column>
         <el-table-column prop="Email" label="邮箱" width="250">
         </el-table-column>
-        <el-table-column label="头像" prop="image">
+        <el-table-column label="头像" prop="Picture">
           <template slot-scope="scope">
-            <img :src="scope.row.image" min-width="70" height="70" />
+            <img :src="scope.row.Picture" min-width="70" height="70" />
           </template>
         </el-table-column>
         <el-table-column prop="Last_LoginTime" label="上次登录时间" width="250">
@@ -124,17 +124,42 @@
           prop="image"
           :label-width="formLabelWidth"
         >
-          <el-input v-model="adminData.Picture" v-if="false"></el-input>
-          <el-upload
+          <!-- <el-input v-model="adminData.Picture"></el-input> -->
+          <!-- <el-upload
             class="avatar-uploader"
             :show-file-list="false"
-            action="/admin/upload"
+            :action="uplord"
+            :headers="{
+              enctype: 'multipart/form-data',
+            }"
             :before-upload="beforeUpload"
             :on-change="handleChange"
             :auto-upload="false"
-            :data="adminData"
+            :on-success="imgSuccess"
+            :data="adminData.Picture"
+            :before-upload="beforeAvatarUpload"
           >
-            <img v-if="adminData.image" :src="adminData.image" class="avatar" />
+            <img
+              v-if="adminData.Picture"
+              :src="adminData.Picture"
+              class="avatar"
+            />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload> -->
+
+          <el-upload
+            class="avatar-uploader"
+            :show-file-list="false"
+            :action="uplord"
+            :headers="{ enctype: 'multipart/form-data' }"
+            :on-success="imgSuccess"
+          >
+            <img
+              v-if="uplordP"
+              :src="uplordP"
+              class="avatar"
+              style="width: 178px; height: 178px"
+            />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
@@ -170,7 +195,8 @@ import fileDownload from 'js-file-download'
 import SearchBar from '../../components/SearchBar'
 import User from '../../api/services/UserEmployee'
 import Mock, { Random } from 'mockjs'
-import { Row } from 'element-ui'
+import { pUrl, baseUrl } from '../../api/env'
+
 export default {
   name: 'Admin',
   components: { SearchBar },
@@ -183,6 +209,7 @@ export default {
       formLabelWidth: "100px",
       currentPage: 1,
       PageSize: 5,
+      uplord: baseUrl + '/Files/ImgUpload',
       PageSizes: [5, 10, 25, 50],
       totalCount: 1,
       adminTabel: [],
@@ -198,15 +225,16 @@ export default {
         Last_LoginTime: "",
         Count: "",
       },
+      uplordP: "",
       rules: {
         // image: [{ required: true, message: "头像不能为空", trigger: "blur" }],
         Account: [
           { required: true, message: "账号不能为空", trigger: "blur" },
-          { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
+          { min: 2, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
         UserName: [
           { required: true, message: "账号不能为空", trigger: "blur" },
-          { min: 4, max: 10, message: "账号为4-10位", trigger: "blur" },
+          { min: 2, max: 10, message: "账号为4-10位", trigger: "blur" },
         ],
         Password: [
           { required: true, message: "密码不能为空", trigger: "blur" },
@@ -279,6 +307,35 @@ export default {
   },
 
   methods: {
+    // beforeAvatarUpload (file) {
+    //   const isLt2M = file.size / 1024 / 1024 < 30
+    //   if (!isLt2M) {
+    //     this.$message.error('上传头像图片大小不能超过 30MB!')
+    //   }
+    //   if (isLt2M) {
+    //     this.loading = this.$loading({
+    //       lock: true,
+    //       text: '上传中。。。',
+    //       spinner: 'el-icon-loading',
+    //       background: 'rgba(0, 0, 0, 0.7)',
+    //     })
+    //   }
+    //   return isLt2M
+    // },
+    imgSuccess (response, file, fileList) {
+      // alert(response.Data)
+      console.log('imgSuccess', response)
+      console.log('imgSuccess', file)
+      console.log('imgSuccess', fileList)
+      this.uplordP = pUrl + response.Data
+      console.log(response.Data)
+      this.adminData.Picture = response.Data
+      // console.log(this.adminData.Picture)
+      // this.CanShow = false;
+      // this.CanShow = true;
+
+
+    },
     editButton (row) {
       console.log("row", row);
       this.dialogAddEdit = true;
@@ -302,13 +359,13 @@ export default {
       console.log(`当前页: ${val}`);
     },
     // 上传头像
-    handleChange (file) {
-      this.adminData.image = URL.createObjectURL(file.raw);
-    },
-    beforeUpload (file) {
-      console.log(file);
-      return true;
-    },
+    // handleChange (file) {
+    //   this.adminData.Picture = URL.createObjectURL(file.raw);
+    // },
+    // beforeUpload (file) {
+    //   console.log(file);
+    //   return true;
+    // },
     cancel () {
       this.$message({
         message: "操作取消",
@@ -437,6 +494,7 @@ export default {
         }
       }))
     },
+    ///ExportUserList
     exportUser () {
       console.log('exportUser')
       User.ExportUserList()

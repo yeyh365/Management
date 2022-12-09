@@ -20,7 +20,6 @@ import Apply from '../pages/Apply'
 import unRead from '../pages/notice/unRead'
 import Read from '../pages/notice/Read'
 import Employeestest from '../pages/manage/Employeestest'
-import QrCode from '../pages/QrCode'
 
 
 
@@ -40,37 +39,71 @@ const router = new VueRouter({
       name: 'Frame',
       component: Frame,
       redirect: '/home',
+      meta: {
+        isAuth: true,
+        title: ''
+      },
       children: [{
           path: '/Home',
           name: 'Home',
+          meta: {
+            isAuth: true,
+            title: '主页'
+          },
           component: Home
         }, {
           path: '/manage/Admin',
           name: 'Admin',
-          component: Admin
+          component: Admin,
+          meta: {
+            isAuth: true,
+            title: '用户信息'
+          }
         }, {
           path: '/manage/Employees',
           name: 'Employees',
-          component: Employees
+          component: Employees,
+          meta: {
+            isAuth: true,
+            title: '员工信息'
+          }
         }, {
           path: '/Personal',
           name: 'Personal',
           component: Personal,
+          meta: {
+            isAuth: true,
+            title: '登录信息'
+          }
         },
         {
           path: '/Notice',
           name: 'Notice',
           component: Notice,
           redirect: '/notice/unRead',
+          meta: {
+            isAuth: true,
+            title: ''
+          },
           children: [{
               path: '/notice/unRead',
               name: 'unRead',
               component: unRead,
+
+              meta: {
+                isAuth: true,
+                title: '未读'
+              }
             },
             {
               path: '/notice/Read',
               name: 'Read',
               component: Read,
+              meta: {
+                isAuth: true,
+                title: '已读'
+              }
+
             }
           ]
         },
@@ -78,6 +111,16 @@ const router = new VueRouter({
           path: '/Apply',
           name: 'Apply',
           component: Apply,
+          redirect: '/Apply/ApplyFor',
+          children: [{
+            path: '/Apply/ApplyFor',
+            name: 'ApplyFor',
+            component: () => import('@/pages/apply/ApplyFor.vue'),
+          }, {
+            path: '/Apply/Approval',
+            name: 'Approval',
+            component: () => import('@/pages/apply/Approval.vue'),
+          }]
         },
       ]
     },
@@ -109,10 +152,34 @@ const router = new VueRouter({
     {
       path: '/QrCode',
       name: 'QrCode',
-      component: QrCode
+      component: () => import('@/pages/QrCode.vue')
     }
   ]
 })
+// 全局前置路由守卫———— 初始化的时候被调用、 每次路由切换之前被调用
+router.beforeEach((to, from, next) => {
+  console.log('前置路由守卫', to, from)
+  if (to.meta.isAuth) { //判断是否需要鉴权
+    if (sessionStorage.getItem('user')) {
+      next()
+    } else {
+      next({
+        name: 'Login'
+      })
+    }
+  } else {
+    next()
+  }
+})
+
+// 全局后置路由守卫———— 初始化的时候被调用、 每次路由切换之后被调用
+router.afterEach((to, from) => {
+  console.log('后置路由守卫', to, from)
+  document.title = to.meta.title || 'TPOS系统'
+})
+
+
+
 
 //创建并暴露一个路由器
 // const router = new VueRouter({
@@ -207,6 +274,7 @@ const router = new VueRouter({
 //   console.log('后置路由守卫', to, from)
 //   document.title = to.meta.title || 'TPOS系统'
 // })
+
 const VueRouterPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(to) {
   return VueRouterPush.call(this, to).catch(err => err)

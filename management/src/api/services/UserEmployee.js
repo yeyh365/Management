@@ -149,5 +149,24 @@ export default {
         })
     })
   },
+  GetUserFace() {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`Pictures/UserFace`, {
+          // headers: {
+          //   Accept: 'application/vnd.openxmlformats-officedocument' +
+          //     '.spreadsheetml.sheet'
+          // },
+          // responseType: 'blob',
+
+        })
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
 
 }

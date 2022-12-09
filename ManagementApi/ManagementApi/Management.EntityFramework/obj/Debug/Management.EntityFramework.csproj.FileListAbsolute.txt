@@ -31,3 +31,5 @@ D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\M
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.ADDApplyIsDeleteBoolIsNOTNULL.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateEmployee.resources
 D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\obj\Debug\Management.EntityFramework.Migrations.updateEmployeeId.resources
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\bin\Debug\log4net.dll
+D:\VUE\manage\managementApi\managementApi\Management.EntityFramework\bin\Debug\log4net.xml

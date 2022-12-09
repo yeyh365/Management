@@ -7,3 +7,5 @@ D:\VUE\manage\managementApi\managementApi\Management.Domain\obj\Release\Manageme
 D:\VUE\manage\managementApi\managementApi\Management.Domain\obj\Release\Management.Domain.csproj.CopyComplete
 D:\VUE\manage\managementApi\managementApi\Management.Domain\obj\Release\Management.Domain.dll
 D:\VUE\manage\managementApi\managementApi\Management.Domain\obj\Release\Management.Domain.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Domain\bin\Release\log4net.dll
+D:\VUE\manage\managementApi\managementApi\Management.Domain\bin\Release\log4net.xml

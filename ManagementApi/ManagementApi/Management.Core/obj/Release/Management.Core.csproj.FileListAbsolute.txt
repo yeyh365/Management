@@ -4,3 +4,6 @@ D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management
 D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.csproj.CoreCompileInputs.cache
 D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.dll
 D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Core\bin\Release\log4net.dll
+D:\VUE\manage\managementApi\managementApi\Management.Core\bin\Release\log4net.xml
+D:\VUE\manage\managementApi\managementApi\Management.Core\obj\Release\Management.Core.csproj.CopyComplete

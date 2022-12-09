@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ManagementApi.Controllers
@@ -18,7 +19,11 @@ namespace ManagementApi.Controllers
     [ApiAuthorize]
     public class UserEmployeeController : ApiController
     {
-
+        /// <summary>
+        /// 获取员工信息
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetEmployeeInfo")]
         public ResultModel GetEmployeeInfo(string name = null)
@@ -43,16 +48,21 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetUserInfo")]
-        public ResultModel GetUserInfo(string name = null)
+        public async Task<ResultModel>  GetUserInfo(string name = null)
         {
             UserService user = new UserService();
             ResultModel resultModel = new ResultModel();//需要返回的口令信息
 
             try
             {
-                List<UserDto> list = user.GetAllUser();
+                List<UserDto> list = await user.GetAllUser();
 
                 resultModel.Success = true;
                 //resultModel.Data =JsonConvert.SerializeObject(list);
@@ -67,6 +77,11 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+        /// <summary>
+        /// 获取员工分页信息
+        /// </summary>
+        /// <param name="searchEmployeeDto"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetEmployeeLimit")]
         public ResultModel GetEmployeeLimit([FromUri]SearchEmployeeDto searchEmployeeDto)
@@ -91,6 +106,11 @@ namespace ManagementApi.Controllers
             }
             return resultModel;
         }
+        /// <summary>
+        /// 删除员工信息
+        /// </summary>
+        /// <param name="searchEmployeeDto"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("DeleteEmployee")]
         public ResultModel DeleteEmployee([FromUri] SearchEmployeeDto searchEmployeeDto)
@@ -212,10 +232,10 @@ namespace ManagementApi.Controllers
         }
         [HttpGet]
         [Route("ExportEmployee")]
-        public HttpResponseMessage ExportEmployee()
+        public async Task<HttpResponseMessage>   ExportEmployee()
         {
             UserService EmployeeInfo = new UserService();
-            HttpResponseMessage list = EmployeeInfo.ExportEmployeeList();
+            HttpResponseMessage list = await  EmployeeInfo.ExportEmployeeList();
 
             return list;
         }

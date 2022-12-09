@@ -18,6 +18,7 @@ namespace ManagementApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
         }
     }
 }
