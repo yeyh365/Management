@@ -22,6 +22,8 @@ namespace ManagementApi.Helper
         {
             AuthInfo authInfo = new AuthInfo { UserName = userName, Roles = new List<string> { "admin", "commonrole" }, IsAdmin = isAdmin, ExpiryDateTime = DateTime.Now.AddHours(2) };
             string a = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();
+
+
             string secretKey = ConfigurationManager.AppSettings[AppSettingKeys.JWTSecret].ToString();//口令加密秘钥
                 byte[] key = Encoding.UTF8.GetBytes(secretKey);
                 IJwtAlgorithm algorithm = new HMACSHA256Algorithm();//加密方式

@@ -22,3 +22,6 @@ D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\NPOI.xml
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\log4net.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\log4net.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.xml

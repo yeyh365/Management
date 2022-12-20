@@ -23,6 +23,9 @@ namespace ManagementApi.Controllers
         [Route("AATestStart")]
         public string GetPicturesSteam(string pwt)
         {
+
+            EmailService email = new EmailService();
+            email.LoginSendEmail();
             string pUrl = ConfigurationManager.AppSettings["reslturl"].ToString();
             //logger.Debug("this is debuger");
             //logger.Info("this is info");

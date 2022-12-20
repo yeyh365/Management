@@ -222,6 +222,7 @@ export default {
         Mobile: "",
         Email: "",
         Picture: "",
+        Picture1: "",
         Last_LoginTime: "",
         Count: "",
       },
@@ -329,7 +330,7 @@ export default {
       console.log('imgSuccess', fileList)
       this.uplordP = pUrl + response.Data
       console.log(response.Data)
-      this.adminData.Picture = response.Data
+      this.adminData.Picture1 = response.Data
       // console.log(this.adminData.Picture)
       // this.CanShow = false;
       // this.CanShow = true;

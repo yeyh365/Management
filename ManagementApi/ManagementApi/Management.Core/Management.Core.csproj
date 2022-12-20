@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Helper\EmailHelper.cs" />
     <Compile Include="Helper\IOHelper.cs" />
     <Compile Include="Helper\LogHelper.cs" />
     <Compile Include="Helper\MD5Helper.cs" />
     <Compile Include="Helper\StreamHelper.cs" />
+    <Compile Include="Model\EmailModel.cs" />
     <Compile Include="Model\ResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

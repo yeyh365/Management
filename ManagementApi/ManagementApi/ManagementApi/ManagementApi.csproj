@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentScheduler, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.0.0\lib\net40\FluentScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="JWT, Version=9.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
       <HintPath>..\packages\JWT.9.0.3\lib\net40\JWT.dll</HintPath>
     </Reference>
@@ -195,6 +198,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PicturesController.cs" />
     <Compile Include="Controllers\AATestStartController.cs" />
+    <Compile Include="Controllers\SchedulerController.cs" />
     <Compile Include="Controllers\TokenController.cs" />
     <Compile Include="Controllers\UserEmployeeController.cs" />
     <Compile Include="Controllers\UserInfo1Controller.cs" />
