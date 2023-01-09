@@ -68,15 +68,16 @@ namespace Management.Application.Services.Impl
         {
 
             void IJob.Execute()
-            {
+            
+        {
                 Trace.WriteLine("现在时间是：" + DateTime.Now);
-              UserService userService = new UserService();
-            SearchEmployeeDto searchEmployeeDto = new SearchEmployeeDto();
-            searchEmployeeDto.EmployeeId = new Random().Next(3000, 4000).ToString();
-            searchEmployeeDto.EmployeeName = "这是新加的";
-            searchEmployeeDto.DepartmentNumber = 1;
-            searchEmployeeDto.PositionNumber = 1;
-            userService.AddEmployee(searchEmployeeDto);
+            //  UserService userService = new UserService();
+            //SearchEmployeeDto searchEmployeeDto = new SearchEmployeeDto();
+            //searchEmployeeDto.EmployeeId = new Random().Next(3000, 4000).ToString();
+            //searchEmployeeDto.EmployeeName = "这是新加的";
+            //searchEmployeeDto.DepartmentNumber = 1;
+            //searchEmployeeDto.PositionNumber = 1;
+            //userService.AddEmployee(searchEmployeeDto);
 
 
             }

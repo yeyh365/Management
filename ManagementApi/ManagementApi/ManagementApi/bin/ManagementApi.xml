@@ -522,6 +522,24 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ManagementApi.Controllers.FiveQiController">
+            <summary>
+            五子棋得接受
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Controllers.FiveQiController.GetFiveQi">
+            <summary>
+            
+            </summary>
+            <param name="pwt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.FiveQiController.PostFiveQi(System.Int32[][])">
+            <summary>
+            更新五子棋
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ManagementApi.Controllers.PicturesController">
             <summary>
             图片上传
@@ -646,6 +664,129 @@
             <param name="payload">封装号的一个获取</param>
             <returns></returns>
         </member>
+        <member name="T:ManagementApi.Helper.RedisHelper">
+            <summary>
+            RedisHelper
+            </summary>
+        </member>
+        <member name="F:ManagementApi.Helper.RedisHelper.RedisConnectionStr">
+            <summary>
+            Redis读写帮助类
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.#ctor">
+            <summary>
+            依赖注入
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.SetStringValue(System.String,System.String)">
+            <summary>
+            set or update the value for string key 
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.SetStringKey(System.String,System.String,System.Int32)">
+            <summary>
+            保存单个key value
+            </summary>
+            <param name="key">Redis Key</param>
+            <param name="value">保存的值</param>
+            <param name="expireMinutes">过期时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.SetStringKey``1(System.String,``0,System.Int32)">
+            <summary>
+            保存一个对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.GetStringKey``1(System.String)">
+            <summary>
+            获取一个key的对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.GetStringValue(System.String)">
+            <summary>
+            get the value for string key 
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.DeleteStringKey(System.String)">
+            <summary>
+            Delete the value for string key 
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.SetHashValue(System.String,System.String,System.String)">
+            <summary>
+            set or update the HashValue for string key 
+            </summary>
+            <param name="key"></param>
+            <param name="hashkey"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.SetHashValue``1(System.String,System.String,``0)">
+            <summary>
+            set or update the HashValue for string key 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <param name="hashkey"></param>
+            <param name="t">defined class</param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.HashSet``1(System.String,System.Collections.Generic.List{``0},System.Func{``0,System.String})">
+            <summary>
+            保存一个集合
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">Redis Key</param>
+            <param name="list">数据集合</param>
+            <param name="getModelId"></param>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.HashGetAll``1(System.String)">
+            <summary>
+            获取hashkey所有的值
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.GetHashValue(System.String,System.String)">
+            <summary>
+            get the HashValue for string key  and hashkey
+            </summary>
+            <param name="key">Represents a key that can be stored in redis</param>
+            <param name="hashkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.GetHashValue``1(System.String,System.String)">
+            <summary>
+            get the HashValue for string key  and hashkey
+            </summary>
+            <param name="key">Represents a key that can be stored in redis</param>
+            <param name="hashkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Helper.RedisHelper.DeleteHashValue(System.String,System.String)">
+            <summary>
+            delete the HashValue for string key  and hashkey
+            </summary>
+            <param name="key"></param>
+            <param name="hashkey"></param>
+            <returns></returns>
+        </member>
         <member name="T:ManagementApi.Models.AuthInfo">
             <summary>
             身份验证信息 模拟JWT的payload
@@ -679,6 +820,11 @@
         <member name="P:ManagementApi.Models.LoginRequest.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="T:ManagementApi.WebServiceTest">
+            <summary>
+            WebServiceTest 的摘要说明
             </summary>
         </member>
         <member name="T:ABC.ImagePosition">

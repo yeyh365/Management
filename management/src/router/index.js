@@ -149,10 +149,36 @@ const router = new VueRouter({
       name: 'Employeestest',
       component: Employeestest
     },
+    // {
+    //   path: '/QrCode',
+    //   name: 'QrCode',
+    //   component: () => import('@/pages/QrCode.vue')
+    // },
     {
-      path: '/QrCode',
-      name: 'QrCode',
-      component: () => import('@/pages/QrCode.vue')
+      path: '/Layout',
+      name: 'Layout',
+      // redirect: '/Layout/QrCode',
+      component: () => import('@/pages/Layout.vue'),
+      children: [{
+        path: '/Layout/QrCode',
+        name: 'QrCode',
+        component: () => import('@/pages/QrCode.vue')
+      }]
+    },
+    {
+      path: '/FiveQi',
+      name: 'FiveQi',
+      component: () => import('@/pages/FiveQi.vue'),
+    },
+    {
+      path: '/WebSocket',
+      name: 'WebSocket',
+      component: () => import('@/pages/WebSocket.vue'),
+    },
+    {
+      path: '/websocket1',
+      name: 'websocket1',
+      component: () => import('@/pages/websocket1.vue'),
     }
   ]
 })

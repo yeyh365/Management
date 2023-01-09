@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-12-09T05:48:44.2295106Z;True|2022-12-02T17:21:16.3711537+08:00;True|2022-11-30T16:08:55.5316373+08:00;True|2022-11-29T13:18:33.5010250+08:00;</History>
+    <History>True|2022-12-28T07:43:15.5768997Z;True|2022-12-09T13:48:44.2295106+08:00;True|2022-12-02T17:21:16.3711537+08:00;True|2022-11-30T16:08:55.5316373+08:00;True|2022-11-29T13:18:33.5010250+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -78,14 +78,29 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/Antlr3.Runtime.pdb">
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>02/22/2020 00:24:54</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/17/2020 04:38:42</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>04/17/2020 04:38:56</publishTime>
     </File>
+    <File Include="bin/FluentScheduler.dll">
+      <publishTime>07/20/2016 08:25:14</publishTime>
+    </File>
+    <File Include="bin/FluentScheduler.pdb">
+      <publishTime>07/20/2016 08:25:14</publishTime>
+    </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>01/03/2011 22:16:38</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>08/27/2020 19:20:20</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>08/27/2020 19:20:20</publishTime>
     </File>
     <File Include="bin/JWT.dll">
       <publishTime>06/05/2022 07:19:52</publishTime>
@@ -97,37 +112,37 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/25/2022 15:40:06</publishTime>
     </File>
     <File Include="bin/Management.Application.dll">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Management.Application.pdb">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Management.Core.dll">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:57</publishTime>
     </File>
     <File Include="bin/Management.Core.pdb">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:57</publishTime>
     </File>
     <File Include="bin/Management.Domain.dll">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Management.Domain.pdb">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll.config">
       <publishTime>11/22/2022 17:17:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.pdb">
-      <publishTime>12/09/2022 15:36:56</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/ManagementApi.dll">
-      <publishTime>12/09/2022 17:44:32</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/ManagementApi.pdb">
-      <publishTime>12/09/2022 17:44:32</publishTime>
+      <publishTime>01/02/2023 21:56:58</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -227,6 +242,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>06/27/2016 21:50:24</publishTime>
+    </File>
+    <File Include="bin/StackExchange.Redis.dll">
+      <publishTime>08/01/2017 20:19:14</publishTime>
     </File>
     <File Include="bin/Swagger.Net.dll">
       <publishTime>09/25/2012 06:44:24</publishTime>
@@ -451,7 +469,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/22/2022 16:45:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/09/2022 17:44:33</publishTime>
+      <publishTime>12/28/2022 15:43:15</publishTime>
+    </File>
+    <File Include="WebServiceTest.asmx">
+      <publishTime>12/20/2022 14:01:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

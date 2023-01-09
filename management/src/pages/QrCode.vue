@@ -2,7 +2,7 @@
   <div>
     <h2>QrCode</h2>
     <div class="test">
-      <div class="qrcode">
+      <div class="qrcode" style="width: 100%">
         <!-- 二维码 -->
         <canvas ref="qrcodeCanvas"> </canvas>
       </div>

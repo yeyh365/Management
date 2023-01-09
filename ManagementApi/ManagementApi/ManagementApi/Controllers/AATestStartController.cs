@@ -1,6 +1,7 @@
 ﻿using log4net;
 using Management.Application.Services.Impl;
 using Management.Core.Helper;
+using ManagementApi.Helper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,6 +13,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ManagementApi.Controllers
 {
@@ -37,16 +39,23 @@ namespace ManagementApi.Controllers
 
 
             string ACD = "YYH";
-            LogHelper.Log("12344567");
+            LogHelper.Log(ACD);
             HttpResponseMessage resp = new HttpResponseMessage();
 
 
+            ///测试redis链接
+            string test = "Name";
+            string value = "Yeyh";
+            string time = "1000";
+            RedisHelper redis = new RedisHelper();
+            redis.SetStringKey(test, value, int.Parse(time));
+
+            var acd = redis.GetStringValue(test);
 
 
 
 
-
-                string str = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
+            string str = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
                 string str1 = System.Environment.CurrentDirectory;
                 //string pictures = @"Files\Pictures\abcd.png";
             try

@@ -22,3 +22,10 @@ D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPO
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\NPOI.xml
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\log4net.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\log4net.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\BouncyCastle.Crypto.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\FluentScheduler.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\itextsharp.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\itextsharp.xmlworker.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\FluentScheduler.pdb
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\FluentScheduler.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Release\itextsharp.xml

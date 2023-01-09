@@ -25,3 +25,7 @@ D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\log4n
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.dll
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.pdb
 D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\FluentScheduler.xml
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\BouncyCastle.Crypto.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\itextsharp.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\itextsharp.xmlworker.dll
+D:\VUE\manage\managementApi\managementApi\Management.Application\bin\Debug\itextsharp.xml
