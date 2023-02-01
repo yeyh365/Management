@@ -112,3 +112,4 @@ D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\FluentScheduler.pdb
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\FluentScheduler.xml
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\StackExchange.Redis.xml
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\itextsharp.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\Fleck.dll

@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Fleck, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.1.2.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="FluentScheduler, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentScheduler.5.0.0\lib\net40\FluentScheduler.dll</HintPath>
     </Reference>
@@ -200,6 +203,7 @@
     <Compile Include="Controllers\ApplyController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\FiveQiController.cs" />
+    <Compile Include="Controllers\FleckHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PicturesController.cs" />

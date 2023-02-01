@@ -17,6 +17,9 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ManagementApi.Controllers
 {
+    /// <summary>
+    /// 测试用
+    /// </summary>
     [RoutePrefix("api/AATestStart")]
     public class AATestStartController : ApiController
     {

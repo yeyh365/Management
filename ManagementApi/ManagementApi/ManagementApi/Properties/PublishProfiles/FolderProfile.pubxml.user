@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-12-28T07:43:15.5768997Z;True|2022-12-09T13:48:44.2295106+08:00;True|2022-12-02T17:21:16.3711537+08:00;True|2022-11-30T16:08:55.5316373+08:00;True|2022-11-29T13:18:33.5010250+08:00;</History>
+    <History>True|2023-01-11T03:50:12.5533737Z;True|2022-12-28T15:43:15.5768997+08:00;True|2022-12-09T13:48:44.2295106+08:00;True|2022-12-02T17:21:16.3711537+08:00;True|2022-11-30T16:08:55.5316373+08:00;True|2022-11-29T13:18:33.5010250+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -87,6 +87,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>04/17/2020 04:38:56</publishTime>
     </File>
+    <File Include="bin/Fleck.dll">
+      <publishTime>04/22/2021 11:48:12</publishTime>
+    </File>
     <File Include="bin/FluentScheduler.dll">
       <publishTime>07/20/2016 08:25:14</publishTime>
     </File>
@@ -112,10 +115,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/25/2022 15:40:06</publishTime>
     </File>
     <File Include="bin/Management.Application.dll">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/Management.Application.pdb">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/Management.Core.dll">
       <publishTime>01/02/2023 21:56:57</publishTime>
@@ -124,25 +127,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/02/2023 21:56:57</publishTime>
     </File>
     <File Include="bin/Management.Domain.dll">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:10</publishTime>
     </File>
     <File Include="bin/Management.Domain.pdb">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:10</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.dll.config">
       <publishTime>11/22/2022 17:17:54</publishTime>
     </File>
     <File Include="bin/Management.EntityFramework.pdb">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/ManagementApi.dll">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/ManagementApi.pdb">
-      <publishTime>01/02/2023 21:56:58</publishTime>
+      <publishTime>01/11/2023 11:50:11</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 16:10:50</publishTime>
@@ -469,7 +472,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/22/2022 16:45:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/28/2022 15:43:15</publishTime>
+      <publishTime>01/11/2023 11:50:12</publishTime>
     </File>
     <File Include="WebServiceTest.asmx">
       <publishTime>12/20/2022 14:01:58</publishTime>

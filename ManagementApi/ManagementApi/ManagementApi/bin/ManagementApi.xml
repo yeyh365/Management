@@ -540,6 +540,37 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ManagementApi.Controllers.FleckHelper">
+            <summary>
+            webSocket接口
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Controllers.FleckHelper.WebSocketInit">
+            <summary>
+            WebSocket初始化
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Controllers.FleckHelper.Send(System.String)">
+            <summary>
+            消息发送
+            </summary>
+            <param name="message">自定义json字符串</param>
+        </member>
+        <member name="T:ManagementApi.Controllers.FleckHelper.MessageInfo">
+            <summary>
+            自定义消息类
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Controllers.FleckHelper.MessageInfo.ToUser">
+            <summary>
+            接收人
+            </summary>
+        </member>
+        <member name="P:ManagementApi.Controllers.FleckHelper.MessageInfo.Msg">
+            <summary>
+            发送信息
+            </summary>
+        </member>
         <member name="T:ManagementApi.Controllers.PicturesController">
             <summary>
             图片上传
@@ -556,6 +587,11 @@
             获取图片向前端返回一个地址
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:ManagementApi.Controllers.AATestStartController">
+            <summary>
+            测试用
+            </summary>
         </member>
         <member name="M:ManagementApi.Controllers.AATestStartController.MD5Encrypt16(System.String)">
             <summary>

@@ -113,3 +113,4 @@ D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\itextsharp.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\itextsharp.xmlworker.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\BouncyCastle.Crypto.dll
 D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\itextsharp.xml
+D:\VUE\manage\managementApi\managementApi\ManagementApi\bin\Fleck.dll

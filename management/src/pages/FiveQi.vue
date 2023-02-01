@@ -33,33 +33,47 @@ export default {
     _this.drawCheckerboard();
 
     this.getAllArray();
+    this.initWebSocket();
     // this.timer = window.setInterval(() => {
     //   console.log('定时器')
     //   this.getAllFiveQi();
     // }, 2000);
-    this.webSocketCon();
+    // setInterval(() => {
+    //   ws.send("hello");
+    // }, 3000);
   },
   computed: {
     chessText () {
       return this.whiteTurn ? '白棋' : '黑棋';
-    }
+    },
 
   },
   methods: {
-    webSocketCon () {
-      var ws = new WebSocket("ws://localhost:53014/ws");
-
-      ws.onopen = function (evt) {
-        console.log("Connection open ...");
-      };
-
-      ws.onmessage = function (evt) {
-        console.log("Received Message: " + evt.data);
-      };
-
-      setInterval(() => {
-        ws.send("hello");
-      }, 3000);
+    initWebSocket () {
+      const wsuri = "ws://1.14.96.49:8089";
+      this.websock = new WebSocket(wsuri);
+      this.websock.onmessage = this.websocketonmessage;
+      this.websock.onopen = this.websocketonopen;
+      this.websock.onerror = this.websocketonerror;
+      this.websock.onclose = this.websocketclose;
+    },
+    websocketonopen () { //连接建立之后执行send方法发送数据
+      // let actions = { "test": "12345" };
+      // this.websocketsend('连接成功发送出来的数据');
+      console.log('连接成功')
+    },
+    websocketonerror () {//连接建立失败重连
+      this.initWebSocket();
+    },
+    websocketonmessage (e) { //数据接收
+      this.getAllFiveQi(e)
+      console.log(e.data)
+    },
+    websocketsend (Data) {//数据发送
+      this.websock.send(Data);
+    },
+    websocketclose (e) {  //关闭
+      console.log('断开连接', 'asdf');
     },
     drawCheckerboard () {
       // 画棋盘
@@ -77,7 +91,6 @@ export default {
         _this.ctx.moveTo(15, 15 + i * 30); //水平方向画15根线，相距30px;棋盘为14*14；
         _this.ctx.lineTo(435, 15 + i * 30);
         _this.ctx.stroke();
-
         _this.resultArr.push(new Array(15).fill(0));
       }
       _this.drawText();
@@ -111,7 +124,7 @@ export default {
         2 * Math.PI,
         false
       );
-
+      //画上棋子
       _this.ctx.fill();
       _this.ctx.closePath();
 
@@ -120,12 +133,12 @@ export default {
     },
     setResultArr (m, n) {
       let _this = this;
+      console.log('resultarr', typeof (m), typeof (n))
       _this.resultArr[m][n] = _this.whiteTurn ? 1 : 2; // 白棋为1；黑棋为2
 
     },
     ///画棋子的代码
     drawChessAll (x, y) {
-
       let _this = this;
       let xLine = Math.round((x - 15) / 30); // 竖线第x条
       let yLine = Math.round((y - 15) / 30); // 横线第y条
@@ -159,11 +172,6 @@ export default {
 
       _this.setResultArr(xLine, yLine);
       _this.checkResult(xLine, yLine);
-    },
-    setResultArr (m, n) {
-      let _this = this;
-      _this.resultArr[m][n] = _this.whiteTurn ? 1 : 2; // 白棋为1；黑棋为2
-
     },
     // 判断是否有5子相连
     checkResult (m, n) {
@@ -220,12 +228,14 @@ export default {
       _this.ctx.font = "20px Arial";
       _this.ctx.fillText('本轮：' + _this.chessText, 435 + 70, 35);
     },
+    //画完棋子判断是否胜利
     drawResult () {
       let _this = this;
       _this.ctx.fillStyle = "#ff2424";
       _this.ctx.font = "20px Arial";
       _this.ctx.fillText(_this.chessText + '胜！', 435 + 70, 70);
     },
+    //点击的时候画棋子
     handleClick (event) {
       let x = event.offsetX - 70;
       let y = event.offsetY - 70;
@@ -238,20 +248,20 @@ export default {
         this.drawResult();
         return;
       }
-
       this.drawText();
       this.resultArr[15] = ([this.whiteTurn ? 8 : 9])
       console.log(this.resultArr)
-      var str1 = JSON.stringify(this.resultArr)
-      FiveQiService.postFive(this.resultArr)
-        .then(res => {
-          // const token = res.Data
-          if (res) {
+      var str1 = JSON.stringify(this.resultArr);
+      this.websocketsend(str1)
+      // FiveQiService.postFive(this.resultArr)
+      //   .then(res => {
+      //     // const token = res.Data
+      //     if (res) {
 
-          } else {
-            alert(res.Message)
-          }
-        })
+      //     } else {
+      //       alert(res.Message)
+      //     }
+      //   })
       this.whiteTurn = !this.whiteTurn;
     },
     ///初始化画出数组类所有棋子
@@ -278,39 +288,40 @@ export default {
 
       // }
     },
-    getAllFiveQi () {
+    getAllFiveQi (res) {
       let _this = this;
-      FiveQiService.getFive()
-        .then(res => {
-          // const token = res.Data
-          if (res) {
-            // console.log('res', res)
-            this.resultArr = JSON.parse(res)
-            let result = this.resultArr;
-            for (let i = 0; i < result.length; i++) {
-              for (let j = 0; j < result[i].length; j++) {
-                // console.log('==', result[i][j])
-                if (result[i][j] != 0) {
-                  if (result[i][j] == 1) {
-                    this.whiteTurn = true;
-                    this.drawChessAll(i * 30 + 15, j * 30 + 15)
-                  } else if (result[i][j] == 2) {
-                    this.whiteTurn = false;
-                    this.drawChessAll(i * 30 + 15, j * 30 + 15)
-                  }
-                }
+      // FiveQiService.getFive()
+      //   .then(res => {})
+      // const token = res.Data
+      if (res.data) {
 
+        this.resultArr = JSON.parse(res.data)
+        console.log('this.resultArr', this.resultArr)
+        let result = this.resultArr
+        console.log('result', result.length)
+        for (let i = 0; i < result.length - 1; i++) {
+          for (let j = 0; j < result[i].length; j++) {
+            console.log('resultij', result[i][j])
+            if (result[i][j] != 0) {
+              if (result[i][j] == 1) {
+                this.whiteTurn = true;
+                this.drawChessAll(i * 30 + 15, j * 30 + 15)
+              } else if (result[i][j] == 2) {
+                this.whiteTurn = false;
+                this.drawChessAll(i * 30 + 15, j * 30 + 15)
               }
-
             }
-            this.whiteTurn = !(result[result.length - 1][0] == 8 ? true : false)
-          } else {
-            alert(res.Message)
+
           }
-        })
+
+        }
+        this.whiteTurn = !(result[result.length - 1][0] == 8 ? true : false)
+      } else {
+        alert(res.Message)
+      }
+
     },
     Init () {
-      window.clearInterval(this.timer)
       var Init = new Array();
       for (let i = 0; i < 15; i++) {
         Init[i] = new Array(i);
@@ -336,6 +347,7 @@ export default {
     console.log("清除定时器")
     window.clearInterval(this.timer)
     this.timer = null
+    this.websock.onclose()
   },
 }
 </script>
