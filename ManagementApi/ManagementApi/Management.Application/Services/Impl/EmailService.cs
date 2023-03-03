@@ -22,7 +22,7 @@ namespace Management.Application.Services.Impl
             emailModel.From = "yeyh365@163.com";
             emailModel.To = new List<string>()
             {
-                "yeyh365@163.com"
+                "gxp2455392634@163.com"
             };
             emailModel.Subject = "测试.net";
             emailModel.Body = "hello word!";

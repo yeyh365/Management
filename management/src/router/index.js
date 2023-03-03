@@ -22,7 +22,6 @@ import Read from '../pages/notice/Read'
 import Employeestest from '../pages/manage/Employeestest'
 
 
-
 const router = new VueRouter({
   routes: [{
       path: '/',
@@ -122,6 +121,27 @@ const router = new VueRouter({
             component: () => import('@/pages/apply/Approval.vue'),
           }]
         },
+        {
+          path: '/Workflow',
+          name: 'Workflow',
+          component: () => import('@/pages/Workflow.vue'),
+          redirect: '/Workflow/PendingApproval',
+          children: [{
+              path: '/Workflow/PendingApproval',
+              name: 'PendingApproval',
+              component: () => import('@/pages/workflow/PendingApproval.vue'),
+            }, {
+              path: '/Workflow/ApprovedEnd',
+              name: 'ApprovedEnd',
+              component: () => import('@/pages/workflow/ApprovedEnd.vue'),
+            },
+            {
+              path: '/Workflow/ApprovedAll',
+              name: 'ApprovedAll',
+              component: () => import('@/pages/workflow/ApprovedAll.vue'),
+            }
+          ]
+        },
       ]
     },
     {
@@ -179,6 +199,11 @@ const router = new VueRouter({
       path: '/websocket1',
       name: 'websocket1',
       component: () => import('@/pages/websocket1.vue'),
+    },
+    {
+      path: '/Test',
+      name: 'Test',
+      component: () => import('@/pages/Test.vue'),
     }
   ]
 })

@@ -481,6 +481,11 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:ManagementApi.Controllers.ApplyController">
+            <summary>
+            旧流程申请
+            </summary>
+        </member>
         <member name="M:ManagementApi.Controllers.ApplyController.GetUserApply(Management.Application.Dto.ApplyProcessDto)">
             <summary>
             获取当前登录的的分页的申请流程
@@ -673,6 +678,53 @@
             <summary>
             获取用户信息
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ManagementApi.Controllers.WorkfolwController">
+            <summary>
+            工作流申请
+            </summary>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.GetWorkflowMenu">
+            <summary>
+            获取工作流菜单
+            </summary>
+            <param></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.GetUserPendingWorkflow(Management.Application.Dto.WorkflowDto)">
+            <summary>
+            获取当前登录的代办申请流程
+            </summary>
+            <param name="workfolwDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.GetUserEndWorkflow(Management.Application.Dto.WorkflowDto)">
+            <summary>
+            获取当前登录人已经办理的申请流程
+            </summary>
+            <param name="workfolwDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.GetUserPendingWorkflowCount(Management.Application.Dto.WorkflowDto)">
+            <summary>
+            获取当前登录的代办消息数
+            </summary>
+            <param name="workfolwDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.UpdateWorkFlow(Management.Application.Dto.WorkflowDto)">
+            <summary>
+            更新流程节点审批信息
+            </summary>
+            <param name="workfolwDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ManagementApi.Controllers.WorkfolwController.AddWorkflow(Management.Application.Dto.WorkflowDto)">
+            <summary>
+            增加一条流程
+            </summary>
+            <param name="workflowDto"></param>
             <returns></returns>
         </member>
         <member name="T:ManagementApi.Filters.ApiAuthorizeAttribute">

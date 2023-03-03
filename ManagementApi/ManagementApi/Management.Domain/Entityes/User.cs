@@ -20,6 +20,7 @@ namespace Management.Domain.Entityes
         [Column("ID",TypeName="int")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string EmployeeId { get; set; }
         public string Account { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }

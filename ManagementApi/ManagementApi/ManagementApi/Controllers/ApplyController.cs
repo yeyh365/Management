@@ -11,6 +11,9 @@ using System.Web.Http;
 
 namespace ManagementApi.Controllers
 {
+    /// <summary>
+    /// 旧流程申请
+    /// </summary>
     [RoutePrefix("api/Apply")]
     [ApiAuthorize]
     public class ApplyController : ApiController

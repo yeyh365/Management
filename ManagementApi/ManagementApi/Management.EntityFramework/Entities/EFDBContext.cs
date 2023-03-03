@@ -31,7 +31,14 @@ namespace Management.EntityFramework.Entities
         public DbSet<Project> Project { get; set; }
         public DbSet<Posittion> Posittion { get; set; }
         public DbSet<ApplyProcess> ApplyProcess { get; set; }
-
+        //public DbSet<LeaveRequest> LeaveRequest { get; set; }
+        //public DbSet<Node> Node { get; set; }
+        //public DbSet<FlowInstance> FlowInstance { get; set; }
+        //public DbSet<FlowRecord> FlowRecord { get; set; }
+        public DbSet<WorkflowConfiguration> WorkflowConfiguration { get; set; }
+        public DbSet<WorkflowDetails> WorkflowDetails { get; set; }
+        public DbSet<WorkflowRecords> WorkflowRecords { get; set; }
+        public DbSet<WorkflowOrder> WorkflowOrder { get; set; }
 
 
 

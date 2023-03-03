@@ -18,7 +18,8 @@ export default {
       winGame: false,
       whiteTurn: false, // false-白棋轮；true-黑棋轮
       resultArr: [], // 记录棋子位置的数组
-      timer: ''
+      timer: '',
+      connection: ''
 
     }
   },
@@ -50,20 +51,17 @@ export default {
   },
   methods: {
     initWebSocket () {
-      const wsuri = "ws://1.14.96.49:8089";
-      this.websock = new WebSocket(wsuri);
-      this.websock.onmessage = this.websocketonmessage;
-      this.websock.onopen = this.websocketonopen;
-      this.websock.onerror = this.websocketonerror;
-      this.websock.onclose = this.websocketclose;
-    },
-    websocketonopen () { //连接建立之后执行send方法发送数据
-      // let actions = { "test": "12345" };
-      // this.websocketsend('连接成功发送出来的数据');
-      console.log('连接成功')
-    },
-    websocketonerror () {//连接建立失败重连
-      this.initWebSocket();
+      this.connection = new signalR.HubConnectionBuilder()
+        .withUrl("https://localhost:44336/chathub", {})
+        .configureLogging(signalR.LogLevel.Error)
+        .build();
+      this.connection.on("ReceiveMessage", data => {
+        console.log(data)
+      });
+      this.connection.start();
+      this.connection.on("ReceiveMessage", data => {
+        console.log(data)
+      });
     },
     websocketonmessage (e) { //数据接收
       this.getAllFiveQi(e)
@@ -71,9 +69,6 @@ export default {
     },
     websocketsend (Data) {//数据发送
       this.websock.send(Data);
-    },
-    websocketclose (e) {  //关闭
-      console.log('断开连接', 'asdf');
     },
     drawCheckerboard () {
       // 画棋盘

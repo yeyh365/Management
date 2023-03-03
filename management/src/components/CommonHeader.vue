@@ -18,7 +18,13 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
-      <el-badge :value="megVal" :max="10" class="itemMeg" size="mini">
+      <el-badge
+        ref="pendingCount"
+        :value="megVal"
+        :max="10"
+        class="itemMeg"
+        size="mini"
+      >
         <el-button
           type="info"
           icon="el-icon-message"
@@ -46,14 +52,15 @@
 </template>
 
 <script>
+import { create } from 'qrcode'
 import UserEmployee from '../api/services/UserEmployee'
-import axios from 'axios'
+import Workflow from '../api/services/WorkflowService'
 export default {
   name: 'CommonHeader',
   data () {
     return {
       adminImg: '',
-      megVal: '2',
+      megVal: '',
       noface: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       face2: 'https://localhost:44369/Files/Pictures/abcd.png',
       face: '',
@@ -78,8 +85,15 @@ export default {
     }
   },
   methods: {
+    getMeessage () {
+      let user = sessionStorage.getItem('user')
+      Workflow.GetUserPendingWorkflowCount(user).then(res => {
+        console.log('resgetmessage', res)
+        this.megVal = res.Data.toString()
+      })
+    },
     meessage () {
-      this.$router.push({ path: '/Apply' })
+      this.$router.push({ path: '/Workflow/PendingApproval' })
     },
     asideMenu () {
       // this.$store.commit('tab/collapseMenu')
@@ -133,9 +147,11 @@ export default {
 
   },
   mounted () {
-    this.getImg()
+    this.getImg();
+  },
+  created () {
+    this.getMeessage();
   }
-
 }
 </script>
 

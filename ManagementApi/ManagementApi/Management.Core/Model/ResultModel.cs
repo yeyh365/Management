@@ -22,5 +22,10 @@ namespace ManagementApi.Models
             public string Message { get; set; }
         
     }
+    public class ResultModel2
+    {
+        public object Count { get; set; }
+        public object List { get; set; }
 
+    }
 }

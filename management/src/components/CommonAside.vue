@@ -81,7 +81,25 @@ export default {
               label: '员工管理'
             }
           ]
-        }
+        },
+        {
+          path: '',
+          name: '',
+          label: '工作台',
+          icon: 'position',
+          children: [
+            {
+              path: '/Workflow',
+              name: 'Workflow',
+              label: '审批'
+            },
+            {
+              path: '/manage/employees',
+              name: 'Employees',
+              label: '工作流管理'
+            }
+          ]
+        },
       ]
     }
   },
@@ -116,13 +134,13 @@ export default {
 </script>
 
 <style scoped>
-    .el-menu {
-        height: 100%;
-        border: none;
-    }
-    
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
-        width: 200px;
-        min-height: 400px;
-    }
+.el-menu {
+  height: 100%;
+  border: none;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
 </style>
