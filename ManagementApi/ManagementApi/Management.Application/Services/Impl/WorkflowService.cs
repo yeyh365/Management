@@ -27,11 +27,11 @@ namespace Management.Application.Services.Impl
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        public List<WorkflowDto> GetWorkflowMenu()
+        public async Task<List<WorkflowDto>>  GetWorkflowMenu()
         {
 
             List<WorkflowDto> list = new List<WorkflowDto>();
-            var employee = this._eFRepository.GetAll<WorkflowConfiguration>();
+            var employee = await  this._eFRepository.GetAllAsync<WorkflowConfiguration>();
             foreach (var item in employee)
             {
                 WorkflowDto workflowDto = new WorkflowDto();
@@ -271,15 +271,15 @@ namespace Management.Application.Services.Impl
         /// </summary>
         /// <param name="applyProcessDto"></param>
         /// <returns></returns>
-        public int QueryPendingWorkFlowCount(WorkflowDto workflowDto)
+        public async  Task<int>  QueryPendingWorkFlowCount(WorkflowDto workflowDto)
         {
             int count = 0;
             //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
             if (!string.IsNullOrEmpty(workflowDto.Account))
             {
                 ApplyProcess applyProcess = new ApplyProcess();
-                var workflowOrder = this._eFRepository.GetAll<WorkflowOrder>();
-                var workflowRecords = this._eFRepository.GetAll<WorkflowRecords>();
+                var workflowOrder = await this._eFRepository.GetAllAsync<WorkflowOrder>();
+                var workflowRecords = await this._eFRepository.GetAllAsync<WorkflowRecords>();
                 var pending = from o in workflowOrder
                               join r in workflowRecords.Where(w => w.AuditStatus == 0).Where(w => w.IsAudit == 0).Where(w => w.AssigneeId == workflowDto.Account) on o.DocumentCode equals r.DocumentCode
                               select new WorkflowDto
@@ -325,6 +325,67 @@ namespace Management.Application.Services.Impl
             }
 
             return count;
+        }
+        /// <summary>
+        /// 增加一个申请流程
+        /// </summary>
+        /// <param name="workflowMenuDto"></param>
+        /// <returns></returns>
+        public async Task<ResultModel> AddPendingWorkFlow(WorkflowMenuDto workflowMenuDto)
+        {
+            ResultModel resultModel = new ResultModel();
+            int count = 0;
+            //List<Employee> employeesNow = this._eFRepository.GetAll<Employee>().OrderBy(a => a.Id).ToList();
+            if (!string.IsNullOrEmpty(workflowMenuDto.Account))
+            {
+                ApplyProcess applyProcess = new ApplyProcess();
+                var workflowOrder = await this._eFRepository.GetAllAsync<WorkflowOrder>();
+                var workflowRecords = await this._eFRepository.GetAllAsync<WorkflowRecords>();
+                var pending = from o in workflowOrder
+                              join r in workflowRecords.Where(w => w.AuditStatus == 0).Where(w => w.IsAudit == 0).Where(w => w.AssigneeId == workflowMenuDto.Account) on o.DocumentCode equals r.DocumentCode
+                              select new WorkflowDto
+                              {
+                                  Account = "",
+                                  ApplyTitle = r.WorkflowName,
+                                  ApplyBoby = o.WorkflowId,
+                                  WorkflowId = o.WorkflowId,
+                                  DocumentCode = o.DocumentCode,
+                                  DocumentTime = o.DocumentTime,
+                                  Status = o.Status,
+                                  CreateUser = o.CreateUser,
+                                  IsDelete = o.IsDelete,
+                                  Mark = o.Mark,
+                                  WorkflowName = r.WorkflowName,
+                                  AssigneeId = r.AssigneeId,
+                                  HandleDate = r.HandleDate,
+                                  Remarks = r.Remarks,
+                                  AuditStatus = r.AuditStatus,
+                                  IsAudit = r.IsAudit,
+                                  FlowSerialnunber = r.FlowSerialnunber
+                              };
+                count = pending.Count();
+                //if (count > workflowDto.Limit)
+                //{
+
+                //    pending = pending.Skip((workflowDto.Page - 1) * workflowDto.Limit).Take(workflowDto.Limit);
+
+                //}
+                //var departmentName = from epm in employee.Where(e => e.EmployeeId == workflowDto.Account)
+                //                     join dep in this._eFRepository.GetAll<Departemnt>() on epm.DepartmentNumber equals dep.Id 
+                //                     select new ApplyProcessDto
+                //                     {
+
+                //                         ApproverDepartmentName = dep.EmployeeId,
+                //                     };
+                //list = pending.ToList();
+                workflowMenuDto.Count = Convert.ToInt32(count);
+            }
+            else
+            {
+                //workflowDto.Count = 0;
+            }
+
+            return resultModel;
         }
         /// <summary>
         /// 判断当前节点是否未最后一个节点

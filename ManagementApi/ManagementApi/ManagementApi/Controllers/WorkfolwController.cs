@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ManagementApi.Controllers
@@ -23,14 +24,14 @@ namespace ManagementApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetWorkflowMenu")]
-        public ResultModel GetWorkflowMenu()
+        public async Task<ResultModel> GetWorkflowMenu()
         {
             WorkflowService workflowService = new WorkflowService();
             ResultModel resultModel = new ResultModel();//需要返回的口令信息
 
             try
             {
-                List<WorkflowDto> list = workflowService.GetWorkflowMenu();
+                List<WorkflowDto> list = await workflowService.GetWorkflowMenu();
 
                 resultModel.Success = true;
                 //resultModel.Data =JsonConvert.SerializeObject(list);
@@ -110,14 +111,14 @@ namespace ManagementApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetUserPendingWorkflowCount")]
-        public ResultModel GetUserPendingWorkflowCount([FromUri] WorkflowDto workfolwDto)
+        public async Task<ResultModel>  GetUserPendingWorkflowCount([FromUri] WorkflowDto workfolwDto)
         {
             WorkflowService workflowService = new WorkflowService();
             ResultModel resultModel = new ResultModel();//需要返回的口令信息
 
             try
             {
-               int list = workflowService.QueryPendingWorkFlowCount(workfolwDto);
+               int list = await workflowService.QueryPendingWorkFlowCount(workfolwDto);
 
                 resultModel.Success = true;
                 //resultModel.Data =JsonConvert.SerializeObject(list);

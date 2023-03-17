@@ -275,7 +275,7 @@ namespace Management.EntityFramework.Repositories
             //var a = _DbContextHandle.Set<T>();
             //var b = a.ToList();
             //var c = b.AsNoTracking()
-            return _DbContextHandle.Set<T>().AsNoTracking().ToList();
+            return await _DbContextHandle.Set<T>().AsNoTracking().ToListAsync();
         }
         /// <summary>
         ///根据查询条件进行查询列表
